@@ -11,7 +11,7 @@
     
     <ContentPage.Resources>
         <ResourceDictionary>
-            <Color x:Key="Accent">pink</Color>
+            <Color x:Key="Accent">Pink</Color>
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -29,9 +29,9 @@
         </StackLayout>
         <ScrollView Grid.Row="1">
             <StackLayout Orientation="Vertical" Padding="30,24,30,24" Spacing="10">
-                <Label Text="Start developing now" FontSize="Title"/>
-                <Label Text="Make changes to your XAML file and save to see your UI update in the running app with XAML Hot Reload. Give it a try!" FontSize="16" Padding="0,0,0,0"/>
-                <Label FontSize="16" Padding="0,24,0,0">
+                <Label Text="Start developing now" FontSize="Title" TextColor="Black"/>
+                <Label Text="Make changes to your XAML file and save to see your UI update in the running app with XAML Hot Reload. Give it a try!" FontSize="16" Padding="0,0,0,0" TextColor="Black"/>
+                <Label FontSize="16" Padding="0,24,0,0" TextColor="Black">
                     <Label.FormattedText>
                         <FormattedString>
                             <FormattedString.Spans>

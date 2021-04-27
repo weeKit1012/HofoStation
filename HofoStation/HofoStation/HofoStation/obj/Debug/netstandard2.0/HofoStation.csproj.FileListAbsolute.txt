@@ -2,7 +2,6 @@ C:\Users\wjz10\Documents\GitHub\ShaCare\HofoStation\HofoStation\HofoStation\bin\
 C:\Users\wjz10\Documents\GitHub\ShaCare\HofoStation\HofoStation\HofoStation\bin\Debug\netstandard2.0\HofoStation.dll
 C:\Users\wjz10\Documents\GitHub\ShaCare\HofoStation\HofoStation\HofoStation\bin\Debug\netstandard2.0\ref\HofoStation.dll
 C:\Users\wjz10\Documents\GitHub\ShaCare\HofoStation\HofoStation\HofoStation\bin\Debug\netstandard2.0\HofoStation.pdb
-C:\Users\wjz10\Documents\GitHub\ShaCare\HofoStation\HofoStation\HofoStation\obj\Debug\netstandard2.0\HofoStation.csprojAssemblyReference.cache
 C:\Users\wjz10\Documents\GitHub\ShaCare\HofoStation\HofoStation\HofoStation\obj\Debug\netstandard2.0\App.xaml.g.cs
 C:\Users\wjz10\Documents\GitHub\ShaCare\HofoStation\HofoStation\HofoStation\obj\Debug\netstandard2.0\AppShell.xaml.g.cs
 C:\Users\wjz10\Documents\GitHub\ShaCare\HofoStation\HofoStation\HofoStation\obj\Debug\netstandard2.0\Views\AboutPage.xaml.g.cs
