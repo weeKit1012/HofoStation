@@ -1,9 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "yraFQVf6pEjc6+s0GVN+4uxboYXofWsHhh0jJxnvAhlrXZw77Ko60AOHmcaVHMQjTjJH42tPHw0kiMEXEHkr5g==",
+  "dgSpecHash": "fvFRM6W4qDth2ueG04oI8UbN2ou1vx0SKQqYgDzFh7wDAFrorEwQ8WM28dlQTufKcdDXVs+A1ROd/E7e0FZGcw==",
   "success": true,
   "projectFilePath": "C:\\Users\\wjz10\\Documents\\GitHub\\ShaCare\\HofoStation\\HofoStation\\HofoStation.Android\\HofoStation.Android.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\wjz10\\.nuget\\packages\\monkeycache\\1.5.2\\monkeycache.1.5.2.nupkg.sha512",
+    "C:\\Users\\wjz10\\.nuget\\packages\\monkeycache.filestore\\1.5.2\\monkeycache.filestore.1.5.2.nupkg.sha512",
+    "C:\\Users\\wjz10\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
     "C:\\Users\\wjz10\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
     "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\xamarin.androidx.activity\\1.1.0.5\\xamarin.androidx.activity.1.1.0.5.nupkg.sha512",
     "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\xamarin.androidx.annotation\\1.1.0.8\\xamarin.androidx.annotation.1.1.0.8.nupkg.sha512",

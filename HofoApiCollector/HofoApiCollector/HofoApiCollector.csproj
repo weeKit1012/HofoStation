@@ -163,6 +163,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="dbhofo.Context.cs">
       <AutoGen>True</AutoGen>
@@ -182,7 +183,22 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Chat.cs" />
+    <Compile Include="Models\ChatMessage.cs" />
+    <Compile Include="Models\Post.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\Vote.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Request\UserLoginRequest.cs" />
+    <Compile Include="Response\ChatMessageResponse.cs" />
+    <Compile Include="Response\ChatResponse.cs" />
+    <Compile Include="Response\OperationResponse.cs" />
+    <Compile Include="Response\PostResponse.cs" />
+    <Compile Include="Response\UserResponse.cs" />
+    <Compile Include="Response\VoteResponse.cs" />
+    <Compile Include="stpUserLogin_Result.cs">
+      <DependentUpon>dbhofo.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
@@ -254,7 +270,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

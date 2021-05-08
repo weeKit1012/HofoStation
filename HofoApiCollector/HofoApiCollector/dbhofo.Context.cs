@@ -12,6 +12,8 @@ namespace HofoApiCollector
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class dbhofoEntities : DbContext
     {
@@ -25,5 +27,47 @@ namespace HofoApiCollector
             throw new UnintentionalCodeFirstException();
         }
     
+    
+        public virtual ObjectResult<stpUserLogin_Result> stpUserLogin(string email, string password)
+        {
+            var emailParameter = email != null ?
+                new ObjectParameter("Email", email) :
+                new ObjectParameter("Email", typeof(string));
+    
+            var passwordParameter = password != null ?
+                new ObjectParameter("Password", password) :
+                new ObjectParameter("Password", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<stpUserLogin_Result>("stpUserLogin", emailParameter, passwordParameter);
+        }
+    
+        public virtual int stpUserRegister(string firstName, string lastName, string email, string password, Nullable<int> phone, Nullable<int> gender)
+        {
+            var firstNameParameter = firstName != null ?
+                new ObjectParameter("FirstName", firstName) :
+                new ObjectParameter("FirstName", typeof(string));
+    
+            var lastNameParameter = lastName != null ?
+                new ObjectParameter("LastName", lastName) :
+                new ObjectParameter("LastName", typeof(string));
+    
+            var emailParameter = email != null ?
+                new ObjectParameter("Email", email) :
+                new ObjectParameter("Email", typeof(string));
+    
+            var passwordParameter = password != null ?
+                new ObjectParameter("Password", password) :
+                new ObjectParameter("Password", typeof(string));
+    
+            var phoneParameter = phone.HasValue ?
+                new ObjectParameter("Phone", phone) :
+                new ObjectParameter("Phone", typeof(int));
+    
+            var genderParameter = gender.HasValue ?
+                new ObjectParameter("Gender", gender) :
+                new ObjectParameter("Gender", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("stpUserRegister", firstNameParameter, lastNameParameter, emailParameter, passwordParameter, phoneParameter, genderParameter);
+        }
     }
 }
