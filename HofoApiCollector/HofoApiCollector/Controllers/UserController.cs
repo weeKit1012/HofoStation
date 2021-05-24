@@ -1,5 +1,4 @@
 ﻿using HofoApiCollector.Models;
-using HofoApiCollector.Request;
 using HofoApiCollector.Response;
 using Newtonsoft.Json;
 using System;
