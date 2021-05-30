@@ -22,6 +22,9 @@ namespace HofoApiCollector.Models
         public string post_description { get; set; }
 
         [DataMember]
+        public string post_timestamp { get; set; }
+
+        [DataMember]
         public string post_logitude { get; set; }
 
         [DataMember]

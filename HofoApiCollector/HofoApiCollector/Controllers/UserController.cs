@@ -10,6 +10,8 @@ namespace HofoApiCollector.Controllers
     [RoutePrefix("user")]
     public class UserController : ApiController
     {
+        dbhofoEntities core = new dbhofoEntities();
+        //localdbhofoEntities localCore = new localdbhofoEntities();
 
         [Route("user_login")]
         [HttpPost]
@@ -20,7 +22,7 @@ namespace HofoApiCollector.Controllers
 
         public UserResponse user_login_process(string email, string password)
         {
-            using (dbhofoEntities core = new dbhofoEntities())
+            using (core)
             {
                 try
                 {
@@ -58,7 +60,7 @@ namespace HofoApiCollector.Controllers
 
         public OperationResponse user_register_process(User request)
         {
-            using (dbhofoEntities core = new dbhofoEntities())
+            using (core)
             {
                 try
                 {

@@ -10,17 +10,17 @@ namespace HofoApiCollector.Controllers
     [RoutePrefix("post")]
     public class PostController : ApiController
     {
-        [Route("post_get_all")]
-        [HttpPost]
-        public PostResponse post_get_all([FromUri] GeoPoint request)
-        {
-            return post_get_all_process(request);
-        }
+        //[Route("post_get_all")]
+        //[HttpPost]
+        //public PostResponse post_get_all([FromUri] GeoPoint request)
+        //{
+        //    return post_get_all_process(request);
+        //}
 
-        public PostResponse post_get_all_process(GeoPoint geoPoint)
-        {
+        //public PostResponse post_get_all_process(GeoPoint geoPoint)
+        //{
 
-        }
+        //}
 
 
     }
