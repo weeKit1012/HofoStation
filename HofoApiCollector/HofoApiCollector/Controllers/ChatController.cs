@@ -7,5 +7,11 @@ namespace HofoApiCollector.Controllers
 {
     public class ChatController
     {
+        dbhofoEntities core = new dbhofoEntities();
+
+        //Create new chat - validate chat existence
+
+        //Get all chat based on user id
+
     }
 }

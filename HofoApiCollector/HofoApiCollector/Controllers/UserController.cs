@@ -13,6 +13,7 @@ namespace HofoApiCollector.Controllers
         dbhofoEntities core = new dbhofoEntities();
         //localdbhofoEntities localCore = new localdbhofoEntities();
 
+        //Login user
         [Route("user_login")]
         [HttpPost]
         public UserResponse user_login([FromBody] User request)
@@ -51,6 +52,7 @@ namespace HofoApiCollector.Controllers
             }
         }
 
+        //Register user
         [Route("user_register")]
         [HttpPost]
         public OperationResponse user_register([FromBody] User request)
@@ -75,7 +77,8 @@ namespace HofoApiCollector.Controllers
             }
         }
 
+        //Get particular user
 
-
+        //Update user profile
     }
 }

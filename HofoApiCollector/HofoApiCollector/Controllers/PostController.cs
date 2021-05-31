@@ -10,6 +10,22 @@ namespace HofoApiCollector.Controllers
     [RoutePrefix("post")]
     public class PostController : ApiController
     {
+        dbhofoEntities core = new dbhofoEntities();
+
+        //Create new post
+
+        //Update post
+
+        //Delete post
+
+        //Get particular post
+
+        //Get all post based on geoprahical location
+
+        //Get all post
+
+
+
         //[Route("post_get_all")]
         //[HttpPost]
         //public PostResponse post_get_all([FromUri] GeoPoint request)
