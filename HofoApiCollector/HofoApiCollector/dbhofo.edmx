@@ -5,6 +5,9 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="dbhofoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <Function Name="stpUserGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
         <Function Name="stpUserLogin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Email" Type="varchar" Mode="In" />
           <Parameter Name="Password" Type="varchar" Mode="In" />
@@ -16,6 +19,11 @@
           <Parameter Name="Password" Type="varchar" Mode="In" />
           <Parameter Name="Phone" Type="int" Mode="In" />
           <Parameter Name="Gender" Type="int" Mode="In" />
+        </Function>
+        <Function Name="stpUserUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="password" Type="varchar" Mode="In" />
+          <Parameter Name="phone" Type="int" Mode="In" />
         </Function>
         <EntityContainer Name="dbhofoModelStoreContainer" />
       </Schema></edmx:StorageModels>
@@ -35,8 +43,25 @@
             <Parameter Name="Phone" Mode="In" Type="Int32" />
             <Parameter Name="Gender" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="stpUserGet" ReturnType="Collection(dbhofoModel.stpUserGet_Result)">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="stpUserUpdate">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="password" Mode="In" Type="String" />
+            <Parameter Name="phone" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="stpUserLogin_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="user_first_name" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="user_last_name" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="user_email" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="user_password" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="user_phone" Nullable="false" />
+          <Property Type="Int32" Name="user_gender" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="stpUserGet_Result">
           <Property Type="Int32" Name="id" Nullable="false" />
           <Property Type="String" Name="user_first_name" Nullable="false" MaxLength="100" />
           <Property Type="String" Name="user_last_name" Nullable="false" MaxLength="100" />
@@ -65,6 +90,20 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="stpUserRegister" FunctionName="dbhofoModel.Store.stpUserRegister" />
+          <FunctionImportMapping FunctionImportName="stpUserGet" FunctionName="dbhofoModel.Store.stpUserGet">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbhofoModel.stpUserGet_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="user_first_name" ColumnName="user_first_name" />
+                <ScalarProperty Name="user_last_name" ColumnName="user_last_name" />
+                <ScalarProperty Name="user_email" ColumnName="user_email" />
+                <ScalarProperty Name="user_password" ColumnName="user_password" />
+                <ScalarProperty Name="user_phone" ColumnName="user_phone" />
+                <ScalarProperty Name="user_gender" ColumnName="user_gender" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="stpUserUpdate" FunctionName="dbhofoModel.Store.stpUserUpdate" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

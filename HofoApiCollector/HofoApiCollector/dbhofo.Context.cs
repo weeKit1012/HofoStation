@@ -69,5 +69,31 @@ namespace HofoApiCollector
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("stpUserRegister", firstNameParameter, lastNameParameter, emailParameter, passwordParameter, phoneParameter, genderParameter);
         }
+    
+        public virtual ObjectResult<stpUserGet_Result> stpUserGet(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<stpUserGet_Result>("stpUserGet", idParameter);
+        }
+    
+        public virtual int stpUserUpdate(Nullable<int> id, string password, Nullable<int> phone)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            var passwordParameter = password != null ?
+                new ObjectParameter("password", password) :
+                new ObjectParameter("password", typeof(string));
+    
+            var phoneParameter = phone.HasValue ?
+                new ObjectParameter("phone", phone) :
+                new ObjectParameter("phone", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("stpUserUpdate", idParameter, passwordParameter, phoneParameter);
+        }
     }
 }

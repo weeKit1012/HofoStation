@@ -214,6 +214,9 @@
     <Compile Include="Response\PostResponse.cs" />
     <Compile Include="Response\UserResponse.cs" />
     <Compile Include="Response\VoteResponse.cs" />
+    <Compile Include="stpUserGet_Result.cs">
+      <DependentUpon>dbhofo.tt</DependentUpon>
+    </Compile>
     <Compile Include="stpUserLogin_Result.cs">
       <DependentUpon>localdbhofo.tt</DependentUpon>
     </Compile>

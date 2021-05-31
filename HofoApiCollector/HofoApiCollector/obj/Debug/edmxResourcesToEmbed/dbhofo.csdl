@@ -13,8 +13,20 @@
       <Parameter Name="Phone" Mode="In" Type="Int32" />
       <Parameter Name="Gender" Mode="In" Type="Int32" />
     </FunctionImport>
+    <FunctionImport Name="stpUserGet" ReturnType="Collection(dbhofoModel.stpUserGet_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="stpUserLogin_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="user_first_name" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="user_last_name" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="user_email" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="user_password" Nullable="false" MaxLength="100" />
+    <Property Type="Int32" Name="user_phone" Nullable="false" />
+    <Property Type="Int32" Name="user_gender" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="stpUserGet_Result">
     <Property Type="Int32" Name="id" Nullable="false" />
     <Property Type="String" Name="user_first_name" Nullable="false" MaxLength="100" />
     <Property Type="String" Name="user_last_name" Nullable="false" MaxLength="100" />
