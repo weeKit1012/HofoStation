@@ -214,6 +214,24 @@
     <Compile Include="Response\PostResponse.cs" />
     <Compile Include="Response\UserResponse.cs" />
     <Compile Include="Response\VoteResponse.cs" />
+    <Compile Include="stpChatGetUser_Result.cs">
+      <DependentUpon>dbhofo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="stpChatMessageGet_Result.cs">
+      <DependentUpon>dbhofo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="stpPostGetAllGeo_Result.cs">
+      <DependentUpon>dbhofo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="stpPostGetAll_Result.cs">
+      <DependentUpon>dbhofo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="stpPostGetUser_Result.cs">
+      <DependentUpon>dbhofo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="stpPostGet_Result.cs">
+      <DependentUpon>dbhofo.tt</DependentUpon>
+    </Compile>
     <Compile Include="stpUserGet_Result.cs">
       <DependentUpon>dbhofo.tt</DependentUpon>
     </Compile>

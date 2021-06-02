@@ -41,6 +41,127 @@ namespace HofoApiCollector
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<stpUserLogin_Result>("stpUserLogin", emailParameter, passwordParameter);
         }
     
+        public virtual ObjectResult<stpUserGet_Result> stpUserGet(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<stpUserGet_Result>("stpUserGet", idParameter);
+        }
+    
+        public virtual int stpUserUpdate(Nullable<int> id, string password, Nullable<int> phone)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            var passwordParameter = password != null ?
+                new ObjectParameter("password", password) :
+                new ObjectParameter("password", typeof(string));
+    
+            var phoneParameter = phone.HasValue ?
+                new ObjectParameter("phone", phone) :
+                new ObjectParameter("phone", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("stpUserUpdate", idParameter, passwordParameter, phoneParameter);
+        }
+    
+        public virtual int stpPostCreate(string url, string title, string description, Nullable<decimal> logitude, Nullable<decimal> latitude, Nullable<int> user_id, Nullable<System.DateTime> timestamp)
+        {
+            var urlParameter = url != null ?
+                new ObjectParameter("url", url) :
+                new ObjectParameter("url", typeof(string));
+    
+            var titleParameter = title != null ?
+                new ObjectParameter("title", title) :
+                new ObjectParameter("title", typeof(string));
+    
+            var descriptionParameter = description != null ?
+                new ObjectParameter("description", description) :
+                new ObjectParameter("description", typeof(string));
+    
+            var logitudeParameter = logitude.HasValue ?
+                new ObjectParameter("logitude", logitude) :
+                new ObjectParameter("logitude", typeof(decimal));
+    
+            var latitudeParameter = latitude.HasValue ?
+                new ObjectParameter("latitude", latitude) :
+                new ObjectParameter("latitude", typeof(decimal));
+    
+            var user_idParameter = user_id.HasValue ?
+                new ObjectParameter("user_id", user_id) :
+                new ObjectParameter("user_id", typeof(int));
+    
+            var timestampParameter = timestamp.HasValue ?
+                new ObjectParameter("timestamp", timestamp) :
+                new ObjectParameter("timestamp", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("stpPostCreate", urlParameter, titleParameter, descriptionParameter, logitudeParameter, latitudeParameter, user_idParameter, timestampParameter);
+        }
+    
+        public virtual int stpPostDelete(Nullable<int> post_id)
+        {
+            var post_idParameter = post_id.HasValue ?
+                new ObjectParameter("post_id", post_id) :
+                new ObjectParameter("post_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("stpPostDelete", post_idParameter);
+        }
+    
+        public virtual int stpPostUpdate(string title, string description, Nullable<int> post_id)
+        {
+            var titleParameter = title != null ?
+                new ObjectParameter("title", title) :
+                new ObjectParameter("title", typeof(string));
+    
+            var descriptionParameter = description != null ?
+                new ObjectParameter("description", description) :
+                new ObjectParameter("description", typeof(string));
+    
+            var post_idParameter = post_id.HasValue ?
+                new ObjectParameter("post_id", post_id) :
+                new ObjectParameter("post_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("stpPostUpdate", titleParameter, descriptionParameter, post_idParameter);
+        }
+    
+        public virtual ObjectResult<stpPostGet_Result> stpPostGet(Nullable<int> post_id)
+        {
+            var post_idParameter = post_id.HasValue ?
+                new ObjectParameter("post_id", post_id) :
+                new ObjectParameter("post_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<stpPostGet_Result>("stpPostGet", post_idParameter);
+        }
+    
+        public virtual ObjectResult<stpPostGetAll_Result> stpPostGetAll()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<stpPostGetAll_Result>("stpPostGetAll");
+        }
+    
+        public virtual ObjectResult<stpPostGetUser_Result> stpPostGetUser(Nullable<int> user_id)
+        {
+            var user_idParameter = user_id.HasValue ?
+                new ObjectParameter("user_id", user_id) :
+                new ObjectParameter("user_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<stpPostGetUser_Result>("stpPostGetUser", user_idParameter);
+        }
+    
+        public virtual ObjectResult<stpPostGetAllGeo_Result> stpPostGetAllGeo(Nullable<decimal> center_lng, Nullable<decimal> center_lat)
+        {
+            var center_lngParameter = center_lng.HasValue ?
+                new ObjectParameter("center_lng", center_lng) :
+                new ObjectParameter("center_lng", typeof(decimal));
+    
+            var center_latParameter = center_lat.HasValue ?
+                new ObjectParameter("center_lat", center_lat) :
+                new ObjectParameter("center_lat", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<stpPostGetAllGeo_Result>("stpPostGetAllGeo", center_lngParameter, center_latParameter);
+        }
+    
         public virtual int stpUserRegister(string firstName, string lastName, string email, string password, Nullable<int> phone, Nullable<int> gender)
         {
             var firstNameParameter = firstName != null ?
@@ -70,30 +191,91 @@ namespace HofoApiCollector
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("stpUserRegister", firstNameParameter, lastNameParameter, emailParameter, passwordParameter, phoneParameter, genderParameter);
         }
     
-        public virtual ObjectResult<stpUserGet_Result> stpUserGet(Nullable<int> id)
+        public virtual ObjectResult<Nullable<int>> stpVoteCheckExist(Nullable<int> post_id, Nullable<int> user_id)
         {
-            var idParameter = id.HasValue ?
-                new ObjectParameter("id", id) :
-                new ObjectParameter("id", typeof(int));
+            var post_idParameter = post_id.HasValue ?
+                new ObjectParameter("post_id", post_id) :
+                new ObjectParameter("post_id", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<stpUserGet_Result>("stpUserGet", idParameter);
+            var user_idParameter = user_id.HasValue ?
+                new ObjectParameter("user_id", user_id) :
+                new ObjectParameter("user_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("stpVoteCheckExist", post_idParameter, user_idParameter);
         }
     
-        public virtual int stpUserUpdate(Nullable<int> id, string password, Nullable<int> phone)
+        public virtual int stpVoteCreate(Nullable<int> post_id, Nullable<int> user_id)
         {
-            var idParameter = id.HasValue ?
-                new ObjectParameter("id", id) :
-                new ObjectParameter("id", typeof(int));
+            var post_idParameter = post_id.HasValue ?
+                new ObjectParameter("post_id", post_id) :
+                new ObjectParameter("post_id", typeof(int));
     
-            var passwordParameter = password != null ?
-                new ObjectParameter("password", password) :
-                new ObjectParameter("password", typeof(string));
+            var user_idParameter = user_id.HasValue ?
+                new ObjectParameter("user_id", user_id) :
+                new ObjectParameter("user_id", typeof(int));
     
-            var phoneParameter = phone.HasValue ?
-                new ObjectParameter("phone", phone) :
-                new ObjectParameter("phone", typeof(int));
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("stpVoteCreate", post_idParameter, user_idParameter);
+        }
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("stpUserUpdate", idParameter, passwordParameter, phoneParameter);
+        public virtual ObjectResult<Nullable<int>> stpVoteGetCount(Nullable<int> post_id)
+        {
+            var post_idParameter = post_id.HasValue ?
+                new ObjectParameter("post_id", post_id) :
+                new ObjectParameter("post_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("stpVoteGetCount", post_idParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> stpChatCreate(Nullable<int> user_one_id, Nullable<int> user_two_id)
+        {
+            var user_one_idParameter = user_one_id.HasValue ?
+                new ObjectParameter("user_one_id", user_one_id) :
+                new ObjectParameter("user_one_id", typeof(int));
+    
+            var user_two_idParameter = user_two_id.HasValue ?
+                new ObjectParameter("user_two_id", user_two_id) :
+                new ObjectParameter("user_two_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("stpChatCreate", user_one_idParameter, user_two_idParameter);
+        }
+    
+        public virtual ObjectResult<stpChatGetUser_Result> stpChatGetUser(Nullable<int> user_id)
+        {
+            var user_idParameter = user_id.HasValue ?
+                new ObjectParameter("user_id", user_id) :
+                new ObjectParameter("user_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<stpChatGetUser_Result>("stpChatGetUser", user_idParameter);
+        }
+    
+        public virtual int stpChatMessageCreate(string message, Nullable<System.DateTime> timestamp, Nullable<int> chat_id, Nullable<int> user_id)
+        {
+            var messageParameter = message != null ?
+                new ObjectParameter("message", message) :
+                new ObjectParameter("message", typeof(string));
+    
+            var timestampParameter = timestamp.HasValue ?
+                new ObjectParameter("timestamp", timestamp) :
+                new ObjectParameter("timestamp", typeof(System.DateTime));
+    
+            var chat_idParameter = chat_id.HasValue ?
+                new ObjectParameter("chat_id", chat_id) :
+                new ObjectParameter("chat_id", typeof(int));
+    
+            var user_idParameter = user_id.HasValue ?
+                new ObjectParameter("user_id", user_id) :
+                new ObjectParameter("user_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("stpChatMessageCreate", messageParameter, timestampParameter, chat_idParameter, user_idParameter);
+        }
+    
+        public virtual ObjectResult<stpChatMessageGet_Result> stpChatMessageGet(Nullable<int> chat_id)
+        {
+            var chat_idParameter = chat_id.HasValue ?
+                new ObjectParameter("chat_id", chat_id) :
+                new ObjectParameter("chat_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<stpChatMessageGet_Result>("stpChatMessageGet", chat_idParameter);
         }
     }
 }

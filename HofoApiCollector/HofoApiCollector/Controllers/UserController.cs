@@ -21,7 +21,7 @@ namespace HofoApiCollector.Controllers
             return user_login_process(request.user_email, request.user_password);
         }
 
-        public UserResponse user_login_process(string email, string password)
+        private UserResponse user_login_process(string email, string password)
         {
             using (core)
             {
@@ -47,7 +47,7 @@ namespace HofoApiCollector.Controllers
                 }
                 catch (Exception ex)
                 {
-                    return new UserResponse(JsonConvert.SerializeObject(ex));
+                    return new UserResponse(ex.ToString());
                 }
             }
         }
@@ -60,7 +60,7 @@ namespace HofoApiCollector.Controllers
             return user_register_process(request);
         }
 
-        public OperationResponse user_register_process(User request)
+        private OperationResponse user_register_process(User request)
         {
             using (core)
             {
@@ -69,10 +69,11 @@ namespace HofoApiCollector.Controllers
                     core.stpUserRegister(request.user_first_name, request.user_last_name, request.user_email, request.user_password, int.Parse(request.user_phone), int.Parse(request.user_gender));
 
                     return new OperationResponse();
+
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    return new OperationResponse(JsonConvert.SerializeObject(ex));
+                    return new OperationResponse("Email has been used!");
                 }
             }
         }
@@ -85,7 +86,7 @@ namespace HofoApiCollector.Controllers
             return user_get_process(requestID);
         }
 
-        public UserResponse user_get_process(string user_id)
+        private UserResponse user_get_process(string user_id)
         {
             using (core)
             {
@@ -112,7 +113,7 @@ namespace HofoApiCollector.Controllers
                 catch (Exception ex)
                 {
 
-                    return new UserResponse(JsonConvert.SerializeObject(ex));
+                    return new UserResponse(ex.ToString());
                 }
             }
         }
@@ -125,7 +126,7 @@ namespace HofoApiCollector.Controllers
             return user_update_process(request);
         }
 
-        public OperationResponse user_update_process(User request)
+        private OperationResponse user_update_process(User request)
         {
             using (core)
             {
@@ -137,7 +138,7 @@ namespace HofoApiCollector.Controllers
                 }
                 catch (Exception ex)
                 {
-                    return new OperationResponse(JsonConvert.SerializeObject(ex));
+                    return new OperationResponse(ex.ToString());
                 }
             }
         }

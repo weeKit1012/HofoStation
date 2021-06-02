@@ -5,6 +5,50 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="dbhofoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <Function Name="stpChatCreate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="user_one_id" Type="int" Mode="In" />
+          <Parameter Name="user_two_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="stpChatGetUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="user_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="stpChatMessageCreate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="message" Type="text" Mode="In" />
+          <Parameter Name="timestamp" Type="datetime" Mode="In" />
+          <Parameter Name="chat_id" Type="int" Mode="In" />
+          <Parameter Name="user_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="stpChatMessageGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="chat_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="stpPostCreate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="url" Type="varchar(max)" Mode="In" />
+          <Parameter Name="title" Type="varchar" Mode="In" />
+          <Parameter Name="description" Type="text" Mode="In" />
+          <Parameter Name="logitude" Type="decimal" Mode="In" />
+          <Parameter Name="latitude" Type="decimal" Mode="In" />
+          <Parameter Name="user_id" Type="int" Mode="In" />
+          <Parameter Name="timestamp" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="stpPostDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="post_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="stpPostGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="post_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="stpPostGetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="stpPostGetAllGeo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="center_lng" Type="decimal" Mode="In" />
+          <Parameter Name="center_lat" Type="decimal" Mode="In" />
+        </Function>
+        <Function Name="stpPostGetUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="user_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="stpPostUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="title" Type="varchar" Mode="In" />
+          <Parameter Name="description" Type="text" Mode="In" />
+          <Parameter Name="post_id" Type="int" Mode="In" />
+        </Function>
         <Function Name="stpUserGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="int" Mode="In" />
         </Function>
@@ -25,6 +69,17 @@
           <Parameter Name="password" Type="varchar" Mode="In" />
           <Parameter Name="phone" Type="int" Mode="In" />
         </Function>
+        <Function Name="stpVoteCheckExist" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="post_id" Type="int" Mode="In" />
+          <Parameter Name="user_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="stpVoteCreate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="post_id" Type="int" Mode="In" />
+          <Parameter Name="user_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="stpVoteGetCount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="post_id" Type="int" Mode="In" />
+        </Function>
         <EntityContainer Name="dbhofoModelStoreContainer" />
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -35,6 +90,42 @@
             <Parameter Name="Email" Mode="In" Type="String" />
             <Parameter Name="Password" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="stpUserGet" ReturnType="Collection(dbhofoModel.stpUserGet_Result)">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="stpUserUpdate">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="password" Mode="In" Type="String" />
+            <Parameter Name="phone" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="stpPostCreate">
+            <Parameter Name="url" Mode="In" Type="String" />
+            <Parameter Name="title" Mode="In" Type="String" />
+            <Parameter Name="description" Mode="In" Type="String" />
+            <Parameter Name="logitude" Mode="In" Type="Decimal" />
+            <Parameter Name="latitude" Mode="In" Type="Decimal" />
+            <Parameter Name="user_id" Mode="In" Type="Int32" />
+            <Parameter Name="timestamp" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="stpPostDelete">
+          <Parameter Name="post_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="stpPostUpdate">
+            <Parameter Name="title" Mode="In" Type="String" />
+            <Parameter Name="description" Mode="In" Type="String" />
+            <Parameter Name="post_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="stpPostGet" ReturnType="Collection(dbhofoModel.stpPostGet_Result)">
+          <Parameter Name="post_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="stpPostGetAll" ReturnType="Collection(dbhofoModel.stpPostGetAll_Result)" />
+          <FunctionImport Name="stpPostGetUser" ReturnType="Collection(dbhofoModel.stpPostGetUser_Result)">
+          <Parameter Name="user_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="stpPostGetAllGeo" ReturnType="Collection(dbhofoModel.stpPostGetAllGeo_Result)">
+            <Parameter Name="center_lng" Mode="In" Type="Decimal" />
+            <Parameter Name="center_lat" Mode="In" Type="Decimal" />
+          </FunctionImport>
           <FunctionImport Name="stpUserRegister">
             <Parameter Name="FirstName" Mode="In" Type="String" />
             <Parameter Name="LastName" Mode="In" Type="String" />
@@ -43,13 +134,32 @@
             <Parameter Name="Phone" Mode="In" Type="Int32" />
             <Parameter Name="Gender" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="stpUserGet" ReturnType="Collection(dbhofoModel.stpUserGet_Result)">
-          <Parameter Name="id" Mode="In" Type="Int32" />
+          <FunctionImport Name="stpVoteCheckExist" ReturnType="Collection(Int32)">
+            <Parameter Name="post_id" Mode="In" Type="Int32" />
+            <Parameter Name="user_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="stpUserUpdate">
-            <Parameter Name="id" Mode="In" Type="Int32" />
-            <Parameter Name="password" Mode="In" Type="String" />
-            <Parameter Name="phone" Mode="In" Type="Int32" />
+          <FunctionImport Name="stpVoteCreate">
+            <Parameter Name="post_id" Mode="In" Type="Int32" />
+            <Parameter Name="user_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="stpVoteGetCount" ReturnType="Collection(Int32)">
+          <Parameter Name="post_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="stpChatCreate" ReturnType="Collection(Int32)">
+            <Parameter Name="user_one_id" Mode="In" Type="Int32" />
+            <Parameter Name="user_two_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="stpChatGetUser" ReturnType="Collection(dbhofoModel.stpChatGetUser_Result)">
+          <Parameter Name="user_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="stpChatMessageCreate">
+            <Parameter Name="message" Mode="In" Type="String" />
+            <Parameter Name="timestamp" Mode="In" Type="DateTime" />
+            <Parameter Name="chat_id" Mode="In" Type="Int32" />
+            <Parameter Name="user_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="stpChatMessageGet" ReturnType="Collection(dbhofoModel.stpChatMessageGet_Result)">
+            <Parameter Name="chat_id" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="stpUserLogin_Result">
@@ -70,6 +180,58 @@
           <Property Type="Int32" Name="user_phone" Nullable="false" />
           <Property Type="Int32" Name="user_gender" Nullable="false" />
         </ComplexType>
+        <ComplexType Name="stpPostGet_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="post_image_url" Nullable="false" />
+          <Property Type="String" Name="post_title" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="post_description" Nullable="false" MaxLength="Max" />
+          <Property Type="String" Name="post_longitude" Nullable="false" />
+          <Property Type="String" Name="post_latitude" Nullable="false" />
+          <Property Type="Int32" Name="user_id" Nullable="false" />
+          <Property Type="DateTime" Name="post_timestamp" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="stpPostGetAll_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="post_image_url" Nullable="false" />
+          <Property Type="String" Name="post_title" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="post_description" Nullable="false" MaxLength="Max" />
+          <Property Type="String" Name="post_longitude" Nullable="false" />
+          <Property Type="String" Name="post_latitude" Nullable="false" />
+          <Property Type="Int32" Name="user_id" Nullable="false" />
+          <Property Type="DateTime" Name="post_timestamp" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="stpPostGetUser_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="post_image_url" Nullable="false" />
+          <Property Type="String" Name="post_title" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="post_description" Nullable="false" MaxLength="Max" />
+          <Property Type="String" Name="post_longitude" Nullable="false" />
+          <Property Type="String" Name="post_latitude" Nullable="false" />
+          <Property Type="Int32" Name="user_id" Nullable="false" />
+          <Property Type="DateTime" Name="post_timestamp" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="stpPostGetAllGeo_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="post_image_url" Nullable="false" />
+          <Property Type="String" Name="post_title" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="post_description" Nullable="false" MaxLength="Max" />
+          <Property Type="Decimal" Name="post_longitude" Nullable="false" Precision="12" Scale="9" />
+          <Property Type="Decimal" Name="post_latitude" Nullable="false" Precision="12" Scale="9" />
+          <Property Type="Int32" Name="user_id" Nullable="false" />
+          <Property Type="DateTime" Name="post_timestamp" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="stpChatGetUser_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="Int32" Name="user_one_id" Nullable="false" />
+          <Property Type="Int32" Name="user_two_id" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="stpChatMessageGet_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="chat_message" Nullable="false" MaxLength="Max" />
+          <Property Type="DateTime" Name="chat_timestamp" Nullable="false" Precision="23" />
+          <Property Type="Int32" Name="chat_id" Nullable="false" />
+          <Property Type="Int32" Name="user_id" Nullable="false" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -89,7 +251,6 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="stpUserRegister" FunctionName="dbhofoModel.Store.stpUserRegister" />
           <FunctionImportMapping FunctionImportName="stpUserGet" FunctionName="dbhofoModel.Store.stpUserGet">
             <ResultMapping>
               <ComplexTypeMapping TypeName="dbhofoModel.stpUserGet_Result">
@@ -104,6 +265,91 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="stpUserUpdate" FunctionName="dbhofoModel.Store.stpUserUpdate" />
+          <FunctionImportMapping FunctionImportName="stpPostCreate" FunctionName="dbhofoModel.Store.stpPostCreate" />
+          <FunctionImportMapping FunctionImportName="stpPostDelete" FunctionName="dbhofoModel.Store.stpPostDelete" />
+          <FunctionImportMapping FunctionImportName="stpPostUpdate" FunctionName="dbhofoModel.Store.stpPostUpdate" />
+          <FunctionImportMapping FunctionImportName="stpPostGet" FunctionName="dbhofoModel.Store.stpPostGet">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbhofoModel.stpPostGet_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="post_image_url" ColumnName="post_image_url" />
+                <ScalarProperty Name="post_title" ColumnName="post_title" />
+                <ScalarProperty Name="post_description" ColumnName="post_description" />
+                <ScalarProperty Name="post_longitude" ColumnName="post_longitude" />
+                <ScalarProperty Name="post_latitude" ColumnName="post_latitude" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="post_timestamp" ColumnName="post_timestamp" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="stpPostGetAll" FunctionName="dbhofoModel.Store.stpPostGetAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbhofoModel.stpPostGetAll_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="post_image_url" ColumnName="post_image_url" />
+                <ScalarProperty Name="post_title" ColumnName="post_title" />
+                <ScalarProperty Name="post_description" ColumnName="post_description" />
+                <ScalarProperty Name="post_longitude" ColumnName="post_longitude" />
+                <ScalarProperty Name="post_latitude" ColumnName="post_latitude" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="post_timestamp" ColumnName="post_timestamp" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="stpPostGetUser" FunctionName="dbhofoModel.Store.stpPostGetUser">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbhofoModel.stpPostGetUser_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="post_image_url" ColumnName="post_image_url" />
+                <ScalarProperty Name="post_title" ColumnName="post_title" />
+                <ScalarProperty Name="post_description" ColumnName="post_description" />
+                <ScalarProperty Name="post_longitude" ColumnName="post_longitude" />
+                <ScalarProperty Name="post_latitude" ColumnName="post_latitude" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="post_timestamp" ColumnName="post_timestamp" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="stpPostGetAllGeo" FunctionName="dbhofoModel.Store.stpPostGetAllGeo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbhofoModel.stpPostGetAllGeo_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="post_image_url" ColumnName="post_image_url" />
+                <ScalarProperty Name="post_title" ColumnName="post_title" />
+                <ScalarProperty Name="post_description" ColumnName="post_description" />
+                <ScalarProperty Name="post_longitude" ColumnName="post_longitude" />
+                <ScalarProperty Name="post_latitude" ColumnName="post_latitude" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="post_timestamp" ColumnName="post_timestamp" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="stpUserRegister" FunctionName="dbhofoModel.Store.stpUserRegister" />
+          <FunctionImportMapping FunctionImportName="stpVoteCheckExist" FunctionName="dbhofoModel.Store.stpVoteCheckExist" />
+          <FunctionImportMapping FunctionImportName="stpVoteCreate" FunctionName="dbhofoModel.Store.stpVoteCreate" />
+          <FunctionImportMapping FunctionImportName="stpVoteGetCount" FunctionName="dbhofoModel.Store.stpVoteGetCount" />
+          <FunctionImportMapping FunctionImportName="stpChatCreate" FunctionName="dbhofoModel.Store.stpChatCreate" />
+          <FunctionImportMapping FunctionImportName="stpChatGetUser" FunctionName="dbhofoModel.Store.stpChatGetUser">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbhofoModel.stpChatGetUser_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="user_one_id" ColumnName="user_one_id" />
+                <ScalarProperty Name="user_two_id" ColumnName="user_two_id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="stpChatMessageCreate" FunctionName="dbhofoModel.Store.stpChatMessageCreate" />
+          <FunctionImportMapping FunctionImportName="stpChatMessageGet" FunctionName="dbhofoModel.Store.stpChatMessageGet">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbhofoModel.stpChatMessageGet_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="chat_message" ColumnName="chat_message" />
+                <ScalarProperty Name="chat_timestamp" ColumnName="chat_timestamp" />
+                <ScalarProperty Name="chat_id" ColumnName="chat_id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
