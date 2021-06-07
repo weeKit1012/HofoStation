@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="dbhofoEntities-Web.config Connection String" description="dbhofoEntities Connection String used in web.config by the application to access the database." defaultValue="metadata=res://*/dbhofo.csdl|res://*/dbhofo.ssdl|res://*/dbhofo.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=dbhofo.database.windows.net;initial catalog=dbhofo;persist security info=True;user id=tey;password=Weekit1012;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\wjz10\\Documents\\GitHub\\HofoStation\\HofoApiCollector\\HofoApiCollector\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='dbhofoEntities']/@connectionString" />
+  </parameter>
+  <parameter name="localdbhofoEntities-Web.config Connection String" description="localdbhofoEntities Connection String used in web.config by the application to access the database." defaultValue="metadata=res://*/localdbhofo.csdl|res://*/localdbhofo.ssdl|res://*/localdbhofo.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=DESKTOP-J87JN03\SQLEXPRESS;initial catalog=localdbhofo;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\wjz10\\Documents\\GitHub\\HofoStation\\HofoApiCollector\\HofoApiCollector\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='localdbhofoEntities']/@connectionString" />
+  </parameter>
+</parameters>

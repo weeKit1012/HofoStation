@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="dbhofoModelStoreContainer" CdmEntityContainer="dbhofoEntities">
+    <FunctionImportMapping FunctionImportName="stpUserLogin" FunctionName="dbhofoModel.Store.stpUserLogin">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="dbhofoModel.stpUserLogin_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="user_first_name" ColumnName="user_first_name" />
+          <ScalarProperty Name="user_last_name" ColumnName="user_last_name" />
+          <ScalarProperty Name="user_email" ColumnName="user_email" />
+          <ScalarProperty Name="user_password" ColumnName="user_password" />
+          <ScalarProperty Name="user_phone" ColumnName="user_phone" />
+          <ScalarProperty Name="user_gender" ColumnName="user_gender" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="stpUserGet" FunctionName="dbhofoModel.Store.stpUserGet">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="dbhofoModel.stpUserGet_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="user_first_name" ColumnName="user_first_name" />
+          <ScalarProperty Name="user_last_name" ColumnName="user_last_name" />
+          <ScalarProperty Name="user_email" ColumnName="user_email" />
+          <ScalarProperty Name="user_password" ColumnName="user_password" />
+          <ScalarProperty Name="user_phone" ColumnName="user_phone" />
+          <ScalarProperty Name="user_gender" ColumnName="user_gender" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="stpUserUpdate" FunctionName="dbhofoModel.Store.stpUserUpdate" />
+    <FunctionImportMapping FunctionImportName="stpPostCreate" FunctionName="dbhofoModel.Store.stpPostCreate" />
+    <FunctionImportMapping FunctionImportName="stpPostDelete" FunctionName="dbhofoModel.Store.stpPostDelete" />
+    <FunctionImportMapping FunctionImportName="stpPostUpdate" FunctionName="dbhofoModel.Store.stpPostUpdate" />
+    <FunctionImportMapping FunctionImportName="stpPostGet" FunctionName="dbhofoModel.Store.stpPostGet">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="dbhofoModel.stpPostGet_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="post_image_url" ColumnName="post_image_url" />
+          <ScalarProperty Name="post_title" ColumnName="post_title" />
+          <ScalarProperty Name="post_description" ColumnName="post_description" />
+          <ScalarProperty Name="post_longitude" ColumnName="post_longitude" />
+          <ScalarProperty Name="post_latitude" ColumnName="post_latitude" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="post_timestamp" ColumnName="post_timestamp" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="stpPostGetAll" FunctionName="dbhofoModel.Store.stpPostGetAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="dbhofoModel.stpPostGetAll_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="post_image_url" ColumnName="post_image_url" />
+          <ScalarProperty Name="post_title" ColumnName="post_title" />
+          <ScalarProperty Name="post_description" ColumnName="post_description" />
+          <ScalarProperty Name="post_longitude" ColumnName="post_longitude" />
+          <ScalarProperty Name="post_latitude" ColumnName="post_latitude" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="post_timestamp" ColumnName="post_timestamp" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="stpPostGetUser" FunctionName="dbhofoModel.Store.stpPostGetUser">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="dbhofoModel.stpPostGetUser_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="post_image_url" ColumnName="post_image_url" />
+          <ScalarProperty Name="post_title" ColumnName="post_title" />
+          <ScalarProperty Name="post_description" ColumnName="post_description" />
+          <ScalarProperty Name="post_longitude" ColumnName="post_longitude" />
+          <ScalarProperty Name="post_latitude" ColumnName="post_latitude" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="post_timestamp" ColumnName="post_timestamp" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="stpPostGetAllGeo" FunctionName="dbhofoModel.Store.stpPostGetAllGeo">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="dbhofoModel.stpPostGetAllGeo_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="post_image_url" ColumnName="post_image_url" />
+          <ScalarProperty Name="post_title" ColumnName="post_title" />
+          <ScalarProperty Name="post_description" ColumnName="post_description" />
+          <ScalarProperty Name="post_longitude" ColumnName="post_longitude" />
+          <ScalarProperty Name="post_latitude" ColumnName="post_latitude" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="post_timestamp" ColumnName="post_timestamp" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="stpUserRegister" FunctionName="dbhofoModel.Store.stpUserRegister" />
+    <FunctionImportMapping FunctionImportName="stpVoteCheckExist" FunctionName="dbhofoModel.Store.stpVoteCheckExist" />
+    <FunctionImportMapping FunctionImportName="stpVoteCreate" FunctionName="dbhofoModel.Store.stpVoteCreate" />
+    <FunctionImportMapping FunctionImportName="stpVoteGetCount" FunctionName="dbhofoModel.Store.stpVoteGetCount" />
+    <FunctionImportMapping FunctionImportName="stpChatCreate" FunctionName="dbhofoModel.Store.stpChatCreate" />
+    <FunctionImportMapping FunctionImportName="stpChatGetUser" FunctionName="dbhofoModel.Store.stpChatGetUser">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="dbhofoModel.stpChatGetUser_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="user_one_id" ColumnName="user_one_id" />
+          <ScalarProperty Name="user_two_id" ColumnName="user_two_id" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="stpChatMessageCreate" FunctionName="dbhofoModel.Store.stpChatMessageCreate" />
+    <FunctionImportMapping FunctionImportName="stpChatMessageGet" FunctionName="dbhofoModel.Store.stpChatMessageGet">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="dbhofoModel.stpChatMessageGet_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="chat_message" ColumnName="chat_message" />
+          <ScalarProperty Name="chat_timestamp" ColumnName="chat_timestamp" />
+          <ScalarProperty Name="chat_id" ColumnName="chat_id" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

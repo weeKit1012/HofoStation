@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="localdbhofoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="localdbhofoEntities" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="stpUserLogin" ReturnType="Collection(localdbhofoModel.stpUserLogin_Result)">
+      <Parameter Name="email" Mode="In" Type="String" />
+      <Parameter Name="password" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="stpUserRegister">
+      <Parameter Name="fname" Mode="In" Type="String" />
+      <Parameter Name="lname" Mode="In" Type="String" />
+      <Parameter Name="email" Mode="In" Type="String" />
+      <Parameter Name="password" Mode="In" Type="String" />
+      <Parameter Name="phone" Mode="In" Type="Int32" />
+      <Parameter Name="gender" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="stpUserLogin_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="user_first_name" Nullable="false" MaxLength="255" />
+    <Property Type="String" Name="user_last_name" Nullable="false" MaxLength="255" />
+    <Property Type="String" Name="user_email" Nullable="false" MaxLength="255" />
+    <Property Type="String" Name="user_password" Nullable="false" MaxLength="255" />
+    <Property Type="Int32" Name="user_phone" Nullable="false" />
+    <Property Type="Int32" Name="user_gender" Nullable="false" />
+  </ComplexType>
+</Schema>

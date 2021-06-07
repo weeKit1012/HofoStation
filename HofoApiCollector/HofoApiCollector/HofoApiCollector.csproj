@@ -303,6 +303,7 @@
     <Content Include="localdbhofo.edmx.diagram">
       <DependentUpon>localdbhofo.edmx</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\hofostation - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
