@@ -25,6 +25,8 @@
                         Value="{StaticResource Primary}"></Setter>
                 <Setter Property="BorderWidth"
                         Value="1"></Setter>
+                <Setter Property="FontFamily" 
+                        Value="MB"/>
                 <Setter Property="VisualStateManager.VisualStateGroups">
                     <VisualStateGroupList>
                         <VisualStateGroup x:Name="CommonStates">
@@ -37,13 +39,15 @@
                             <VisualState x:Name="Pressed">
                                 <VisualState.Setters>
                                     <Setter Property="BackgroundColor"
-                                            Value="gray" />
+                                            Value="Gray" />
                                 </VisualState.Setters>
                             </VisualState>
                             <VisualState x:Name="Disabled">
                                 <VisualState.Setters>
                                     <Setter Property="BackgroundColor"
-                                            Value="#332196F3" />
+                                            Value="ForestGreen" />
+                                    <Setter Property="TextColor"
+                                            Value="red" />
                                 </VisualState.Setters>
                             </VisualState>
                         </VisualStateGroup>
@@ -57,6 +61,8 @@
                         Value="LightGray" />
                 <Setter Property="TextColor"
                         Value="DimGray" />
+                <Setter Property="FontFamily" 
+                        Value="MR"/>
             </Style>
         </ResourceDictionary>
     </Application.Resources>

@@ -57,6 +57,7 @@
             <Button Margin="60,10,60,10"
                     Text="Login"
                     Command="{Binding LoginCommand}"
+                    IsEnabled="{Binding IsNotBusy, Mode=OneWay}"
                     HorizontalOptions="FillAndExpand"
                     FontSize="Medium"
                     BackgroundColor="Transparent"/>
@@ -67,5 +68,11 @@
                     FontSize="Medium"
                     BackgroundColor="Transparent" />
         </StackLayout>
+
+        <ActivityIndicator IsRunning="{Binding IsBusy ,Mode=OneWay}"
+                           Grid.Row="1"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           Color="{StaticResource Primary}" />
     </Grid>
 </ContentPage>

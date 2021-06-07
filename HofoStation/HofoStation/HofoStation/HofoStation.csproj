@@ -12,6 +12,22 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Fonts\FA-Brand.otf" />
+    <None Remove="Resources\Fonts\FA-Regular.otf" />
+    <None Remove="Resources\Fonts\FA-Solid.otf" />
+    <None Remove="Resources\Montserrat-Bold.ttf" />
+    <None Remove="Resources\Montserrat-Regular.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Fonts\FA-Brand.otf" />
+    <EmbeddedResource Include="Resources\Fonts\FA-Regular.otf" />
+    <EmbeddedResource Include="Resources\Fonts\FA-Solid.otf" />
+    <EmbeddedResource Include="Resources\Fonts\Montserrat-Bold.ttf" />
+    <EmbeddedResource Include="Resources\Fonts\Montserrat-Regular.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Cryptography.KeyDerivation" Version="5.0.6" />
     <PackageReference Include="MonkeyCache.FileStore" Version="1.5.2" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />

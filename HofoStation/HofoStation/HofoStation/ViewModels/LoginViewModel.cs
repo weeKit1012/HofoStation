@@ -19,6 +19,7 @@ namespace HofoStation.ViewModels
             Title = "User Login";
             GoRegisterCommand = new AsyncCommand(RedirectToRegister);
             LoginCommand = new AsyncCommand(User_Login);
+            IsNotBusy = true;
         }
 
         public AsyncCommand GoRegisterCommand { get; }
@@ -47,9 +48,14 @@ namespace HofoStation.ViewModels
 
         private async Task User_Login()
         {
+            IsBusy = true;
+            IsNotBusy = false;
+
             if (string.IsNullOrWhiteSpace(email) || 
                 string.IsNullOrWhiteSpace(password))
             {
+                IsBusy = false;
+                IsNotBusy = true;
                 await Shell.Current.DisplayAlert("Input Error", "Please enter corrent credential", "OK");
                 return;
             }
@@ -58,10 +64,14 @@ namespace HofoStation.ViewModels
 
             if (_user == null)
             {
+                IsBusy = false;
+                IsNotBusy = true;
                 await Shell.Current.DisplayAlert("Failed to login", "Please enter corrent credential", "OK");
             }
             else
             {
+                IsBusy = false;
+                IsNotBusy = true;
                 Application.Current.Properties["loggedUser"] = _user;
                 await Shell.Current.GoToAsync($"//{nameof(DashboardNearbyPage)}");
             }      

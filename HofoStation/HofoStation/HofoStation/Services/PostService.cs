@@ -11,7 +11,7 @@ namespace HofoStation.Services
 {
     public static class PostService
     {
-        static string BaseUrl = "";
+        static string BaseUrl = "https://hofostation.azurewebsites.net";
         static HttpClient client;
 
         static PostService()

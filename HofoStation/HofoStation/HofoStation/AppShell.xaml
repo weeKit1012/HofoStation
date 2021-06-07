@@ -2,6 +2,7 @@
 <Shell xmlns="http://xamarin.com/schemas/2014/forms"
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
        xmlns:local="clr-namespace:HofoStation.Views"
+       xmlns:fa="clr-namespace:FontAwesome"
        Title="HofoStation"
        x:Class="HofoStation.AppShell">
 
@@ -138,8 +139,11 @@
 
 
     <TabBar>
-        <Tab Title="Home"
-             Icon="icon_dashboard.png">
+        <Tab Title="Home">
+            <Tab.Icon>
+                <FontImageSource FontFamily="FAS" 
+                                 Glyph="{x:Static fa:FontAwesomeIcons.Home}"/>
+            </Tab.Icon>
             <ShellContent Title="Nearby"
                           Route="DashboardNearbyPage"
                           ContentTemplate="{DataTemplate local:DashboardNearbyPage}" />
@@ -147,23 +151,35 @@
                           Route="DashboardAllPage"
                           ContentTemplate="{DataTemplate local:DashboardAllPage}" />
         </Tab>
-        <Tab Title="Search"
-             Icon="icon_search.png">
+        <Tab Title="Search">
+            <Tab.Icon>
+                <FontImageSource FontFamily="FAS"
+                                 Glyph="{x:Static fa:FontAwesomeIcons.Search}" />
+            </Tab.Icon>
             <ShellContent Route="SearchPage"
                           ContentTemplate="{DataTemplate local:SearchPage}" />
         </Tab>
-        <Tab Title="Create"
-             Icon="icon_create.png">
+        <Tab Title="Create">
+            <Tab.Icon>
+                <FontImageSource FontFamily="FAR"
+                                 Glyph="{x:Static fa:FontAwesomeIcons.PlusSquare}" />
+            </Tab.Icon>
             <ShellContent Route="CreatePage"
                           ContentTemplate="{DataTemplate local:CreatePage}" />
         </Tab>
-        <Tab Title="Chat"
-             Icon="icon_chat.png">
+        <Tab Title="Chat">
+            <Tab.Icon>
+                <FontImageSource FontFamily="FAR"
+                                 Glyph="{x:Static fa:FontAwesomeIcons.CommentDots}" />
+            </Tab.Icon>
             <ShellContent Route="ChatListPage"
                           ContentTemplate="{DataTemplate local:ChatListPage}" />
         </Tab>
-        <Tab Title="Profile"
-             Icon="icon_user_profile.png">
+        <Tab Title="Profile">
+            <Tab.Icon>
+                <FontImageSource FontFamily="FAS"
+                                 Glyph="{x:Static fa:FontAwesomeIcons.User}" />
+            </Tab.Icon>
             <ShellContent Title="Profile"
                           Route="UserProfilePage"
                           ContentTemplate="{DataTemplate local:UserProfilePage}" />

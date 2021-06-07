@@ -28,14 +28,14 @@ namespace HofoStation.Services
             User _user = new User
             {
                 user_email = email,
-                user_password = Hashed(password)
+                user_password = hashed(password)
             };
 
-            var json = JsonConvert.SerializeObject(_user);
-            var request = new StringContent(json, Encoding.UTF8, "application/json");
+            var temp = JsonConvert.SerializeObject(_user);
+            var request = new StringContent(temp, Encoding.UTF8, "application/json");
             var response = await client.PostAsync("user/user_login", request);
-            var content = await response.Content.ReadAsStringAsync();
-            var result = JsonConvert.DeserializeObject<UserResponse>(content);
+            var json = await response.Content.ReadAsStringAsync();
+            var result = JsonConvert.DeserializeObject<UserResponse>(json);
 
             if (result.success)
                 if (string.IsNullOrEmpty(result.user.user_email))
@@ -52,22 +52,40 @@ namespace HofoStation.Services
                 return _user;
         }
 
-        private static string Hashed(string val)
+        public static async Task<bool> RegisterUser(User _user)
         {
-            byte[] salt = new byte[128 / 8];
-            using (var rng = RandomNumberGenerator.Create())
+            _user.user_password = hashed(_user.user_password);
+
+            var temp = JsonConvert.SerializeObject(_user);
+            var request = new StringContent(temp, Encoding.UTF8, "application/json");
+            var response = await client.PostAsync("user/user_register", request);
+            var json = await response.Content.ReadAsStringAsync();
+            var result = JsonConvert.DeserializeObject<OperationResponse>(json);
+
+            if (result.success)
             {
-                rng.GetBytes(salt);
+                return true;
             }
+            else
+            {
+                return false;
+            }
+        }
 
-            string hashed = Convert.ToBase64String(KeyDerivation.Pbkdf2(
-                password: val,
-                salt: salt,
-                prf: KeyDerivationPrf.HMACSHA1,
-                iterationCount: 10000,
-                numBytesRequested: 256 / 8));
+        private static string hashed(string raw)
+        {
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(raw));
 
-            return hashed;
+                StringBuilder builder = new StringBuilder();
+                for (int i = 0; i < bytes.Length; i++)
+                {
+                    builder.Append(bytes[i].ToString("x2"));
+                }
+
+                return builder.ToString();
+            }
         }
     }
 }
