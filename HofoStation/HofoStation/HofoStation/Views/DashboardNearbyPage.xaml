@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:HofoStation.ViewModels"
+             xmlns:model="clr-namespace:HofoStation.Models"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             x:Class="HofoStation.Views.DashboardNearbyPage"
+             Shell.NavBarIsVisible="False">
+
+    <ContentPage.BindingContext>
+        <vm:DashboardNearbyViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <xct:ItemSelectedEventArgsConverter x:Key="ItemSelectedEventArgsConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <!--<RefreshView x:DataType="vm:DashboardNearbyViewModel"
+                 Command="{Binding ExecuteLoadItemCommand}"
+                 IsRefreshing="{Binding IsBusy, Mode=OneWay}">
+
+        <CollectionView ItemsSource="{Binding Posts}"
+                        SelectedItem="{Binding SelectedPost ,Mode=TwoWay}">
+            <CollectionView.Behaviors>
+                <xct:EventToCommandBehavior Command="{Binding SelectedCommand}"
+                                            EventArgsConverter="{StaticResource ItemSelectedEventArgsConverter}"
+                                            EventName="ItemSelected" />
+            </CollectionView.Behaviors>
+
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical"
+                                 Span="2" />
+            </CollectionView.ItemsLayout>
+
+            <CollectionView.EmptyView>
+                <StackLayout Padding="12">
+                    <Label HorizontalOptions="Center"
+                           Text="No post from users nearby" />
+                </StackLayout>
+            </CollectionView.EmptyView>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:Post">
+                    <Grid Padding="5">
+                        <Frame CornerRadius="10"
+                               HasShadow="True">
+                            <StackLayout Orientation="Vertical">
+                                <Image Source="{Binding post_image_url}" WidthRequest="66"/>
+                                <Label Text="{Binding post_title}"
+                                       FontAttributes="Bold"
+                                       LineBreakMode="TailTruncation" />
+                            </StackLayout>
+                        </Frame>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </RefreshView>-->
+
+</ContentPage>

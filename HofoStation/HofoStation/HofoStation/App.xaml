@@ -8,25 +8,56 @@
     <Application.Resources>
         <ResourceDictionary>
             <Color x:Key="Primary">#3CB371</Color>
+
+            <!-- Colors -->
+            <Color x:Key="AppBackgroundColor">AliceBlue</Color>
+            <Color x:Key="NavigationBarColor">#1976D2</Color>
+            <Color x:Key="NavigationBarTextColor">White</Color>
+            <Color x:Key="NormalTextColor">Black</Color>
+
+            <!--Button style-->
             <Style TargetType="Button">
-                <Setter Property="TextColor" Value="White"></Setter>
+                <Setter Property="TextColor"
+                        Value="{StaticResource Primary}"></Setter>
+                <Setter Property="CornerRadius"
+                        Value="20"></Setter>
+                <Setter Property="BorderColor"
+                        Value="{StaticResource Primary}"></Setter>
+                <Setter Property="BorderWidth"
+                        Value="1"></Setter>
                 <Setter Property="VisualStateManager.VisualStateGroups">
                     <VisualStateGroupList>
                         <VisualStateGroup x:Name="CommonStates">
                             <VisualState x:Name="Normal">
                                 <VisualState.Setters>
-                                    <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
+                                    <Setter Property="BackgroundColor"
+                                            Value="white" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Pressed">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor"
+                                            Value="gray" />
                                 </VisualState.Setters>
                             </VisualState>
                             <VisualState x:Name="Disabled">
                                 <VisualState.Setters>
-                                    <Setter Property="BackgroundColor" Value="#332196F3" />
+                                    <Setter Property="BackgroundColor"
+                                            Value="#332196F3" />
                                 </VisualState.Setters>
                             </VisualState>
                         </VisualStateGroup>
                     </VisualStateGroupList>
                 </Setter>
             </Style>
-        </ResourceDictionary>        
+
+            <!--Entry style-->
+            <Style TargetType="Entry">
+                <Setter Property="PlaceholderColor"
+                        Value="LightGray" />
+                <Setter Property="TextColor"
+                        Value="DimGray" />
+            </Style>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

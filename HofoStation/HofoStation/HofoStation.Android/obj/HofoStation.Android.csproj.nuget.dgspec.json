@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\wjz10\\Documents\\GitHub\\ShaCare\\HofoStation\\HofoStation\\HofoStation.Android\\HofoStation.Android.csproj": {}
+    "C:\\Users\\wjz10\\Documents\\GitHub\\HofoStation\\HofoStation\\HofoStation\\HofoStation.Android\\HofoStation.Android.csproj": {}
   },
   "projects": {
-    "C:\\Users\\wjz10\\Documents\\GitHub\\ShaCare\\HofoStation\\HofoStation\\HofoStation.Android\\HofoStation.Android.csproj": {
+    "C:\\Users\\wjz10\\Documents\\GitHub\\HofoStation\\HofoStation\\HofoStation\\HofoStation.Android\\HofoStation.Android.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\wjz10\\Documents\\GitHub\\ShaCare\\HofoStation\\HofoStation\\HofoStation.Android\\HofoStation.Android.csproj",
+        "projectUniqueName": "C:\\Users\\wjz10\\Documents\\GitHub\\HofoStation\\HofoStation\\HofoStation\\HofoStation.Android\\HofoStation.Android.csproj",
         "projectName": "HofoStation.Android",
-        "projectPath": "C:\\Users\\wjz10\\Documents\\GitHub\\ShaCare\\HofoStation\\HofoStation\\HofoStation.Android\\HofoStation.Android.csproj",
+        "projectPath": "C:\\Users\\wjz10\\Documents\\GitHub\\HofoStation\\HofoStation\\HofoStation\\HofoStation.Android\\HofoStation.Android.csproj",
         "packagesPath": "C:\\Users\\wjz10\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\wjz10\\Documents\\GitHub\\ShaCare\\HofoStation\\HofoStation\\HofoStation.Android\\obj\\",
+        "outputPath": "C:\\Users\\wjz10\\Documents\\GitHub\\HofoStation\\HofoStation\\HofoStation\\HofoStation.Android\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [
@@ -32,8 +32,8 @@
         "frameworks": {
           "monoandroid11.0": {
             "projectReferences": {
-              "C:\\Users\\wjz10\\Documents\\GitHub\\ShaCare\\HofoStation\\HofoStation\\HofoStation\\HofoStation.csproj": {
-                "projectPath": "C:\\Users\\wjz10\\Documents\\GitHub\\ShaCare\\HofoStation\\HofoStation\\HofoStation\\HofoStation.csproj"
+              "C:\\Users\\wjz10\\Documents\\GitHub\\HofoStation\\HofoStation\\HofoStation\\HofoStation\\HofoStation.csproj": {
+                "projectPath": "C:\\Users\\wjz10\\Documents\\GitHub\\HofoStation\\HofoStation\\HofoStation\\HofoStation\\HofoStation.csproj"
               }
             }
           }
@@ -50,6 +50,14 @@
               "target": "Package",
               "version": "[13.0.1, )"
             },
+            "Refractored.MvvmHelpers": {
+              "target": "Package",
+              "version": "[1.6.2, )"
+            },
+            "Xamarin.CommunityToolkit": {
+              "target": "Package",
+              "version": "[1.1.0, )"
+            },
             "Xamarin.Essentials": {
               "target": "Package",
               "version": "[1.6.1, )"
@@ -62,14 +70,14 @@
         }
       }
     },
-    "C:\\Users\\wjz10\\Documents\\GitHub\\ShaCare\\HofoStation\\HofoStation\\HofoStation\\HofoStation.csproj": {
+    "C:\\Users\\wjz10\\Documents\\GitHub\\HofoStation\\HofoStation\\HofoStation\\HofoStation\\HofoStation.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\wjz10\\Documents\\GitHub\\ShaCare\\HofoStation\\HofoStation\\HofoStation\\HofoStation.csproj",
+        "projectUniqueName": "C:\\Users\\wjz10\\Documents\\GitHub\\HofoStation\\HofoStation\\HofoStation\\HofoStation\\HofoStation.csproj",
         "projectName": "HofoStation",
-        "projectPath": "C:\\Users\\wjz10\\Documents\\GitHub\\ShaCare\\HofoStation\\HofoStation\\HofoStation\\HofoStation.csproj",
+        "projectPath": "C:\\Users\\wjz10\\Documents\\GitHub\\HofoStation\\HofoStation\\HofoStation\\HofoStation\\HofoStation.csproj",
         "packagesPath": "C:\\Users\\wjz10\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\wjz10\\Documents\\GitHub\\ShaCare\\HofoStation\\HofoStation\\HofoStation\\obj\\",
+        "outputPath": "C:\\Users\\wjz10\\Documents\\GitHub\\HofoStation\\HofoStation\\HofoStation\\HofoStation\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
@@ -102,6 +110,10 @@
         "netstandard2.0": {
           "targetAlias": "netstandard2.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Cryptography.KeyDerivation": {
+              "target": "Package",
+              "version": "[5.0.6, )"
+            },
             "MonkeyCache.FileStore": {
               "target": "Package",
               "version": "[1.5.2, )"
@@ -115,6 +127,14 @@
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.1, )"
+            },
+            "Refractored.MvvmHelpers": {
+              "target": "Package",
+              "version": "[1.6.2, )"
+            },
+            "Xamarin.CommunityToolkit": {
+              "target": "Package",
+              "version": "[1.1.0, )"
             },
             "Xamarin.Essentials": {
               "target": "Package",
@@ -135,7 +155,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     }

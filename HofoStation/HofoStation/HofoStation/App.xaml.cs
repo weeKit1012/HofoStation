@@ -1,8 +1,5 @@
-﻿using HofoStation.Services;
-using HofoStation.Views;
-using System;
+﻿using HofoStation.Views;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace HofoStation
 {
@@ -13,7 +10,6 @@ namespace HofoStation
         {
             InitializeComponent();
 
-            DependencyService.Register<MockDataStore>();
             MainPage = new AppShell();
         }
 
