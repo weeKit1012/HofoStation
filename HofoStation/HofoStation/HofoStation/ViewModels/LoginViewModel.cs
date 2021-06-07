@@ -47,9 +47,14 @@ namespace HofoStation.ViewModels
 
         private async Task User_Login()
         {
-            //Application.Current.Properties["loggedUser"] = "Helo"; //Store into property dic
-            string hPassword = Hashed(password);
-            var _user = await UserService.LoginUser(email, hPassword);
+            if (string.IsNullOrWhiteSpace(email) || 
+                string.IsNullOrWhiteSpace(password))
+            {
+                await Shell.Current.DisplayAlert("Input Error", "Please enter corrent credential", "OK");
+                return;
+            }
+
+            var _user = await UserService.LoginUser(email, password);
 
             if (_user == null)
             {
@@ -60,27 +65,7 @@ namespace HofoStation.ViewModels
                 Application.Current.Properties["loggedUser"] = _user;
                 await Shell.Current.GoToAsync($"//{nameof(DashboardNearbyPage)}");
             }      
-        }
-
-        private string Hashed(string val)
-        {
-            byte[] salt = new byte[128 / 8];
-            using (var rng = RandomNumberGenerator.Create())
-            {
-                rng.GetBytes(salt);
-            }
-
-            string hashed = Convert.ToBase64String(KeyDerivation.Pbkdf2(
-                password: val,
-                salt: salt,
-                prf: KeyDerivationPrf.HMACSHA1,
-                iterationCount: 10000,
-                numBytesRequested: 256 / 8));
-
-            return hashed;
-        }
-
-        
+        }      
 
         //SetProperty
         //AynscCommand

@@ -5,6 +5,8 @@ public class MonoPackageManager_Resources {
 		"HofoStation.Android.dll",
 		"FormsViewGroup.dll",
 		"HofoStation.dll",
+		"Microsoft.AspNetCore.Cryptography.Internal.dll",
+		"Microsoft.AspNetCore.Cryptography.KeyDerivation.dll",
 		"MonkeyCache.dll",
 		"MonkeyCache.FileStore.dll",
 		"MvvmHelpers.dll",

@@ -1,8 +1,10 @@
 ﻿using HofoStation.Models;
 using HofoStation.Responses;
+using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using Newtonsoft.Json;
 using System;
 using System.Net.Http;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,7 +12,7 @@ namespace HofoStation.Services
 {
     public static class UserService
     {
-        static string BaseUrl = "";
+        static string BaseUrl = "https://hofostation.azurewebsites.net";
         static HttpClient client;
 
         static UserService()
@@ -26,7 +28,7 @@ namespace HofoStation.Services
             User _user = new User
             {
                 user_email = email,
-                user_password = password
+                user_password = Hashed(password)
             };
 
             var json = JsonConvert.SerializeObject(_user);
@@ -36,11 +38,36 @@ namespace HofoStation.Services
             var result = JsonConvert.DeserializeObject<UserResponse>(content);
 
             if (result.success)
-                return result.user;
+                if (string.IsNullOrEmpty(result.user.user_email))
+                {
+                    _user = null;
+                    return _user;
+                }
+                else
+                {
+                    return result.user;
+                }
             else
                 _user = null;
                 return _user;
         }
 
+        private static string Hashed(string val)
+        {
+            byte[] salt = new byte[128 / 8];
+            using (var rng = RandomNumberGenerator.Create())
+            {
+                rng.GetBytes(salt);
+            }
+
+            string hashed = Convert.ToBase64String(KeyDerivation.Pbkdf2(
+                password: val,
+                salt: salt,
+                prf: KeyDerivationPrf.HMACSHA1,
+                iterationCount: 10000,
+                numBytesRequested: 256 / 8));
+
+            return hashed;
+        }
     }
 }

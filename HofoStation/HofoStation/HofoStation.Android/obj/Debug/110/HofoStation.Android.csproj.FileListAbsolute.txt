@@ -1224,3 +1224,5 @@ C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation.
 C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation.Android\obj\Debug\110\android\src\crc64515ee83f00766c60\PlatformTouchEffect_AccessibilityListener.java
 C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation.Android\obj\Debug\110\android\src\crc64515ee83f00766c60\VisualFeedbackEffectRouter_FastRendererOnLayoutChangeListener.java
 C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation.Android\obj\Debug\110\android\src\crc645b8ccbad6ecd7dce\SideMenuViewRenderer.java
+C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation.Android\obj\Debug\110\android\assets\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation.Android\obj\Debug\110\android\assets\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
