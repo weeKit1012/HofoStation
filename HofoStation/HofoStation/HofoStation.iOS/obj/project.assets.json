@@ -123,6 +123,21 @@
           "lib/netstandard2.0/MvvmHelpers.dll": {}
         }
       },
+      "Rg.Plugins.Popup/2.0.0.11": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Forms": "4.5.0.657"
+        },
+        "frameworkAssemblies": [
+          "System.Drawing.Common.dll"
+        ],
+        "compile": {
+          "lib/xamarinios10/Rg.Plugins.Popup.dll": {}
+        },
+        "runtime": {
+          "lib/xamarinios10/Rg.Plugins.Popup.dll": {}
+        }
+      },
       "System.Buffers/4.5.1": {
         "type": "package",
         "compile": {
@@ -394,6 +409,7 @@
           "MonkeyCache.FileStore": "1.5.2",
           "Newtonsoft.Json": "13.0.1",
           "Refractored.MvvmHelpers": "1.6.2",
+          "Rg.Plugins.Popup": "2.0.0.11",
           "Xamarin.CommunityToolkit": "1.1.0",
           "Xamarin.Essentials": "1.6.1",
           "Xamarin.Forms": "5.0.0.2012"
@@ -528,6 +544,21 @@
           "lib/netstandard2.0/MvvmHelpers.dll": {}
         }
       },
+      "Rg.Plugins.Popup/2.0.0.11": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Forms": "4.5.0.657"
+        },
+        "frameworkAssemblies": [
+          "System.Drawing.Common.dll"
+        ],
+        "compile": {
+          "lib/xamarinios10/Rg.Plugins.Popup.dll": {}
+        },
+        "runtime": {
+          "lib/xamarinios10/Rg.Plugins.Popup.dll": {}
+        }
+      },
       "System.Buffers/4.5.1": {
         "type": "package",
         "compile": {
@@ -799,6 +830,7 @@
           "MonkeyCache.FileStore": "1.5.2",
           "Newtonsoft.Json": "13.0.1",
           "Refractored.MvvmHelpers": "1.6.2",
+          "Rg.Plugins.Popup": "2.0.0.11",
           "Xamarin.CommunityToolkit": "1.1.0",
           "Xamarin.Essentials": "1.6.1",
           "Xamarin.Forms": "5.0.0.2012"
@@ -933,6 +965,21 @@
           "lib/netstandard2.0/MvvmHelpers.dll": {}
         }
       },
+      "Rg.Plugins.Popup/2.0.0.11": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Forms": "4.5.0.657"
+        },
+        "frameworkAssemblies": [
+          "System.Drawing.Common.dll"
+        ],
+        "compile": {
+          "lib/xamarinios10/Rg.Plugins.Popup.dll": {}
+        },
+        "runtime": {
+          "lib/xamarinios10/Rg.Plugins.Popup.dll": {}
+        }
+      },
       "System.Buffers/4.5.1": {
         "type": "package",
         "compile": {
@@ -1204,6 +1251,7 @@
           "MonkeyCache.FileStore": "1.5.2",
           "Newtonsoft.Json": "13.0.1",
           "Refractored.MvvmHelpers": "1.6.2",
+          "Rg.Plugins.Popup": "2.0.0.11",
           "Xamarin.CommunityToolkit": "1.1.0",
           "Xamarin.Essentials": "1.6.1",
           "Xamarin.Forms": "5.0.0.2012"
@@ -1338,6 +1386,21 @@
           "lib/netstandard2.0/MvvmHelpers.dll": {}
         }
       },
+      "Rg.Plugins.Popup/2.0.0.11": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Forms": "4.5.0.657"
+        },
+        "frameworkAssemblies": [
+          "System.Drawing.Common.dll"
+        ],
+        "compile": {
+          "lib/xamarinios10/Rg.Plugins.Popup.dll": {}
+        },
+        "runtime": {
+          "lib/xamarinios10/Rg.Plugins.Popup.dll": {}
+        }
+      },
       "System.Buffers/4.5.1": {
         "type": "package",
         "compile": {
@@ -1609,6 +1672,7 @@
           "MonkeyCache.FileStore": "1.5.2",
           "Newtonsoft.Json": "13.0.1",
           "Refractored.MvvmHelpers": "1.6.2",
+          "Rg.Plugins.Popup": "2.0.0.11",
           "Xamarin.CommunityToolkit": "1.1.0",
           "Xamarin.Essentials": "1.6.1",
           "Xamarin.Forms": "5.0.0.2012"
@@ -1869,6 +1933,54 @@
         "lib/netstandard2.0/MvvmHelpers.xml",
         "refractored.mvvmhelpers.1.6.2.nupkg.sha512",
         "refractored.mvvmhelpers.nuspec"
+      ]
+    },
+    "Rg.Plugins.Popup/2.0.0.11": {
+      "sha512": "Fa225jLSyum7oFwmC2tZeJqf0b/m2ZpvVSEVIhqmxcme4nEW6rl1Ncnj6zGIOjKlZ05m8L3mxdFdiI/TxI5InQ==",
+      "type": "package",
+      "path": "rg.plugins.popup/2.0.0.11",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "icon.png",
+        "lib/monoandroid10.0/Rg.Plugins.Popup.dll",
+        "lib/monoandroid10.0/Rg.Plugins.Popup.pdb",
+        "lib/monoandroid10.0/Rg.Plugins.Popup.xml",
+        "lib/monoandroid90/Rg.Plugins.Popup.dll",
+        "lib/monoandroid90/Rg.Plugins.Popup.pdb",
+        "lib/monoandroid90/Rg.Plugins.Popup.xml",
+        "lib/net472/Rg.Plugins.Popup.dll",
+        "lib/net472/Rg.Plugins.Popup.pdb",
+        "lib/net472/Rg.Plugins.Popup.xml",
+        "lib/netcoreapp3.1/Rg.Plugins.Popup.dll",
+        "lib/netcoreapp3.1/Rg.Plugins.Popup.pdb",
+        "lib/netcoreapp3.1/Rg.Plugins.Popup.xml",
+        "lib/netstandard2.0/Rg.Plugins.Popup.dll",
+        "lib/netstandard2.0/Rg.Plugins.Popup.pdb",
+        "lib/netstandard2.0/Rg.Plugins.Popup.xml",
+        "lib/tizen80/Rg.Plugins.Popup.dll",
+        "lib/tizen80/Rg.Plugins.Popup.pdb",
+        "lib/tizen80/Rg.Plugins.Popup.xml",
+        "lib/uap10.0.17763/Rg.Plugins.Popup.dll",
+        "lib/uap10.0.17763/Rg.Plugins.Popup.pdb",
+        "lib/uap10.0.17763/Rg.Plugins.Popup.pri",
+        "lib/uap10.0.17763/Rg.Plugins.Popup.xml",
+        "lib/xamarinios10/Rg.Plugins.Popup.dll",
+        "lib/xamarinios10/Rg.Plugins.Popup.pdb",
+        "lib/xamarinios10/Rg.Plugins.Popup.xml",
+        "lib/xamarinmac20/Rg.Plugins.Popup.dll",
+        "lib/xamarinmac20/Rg.Plugins.Popup.pdb",
+        "lib/xamarinmac20/Rg.Plugins.Popup.xml",
+        "lib/xamarintvos10/Rg.Plugins.Popup.dll",
+        "lib/xamarintvos10/Rg.Plugins.Popup.pdb",
+        "lib/xamarintvos10/Rg.Plugins.Popup.xml",
+        "lib/xamarinwatchos10/Rg.Plugins.Popup.dll",
+        "lib/xamarinwatchos10/Rg.Plugins.Popup.pdb",
+        "lib/xamarinwatchos10/Rg.Plugins.Popup.xml",
+        "readme.txt",
+        "rg.plugins.popup.2.0.0.11.nupkg.sha512",
+        "rg.plugins.popup.nuspec"
       ]
     },
     "System.Buffers/4.5.1": {
@@ -2486,6 +2598,7 @@
       "MonkeyCache.FileStore >= 1.5.2",
       "Newtonsoft.Json >= 13.0.1",
       "Refractored.MvvmHelpers >= 1.6.2",
+      "Rg.Plugins.Popup >= 2.0.0.11",
       "Xamarin.CommunityToolkit >= 1.1.0",
       "Xamarin.Essentials >= 1.6.1",
       "Xamarin.Forms >= 5.0.0.2012"
@@ -2548,6 +2661,10 @@
           "Refractored.MvvmHelpers": {
             "target": "Package",
             "version": "[1.6.2, )"
+          },
+          "Rg.Plugins.Popup": {
+            "target": "Package",
+            "version": "[2.0.0.11, )"
           },
           "Xamarin.CommunityToolkit": {
             "target": "Package",

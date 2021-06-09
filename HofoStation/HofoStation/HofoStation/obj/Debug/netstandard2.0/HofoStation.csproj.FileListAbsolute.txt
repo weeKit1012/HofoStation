@@ -39,3 +39,5 @@ C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation\
 C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation\obj\Debug\netstandard2.0\Views\PostHistoryPage.xaml.g.cs
 C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation\obj\Debug\netstandard2.0\Views\SearchPage.xaml.g.cs
 C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation\obj\Debug\netstandard2.0\Views\UserProfilePage.xaml.g.cs
+C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation\obj\Debug\netstandard2.0\Views\UpdateProfilePage.xaml.g.cs
+C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation\obj\Debug\netstandard2.0\Views\PopupLogout.xaml.g.cs

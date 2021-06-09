@@ -28,29 +28,29 @@ namespace HofoApiCollector
         }
     
     
-        public virtual ObjectResult<stpUserLogin_Result> stpUserLogin(string email, string password)
+        public virtual ObjectResult<stpUserLogin_Result> stpUserLogin(string user_email, string user_password)
         {
-            var emailParameter = email != null ?
-                new ObjectParameter("Email", email) :
-                new ObjectParameter("Email", typeof(string));
+            var user_emailParameter = user_email != null ?
+                new ObjectParameter("user_email", user_email) :
+                new ObjectParameter("user_email", typeof(string));
     
-            var passwordParameter = password != null ?
-                new ObjectParameter("Password", password) :
-                new ObjectParameter("Password", typeof(string));
+            var user_passwordParameter = user_password != null ?
+                new ObjectParameter("user_password", user_password) :
+                new ObjectParameter("user_password", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<stpUserLogin_Result>("stpUserLogin", emailParameter, passwordParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<stpUserLogin_Result>("stpUserLogin", user_emailParameter, user_passwordParameter);
         }
     
-        public virtual ObjectResult<stpUserGet_Result> stpUserGet(Nullable<int> id)
+        public virtual ObjectResult<stpUserGet_Result> stpUserGet(Nullable<int> user_id)
         {
-            var idParameter = id.HasValue ?
-                new ObjectParameter("id", id) :
-                new ObjectParameter("id", typeof(int));
+            var user_idParameter = user_id.HasValue ?
+                new ObjectParameter("user_id", user_id) :
+                new ObjectParameter("user_id", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<stpUserGet_Result>("stpUserGet", idParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<stpUserGet_Result>("stpUserGet", user_idParameter);
         }
     
-        public virtual int stpUserUpdate(Nullable<int> id, string password, Nullable<int> phone)
+        public virtual int stpUserUpdate(Nullable<int> id, string password, Nullable<int> phone, string image)
         {
             var idParameter = id.HasValue ?
                 new ObjectParameter("id", id) :
@@ -64,7 +64,11 @@ namespace HofoApiCollector
                 new ObjectParameter("phone", phone) :
                 new ObjectParameter("phone", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("stpUserUpdate", idParameter, passwordParameter, phoneParameter);
+            var imageParameter = image != null ?
+                new ObjectParameter("image", image) :
+                new ObjectParameter("image", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("stpUserUpdate", idParameter, passwordParameter, phoneParameter, imageParameter);
         }
     
         public virtual int stpPostCreate(string url, string title, string description, Nullable<decimal> logitude, Nullable<decimal> latitude, Nullable<int> user_id, Nullable<System.DateTime> timestamp)

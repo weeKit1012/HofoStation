@@ -67,6 +67,13 @@ namespace HofoStation.ViewModels
 
         async Task RegisterUser()
         {
+            bool temp = await Shell.Current.DisplayAlert("Confirm", "Ready to register?", "Yes", "No");
+
+            if (!temp)
+            {
+                return;
+            }
+
             IsBusy = true;
             IsNotBusy = false;
 
@@ -74,7 +81,7 @@ namespace HofoStation.ViewModels
             {
                 IsBusy = false;
                 IsNotBusy = true;
-                await Shell.Current.DisplayAlert("Input error", "Please ensure you fill all fields with correct data", "OK");
+                await Shell.Current.DisplayAlert("Input error", "Please ensure you fill all fields with correct data.", "OK");
                 return;
             }
 
@@ -94,7 +101,7 @@ namespace HofoStation.ViewModels
             {
                 IsBusy = false;
                 IsNotBusy = true;
-                await Shell.Current.DisplayAlert("Success", "Register successfully. Redirect to Login page in 3 seconds", "OK");
+                await Shell.Current.DisplayAlert("Success", "Register successfully. Redirect to Login page in 3 seconds.", "OK");
                 await Task.Delay(2000);
                 await Shell.Current.GoToAsync("..");
             }
@@ -102,7 +109,7 @@ namespace HofoStation.ViewModels
             {
                 IsBusy = false;
                 IsNotBusy = true;
-                await Shell.Current.DisplayAlert("Register Fail", "Please try again later", "OK");
+                await Shell.Current.DisplayAlert("Register Fail", "Please try again later or try with another email address.", "OK");
             }         
         }
 

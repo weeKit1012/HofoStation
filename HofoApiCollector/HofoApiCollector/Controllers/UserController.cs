@@ -41,6 +41,7 @@ namespace HofoApiCollector.Controllers
                         response.user.user_password = item.user_password.ToString();
                         response.user.user_gender = item.user_gender.ToString();
                         response.user.user_phone = item.user_phone.ToString();
+                        response.user.user_image = item.user_image.ToString();
                     }
 
                     return response;
@@ -106,6 +107,7 @@ namespace HofoApiCollector.Controllers
                         //response.user.user_password = item.user_password.ToString();
                         response.user.user_gender = item.user_gender.ToString();
                         response.user.user_phone = item.user_phone.ToString();
+                        response.user.user_image = item.user_image.ToString();
                     }
 
                     return response;
@@ -132,7 +134,7 @@ namespace HofoApiCollector.Controllers
             {
                 try
                 {
-                    core.stpUserUpdate(int.Parse(request.id), request.user_password, int.Parse(request.user_phone));
+                    core.stpUserUpdate(int.Parse(request.id), request.user_password, int.Parse(request.user_phone), request.user_image);
 
                     return new OperationResponse();
                 }

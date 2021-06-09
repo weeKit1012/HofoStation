@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "9O3pfYxYNIoMGvZZuvK1BU/1sQtaLqbmElLMtpGRCcO3Nou5BJjLlsdG7AQq47+9FF5Xs31N4fb/WZoUZ9WSFw==",
+  "dgSpecHash": "G/gZeGrst06k/ichhA8rKpwxgHGnPAzuSXGzbPj2It0orlVxIZ1j1uSGlZgKGCMk+CaE/4WaNrsSIN3ZUY5EsA==",
   "success": true,
   "projectFilePath": "C:\\Users\\wjz10\\Documents\\GitHub\\HofoStation\\HofoStation\\HofoStation\\HofoStation.iOS\\HofoStation.iOS.csproj",
   "expectedPackageFiles": [
@@ -14,6 +14,7 @@
     "C:\\Users\\wjz10\\.nuget\\packages\\monkeycache.filestore\\1.5.2\\monkeycache.filestore.1.5.2.nupkg.sha512",
     "C:\\Users\\wjz10\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
     "C:\\Users\\wjz10\\.nuget\\packages\\refractored.mvvmhelpers\\1.6.2\\refractored.mvvmhelpers.1.6.2.nupkg.sha512",
+    "C:\\Users\\wjz10\\.nuget\\packages\\rg.plugins.popup\\2.0.0.11\\rg.plugins.popup.2.0.0.11.nupkg.sha512",
     "C:\\Users\\wjz10\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
     "C:\\Users\\wjz10\\.nuget\\packages\\system.diagnostics.diagnosticsource\\4.6.0\\system.diagnostics.diagnosticsource.4.6.0.nupkg.sha512",
     "C:\\Users\\wjz10\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512",

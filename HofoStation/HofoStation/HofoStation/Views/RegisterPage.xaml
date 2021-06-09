@@ -64,6 +64,7 @@
                        Margin="40,0,40,0"
                        FontFamily="MB" />
                 <Entry Margin="40,0,40,10"
+                       IsPassword="True"
                        Text="{Binding Password}" />
                 
                 <Label Text="Confirm Password"
@@ -71,6 +72,7 @@
                        Margin="40,0,40,0"
                        FontFamily="MB" />
                 <Entry Margin="40,0,40,10"
+                       IsPassword="True"
                        Text="{Binding Rpassword}" />
                 
                 <Label Text="Gender"

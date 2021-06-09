@@ -12,6 +12,10 @@ namespace HofoStation
 
             Routing.RegisterRoute(nameof(RegisterPage),
                 typeof(RegisterPage));
+            Routing.RegisterRoute(nameof(UpdateProfilePage),
+                typeof(UpdateProfilePage));
+            Routing.RegisterRoute(nameof(PopupLogout),
+                typeof(PopupLogout));
         }
     }
 }

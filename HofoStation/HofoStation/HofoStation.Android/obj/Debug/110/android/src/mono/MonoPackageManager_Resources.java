@@ -15,6 +15,7 @@ public class MonoPackageManager_Resources {
 		"MonkeyCache.FileStore.dll",
 		"MvvmHelpers.dll",
 		"Newtonsoft.Json.dll",
+		"Rg.Plugins.Popup.dll",
 		"System.Diagnostics.DiagnosticSource.dll",
 		"System.Memory.Data.dll",
 		"System.Text.Encodings.Web.dll",

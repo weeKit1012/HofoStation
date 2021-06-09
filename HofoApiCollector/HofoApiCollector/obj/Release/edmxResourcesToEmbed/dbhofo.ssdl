@@ -45,11 +45,11 @@
     <Parameter Name="post_id" Type="int" Mode="In" />
   </Function>
   <Function Name="stpUserGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="user_id" Type="int" Mode="In" />
   </Function>
   <Function Name="stpUserLogin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="Email" Type="varchar" Mode="In" />
-    <Parameter Name="Password" Type="varchar" Mode="In" />
+    <Parameter Name="user_email" Type="varchar" Mode="In" />
+    <Parameter Name="user_password" Type="varchar" Mode="In" />
   </Function>
   <Function Name="stpUserRegister" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="FirstName" Type="varchar" Mode="In" />
@@ -63,6 +63,7 @@
     <Parameter Name="id" Type="int" Mode="In" />
     <Parameter Name="password" Type="varchar" Mode="In" />
     <Parameter Name="phone" Type="int" Mode="In" />
+    <Parameter Name="image" Type="varchar(max)" Mode="In" />
   </Function>
   <Function Name="stpVoteCheckExist" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="post_id" Type="int" Mode="In" />

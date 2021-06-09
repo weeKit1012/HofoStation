@@ -2,16 +2,17 @@
 <Schema Namespace="dbhofoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityContainer Name="dbhofoEntities" annotation:LazyLoadingEnabled="true">
     <FunctionImport Name="stpUserLogin" ReturnType="Collection(dbhofoModel.stpUserLogin_Result)">
-      <Parameter Name="Email" Mode="In" Type="String" />
-      <Parameter Name="Password" Mode="In" Type="String" />
+      <Parameter Name="user_email" Mode="In" Type="String" />
+      <Parameter Name="user_password" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="stpUserGet" ReturnType="Collection(dbhofoModel.stpUserGet_Result)">
-      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="user_id" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="stpUserUpdate">
       <Parameter Name="id" Mode="In" Type="Int32" />
       <Parameter Name="password" Mode="In" Type="String" />
       <Parameter Name="phone" Mode="In" Type="Int32" />
+      <Parameter Name="image" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="stpPostCreate">
       <Parameter Name="url" Mode="In" Type="String" />
@@ -85,6 +86,7 @@
     <Property Type="String" Name="user_password" Nullable="false" MaxLength="100" />
     <Property Type="Int32" Name="user_phone" Nullable="false" />
     <Property Type="Int32" Name="user_gender" Nullable="false" />
+    <Property Type="String" Name="user_image" Nullable="true" />
   </ComplexType>
   <ComplexType Name="stpUserGet_Result">
     <Property Type="Int32" Name="id" Nullable="false" />
@@ -94,6 +96,7 @@
     <Property Type="String" Name="user_password" Nullable="false" MaxLength="100" />
     <Property Type="Int32" Name="user_phone" Nullable="false" />
     <Property Type="Int32" Name="user_gender" Nullable="false" />
+    <Property Type="String" Name="user_image" Nullable="true" />
   </ComplexType>
   <ComplexType Name="stpPostGet_Result">
     <Property Type="Int32" Name="id" Nullable="false" />

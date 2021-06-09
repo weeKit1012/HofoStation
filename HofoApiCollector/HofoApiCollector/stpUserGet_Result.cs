@@ -20,5 +20,6 @@ namespace HofoApiCollector
         public string user_password { get; set; }
         public int user_phone { get; set; }
         public int user_gender { get; set; }
+        public string user_image { get; set; }
     }
 }

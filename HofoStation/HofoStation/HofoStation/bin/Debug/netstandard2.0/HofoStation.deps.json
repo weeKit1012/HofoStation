@@ -15,6 +15,7 @@
           "NETStandard.Library": "2.0.3",
           "Newtonsoft.Json": "13.0.1",
           "Refractored.MvvmHelpers": "1.6.2",
+          "Rg.Plugins.Popup": "2.0.0.11",
           "Xamarin.CommunityToolkit": "1.1.0",
           "Xamarin.Essentials": "1.6.1",
           "Xamarin.Forms": "5.0.0.2012"
@@ -140,6 +141,17 @@
           "lib/netstandard2.0/MvvmHelpers.dll": {
             "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Rg.Plugins.Popup/2.0.0.11": {
+        "dependencies": {
+          "Xamarin.Forms": "5.0.0.2012"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Rg.Plugins.Popup.dll": {
+            "assemblyVersion": "2.0.0.11",
+            "fileVersion": "2.0.0.11"
           }
         }
       },
@@ -394,6 +406,13 @@
       "sha512": "sha512-pXiyT0ad3QI7IzZSSjVNliyhyyAe7lmNPdfAEgSrtjhF9twrYoKbBlTd58IJc67Fw8QmHEur8F9eBA4rj+BZAg==",
       "path": "refractored.mvvmhelpers/1.6.2",
       "hashPath": "refractored.mvvmhelpers.1.6.2.nupkg.sha512"
+    },
+    "Rg.Plugins.Popup/2.0.0.11": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Fa225jLSyum7oFwmC2tZeJqf0b/m2ZpvVSEVIhqmxcme4nEW6rl1Ncnj6zGIOjKlZ05m8L3mxdFdiI/TxI5InQ==",
+      "path": "rg.plugins.popup/2.0.0.11",
+      "hashPath": "rg.plugins.popup.2.0.0.11.nupkg.sha512"
     },
     "System.Buffers/4.5.1": {
       "type": "package",

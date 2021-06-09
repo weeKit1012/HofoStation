@@ -3,6 +3,7 @@ using HofoStation.Responses;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using Newtonsoft.Json;
 using System;
+using System.IO;
 using System.Net.Http;
 using System.Security.Cryptography;
 using System.Text;
@@ -70,6 +71,28 @@ namespace HofoStation.Services
             {
                 return false;
             }
+        }
+
+        public static async Task<bool> UpdateUser(User _user, Stream stream)
+        {
+            _user.user_password = hashed(_user.user_password);
+            _user.user_image = await PostService.uploadToBlobAsync(stream);
+
+            var temp = JsonConvert.SerializeObject(_user);
+            var request = new StringContent(temp, Encoding.UTF8, "application/json");
+            var response = await client.PostAsync("user/user_update", request);
+            var json = await response.Content.ReadAsStringAsync();
+            var result = JsonConvert.DeserializeObject<OperationResponse>(json);
+
+            if (result.success)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
         }
 
         private static string hashed(string raw)

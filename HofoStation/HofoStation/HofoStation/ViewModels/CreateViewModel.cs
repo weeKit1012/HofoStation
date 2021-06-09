@@ -1,4 +1,5 @@
-﻿using HofoStation.Services;
+﻿using HofoStation.Models;
+using HofoStation.Services;
 using MvvmHelpers.Commands;
 using System;
 using System.Collections.Generic;
@@ -12,11 +13,14 @@ namespace HofoStation.ViewModels
     public class CreateViewModel : ViewModelBase
     {
         public AsyncCommand OpenGalleryCommand { get; }
+        User _user;
 
         public CreateViewModel()
         {
             Title = "Create Post";
+            _user = (User)Application.Current.Properties["loggedUser"];
             OpenGalleryCommand = new AsyncCommand(OpenGallery);
+            
         }
 
         ImageSource imagesource = "https://hofostation.blob.core.windows.net/hofogallery/f4e0feb8-c563-4084-8f18-1497e771d8f0.png?sv=2020-04-08&se=2025-01-01T00%3A00%3A00Z&sr=b&sp=r&sig=WtOXmyXNmPtVGsfRvzx9Yk31COLpabubnuK1uPTcZXU%3D";

@@ -1,12 +1,112 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="HofoStation.Views.UserProfilePage">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to UserProfilePage!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+             xmlns:vm="clr-namespace:HofoStation.ViewModels"
+             xmlns:fa="clr-namespace:FontAwesome"
+             x:Class="HofoStation.Views.UserProfilePage"
+             Shell.NavBarIsVisible="False">
+
+    <ContentPage.BindingContext>
+        <vm:UserProfileViewModel />
+    </ContentPage.BindingContext>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+
+        <StackLayout Grid.Row="0"
+                     Margin="20,10,20,0"
+                     Orientation="Horizontal">
+            <Label Text="{x:Static fa:FontAwesomeIcons.AddressCard}"
+                   FontFamily="FAR"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   FontAttributes="Bold"
+                   TextColor="{StaticResource Primary}"
+                   FontSize="50" />
+            <Label Text="About Me"
+                   Margin="10,0,0,0"
+                   FontFamily="Title"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   FontAttributes="Bold"
+                   TextColor="{StaticResource Primary}"
+                   FontSize="Title" />
         </StackLayout>
-    </ContentPage.Content>
+
+        <StackLayout Grid.Row="1">
+            <Frame Margin="20,0,20,20"
+                   HorizontalOptions="Center">
+                <Image Source="{Binding ImageSource}" 
+                       HeightRequest="180">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer NumberOfTapsRequired="2" 
+                                              Command="{Binding SelectImageCommand}" />
+                    </Image.GestureRecognizers>
+                </Image>
+            </Frame>
+        </StackLayout>
+
+        <StackLayout Grid.Row="2"
+                     Padding="20,10,20,40"
+                     Orientation="Horizontal">
+
+            <StackLayout Orientation="Vertical">
+                <StackLayout Orientation="Vertical"
+                             Margin="0,0,0,10">
+                    <Label Text="Name"
+                           FontFamily="MB"
+                           Margin="0,0,40,10" />
+                    <Label Text="Phone"
+                           FontFamily="MB"
+                           Margin="0,0,40,10" />
+                    <Label Text="Gender"
+                           FontFamily="MB"
+                           Margin="0,0,40,10" />
+                    <Label Text="Email Address"
+                           FontFamily="MB"
+                           Margin="0,0,40,10" />
+                </StackLayout>
+            </StackLayout>
+
+            <StackLayout Orientation="Vertical">
+                <Label Text="{Binding Name}"
+                       FontFamily="MR"
+                       Margin="0,0,0,10" />
+                <Label Text="{Binding Phone}"
+                       FontFamily="MR"
+                       Margin="0,0,0,10" />
+                <Label Text="{Binding Gender}"
+                       FontFamily="MR"
+                       Margin="0,0,0,10" />
+                <Label Text="{Binding Email}"
+                       FontFamily="MR"
+                       Margin="0,0,0,10" />
+            </StackLayout>
+
+        </StackLayout>
+
+        <StackLayout Grid.Row="3"
+                     Margin="0,0,0,40"
+                     Orientation="Vertical">
+            <Button Text="Update ?" 
+                    Margin="0,0,0,10"
+                    Command="{Binding GoToUpdateCommand}"
+                    HorizontalOptions="Center"
+                    WidthRequest="300"/>
+            <Button Text="{x:Static fa:FontAwesomeIcons.SignOutAlt}"
+                    FontFamily="FAS"
+                    FontSize="20"
+                    Command="{Binding LogoutCommand}"
+                    HorizontalOptions="Center"
+                    WidthRequest="300" />
+
+        </StackLayout>
+
+    </Grid>
+    
 </ContentPage>

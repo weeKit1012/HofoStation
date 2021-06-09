@@ -28,5 +28,8 @@ namespace HofoApiCollector.Models
 
         [DataMember(IsRequired = false)]
         public string user_gender { get; set; }
+
+        [DataMember(IsRequired = false)]
+        public string user_image { get; set; }
     }
 }

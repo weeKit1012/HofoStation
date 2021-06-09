@@ -33,6 +33,20 @@ namespace HofoStation.Services
             return results.posts;
         }
 
+        public static async Task<bool> CreatePost(Post _post, Stream imageStream)
+        {
+            string imagePath = await uploadToBlobAsync(imageStream);
+            _post.post_image_url = imagePath;
+
+            var temp = JsonConvert.SerializeObject(_post);
+            var request = new StringContent(temp, Encoding.UTF8, "application/json");
+            var response = await client.PostAsync("post/post_create", request);
+            var json = await response.Content.ReadAsStringAsync();
+            var result = JsonConvert.DeserializeObject<OperationResponse>(json);
+
+            return result.success;
+        }
+
         public static async Task<string> uploadToBlobAsync(Stream stream)
         {
             // Create a BlobServiceClient object which will be used to create a container client
@@ -63,5 +77,6 @@ namespace HofoStation.Services
 
             return url.AbsoluteUri;
         }
+
     }
 }

@@ -19,5 +19,7 @@ namespace HofoStation.Models
         public string user_phone { get; set; }
 
         public string user_gender { get; set; }
+
+        public string user_image { get; set; }
     }
 }
