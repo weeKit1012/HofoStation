@@ -1,6 +1,7 @@
 ﻿using Azure.Storage.Blobs;
 using HofoStation.Models;
 using HofoStation.Responses;
+using HofoStation.Services;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -8,17 +9,19 @@ using System.IO;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
+[assembly: Dependency(typeof(PostService))]
 namespace HofoStation.Services
 {
-    public static class PostService
+    public class PostService : IPostService
     {
-        static string BaseUrl = "https://hofostation.azurewebsites.net";
-        static HttpClient client;
+        string BaseUrl = "https://hofostation.azurewebsites.net";
+        HttpClient client;
 
-        static string blobCnnStr = "DefaultEndpointsProtocol=https;AccountName=hofostation;AccountKey=f0VNFGfFRCyJNvN8LhmZoV/MJjCj0WVB1/kVH85MMSsX7dINdq5ipuqkYqkAph8WxO+m3xXeCoJzOTVLweevjQ==;EndpointSuffix=core.windows.net";
+        string blobCnnStr = "DefaultEndpointsProtocol=https;AccountName=hofostation;AccountKey=f0VNFGfFRCyJNvN8LhmZoV/MJjCj0WVB1/kVH85MMSsX7dINdq5ipuqkYqkAph8WxO+m3xXeCoJzOTVLweevjQ==;EndpointSuffix=core.windows.net";
 
-        static PostService()
+        void Init()
         {
             client = new HttpClient
             {
@@ -26,15 +29,17 @@ namespace HofoStation.Services
             };
         }
 
-        public static async Task<IEnumerable<Post>> GetPost(string lat, string lng)
+        public async Task<IEnumerable<Post>> GetPost(string lat, string lng)
         {
+            Init();
             var json = await client.GetStringAsync($"post/post_get_all_geo/?latitude={lat}&longitude={lng}");
             var results = JsonConvert.DeserializeObject<PostResponse>(json);
             return results.posts;
         }
 
-        public static async Task<bool> CreatePost(Post _post, Stream imageStream)
+        public async Task<bool> CreatePost(Post _post, Stream imageStream)
         {
+            Init();
             string imagePath = await uploadToBlobAsync(imageStream);
             _post.post_image_url = imagePath;
 
@@ -47,7 +52,7 @@ namespace HofoStation.Services
             return result.success;
         }
 
-        public static async Task<string> uploadToBlobAsync(Stream stream)
+        public async Task<string> uploadToBlobAsync(Stream stream)
         {
             // Create a BlobServiceClient object which will be used to create a container client
             BlobServiceClient blobServiceClient = new BlobServiceClient(blobCnnStr);

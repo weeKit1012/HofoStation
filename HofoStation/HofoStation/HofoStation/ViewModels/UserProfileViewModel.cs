@@ -1,11 +1,7 @@
 ﻿using HofoStation.Models;
 using HofoStation.Views;
 using MvvmHelpers.Commands;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
-using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace HofoStation.ViewModels
@@ -22,6 +18,7 @@ namespace HofoStation.ViewModels
             Title = "User";           
             GoToUpdateCommand = new AsyncCommand(RedirectToUpdate);
             LogoutCommand = new AsyncCommand(Logout);
+
         }
 
         public void OnAppearing()

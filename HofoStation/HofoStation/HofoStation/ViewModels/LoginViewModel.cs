@@ -1,4 +1,5 @@
 ﻿using HofoStation.Services;
+using HofoStation.Services.Interfaces;
 using HofoStation.Views;
 using MvvmHelpers.Commands;
 using System.Threading.Tasks;
@@ -8,16 +9,20 @@ namespace HofoStation.ViewModels
 {
     public class LoginViewModel : ViewModelBase
     {
+        IToast iToast;
+        IUserService userService;
+        public AsyncCommand GoRegisterCommand { get; }
+        public AsyncCommand LoginCommand { get; }
+
         public LoginViewModel()
         {
             Title = "User Login";
             GoRegisterCommand = new AsyncCommand(RedirectToRegister);
             LoginCommand = new AsyncCommand(User_Login);
             IsNotBusy = true;
+            userService = DependencyService.Get<IUserService>();
+            iToast = DependencyService.Get<IToast>();
         }
-
-        public AsyncCommand GoRegisterCommand { get; }
-        public AsyncCommand LoginCommand { get; }
 
         string email, password;
 
@@ -54,7 +59,7 @@ namespace HofoStation.ViewModels
                 return;
             }
 
-            var _user = await UserService.LoginUser(email, password);
+            var _user = await userService.LoginUser(email, password);
 
             if (_user == null)
             {
@@ -66,6 +71,7 @@ namespace HofoStation.ViewModels
             {
                 IsBusy = false;
                 IsNotBusy = true;
+                iToast?.MakeToast("Login successfully");
                 Application.Current.Properties["loggedUser"] = _user;
                 await Shell.Current.GoToAsync($"//{nameof(DashboardNearbyPage)}");
             }      

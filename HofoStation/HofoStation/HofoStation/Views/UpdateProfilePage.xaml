@@ -37,6 +37,7 @@
                        Margin="20,0,20,0"
                        FontFamily="MB" />
                 <Entry Margin="20,0,20,10"
+                       Keyboard="Telephone"
                        Text="{Binding Phone}" />
                 <Label Text="Old Password"
                        HorizontalOptions="Start"

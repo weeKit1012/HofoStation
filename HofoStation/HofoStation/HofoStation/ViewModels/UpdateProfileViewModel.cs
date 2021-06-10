@@ -1,5 +1,6 @@
 ﻿using HofoStation.Models;
 using HofoStation.Services;
+using HofoStation.Services.Interfaces;
 using MvvmHelpers.Commands;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
@@ -10,6 +11,9 @@ namespace HofoStation.ViewModels
     public class UpdateProfileViewModel : ViewModelBase
     {
         User _user;
+        IUserService userService;
+        IPostService postService;
+        IToast iToast;
         public AsyncCommand UpdateCommand { get; }
         public AsyncCommand OpenGalleryCommand { get; }
 
@@ -19,6 +23,9 @@ namespace HofoStation.ViewModels
             _user = (User)Application.Current.Properties["loggedUser"];
             UpdateCommand = new AsyncCommand(UpdateProfile);
             OpenGalleryCommand = new AsyncCommand(OpenGallery);
+            userService = DependencyService.Get<IUserService>();
+            postService = DependencyService.Get<IPostService>();
+            iToast = DependencyService.Get<IToast>();
 
             Initialize();
         }
@@ -32,7 +39,7 @@ namespace HofoStation.ViewModels
 
             var stream = await result.OpenReadAsync();
 
-            newimagepath = await PostService.uploadToBlobAsync(stream);
+            newimagepath = await postService.uploadToBlobAsync(stream);
 
             CurrentImageSource = newimagepath;
         }
@@ -56,13 +63,13 @@ namespace HofoStation.ViewModels
                     user_image = newimagepath
                 };
 
-                var result = await UserService.UpdateUser(userObj);
+                var result = await userService.UpdateUser(userObj);
 
                 if (result)
                 {
-                    await Shell.Current.DisplayAlert("Success", "Update successfully.", "OK");
-                    Application.Current.Properties["loggedUser"] = await UserService.LoginUser(_user.user_email, npassword);
-                    await Task.Delay(2000);
+                    iToast?.MakeToast("Update successfully");
+                    Application.Current.Properties["loggedUser"] = await userService.LoginUser(_user.user_email, npassword);
+                    await Task.Delay(1000);
                     await Shell.Current.GoToAsync("..");
                 }
                 else
@@ -81,14 +88,14 @@ namespace HofoStation.ViewModels
                     user_image = _user.user_image
                 };
 
-                var result = await UserService.UpdateUser(userObj);
+                var result = await userService.UpdateUser(userObj);
 
                 if (result)
                 {
-                    await Shell.Current.DisplayAlert("Success", "Update successfully.", "OK");
-                    var updatedUser = await UserService.LoginUser(_user.user_email, npassword);
+                    iToast?.MakeToast("Update successfully");
+                    var updatedUser = await userService.LoginUser(_user.user_email, npassword);
                     Application.Current.Properties["loggedUser"] = updatedUser;
-                    await Task.Delay(2000);
+                    await Task.Delay(1000);
                     await Shell.Current.GoToAsync("..");
                 }
                 else
@@ -143,7 +150,7 @@ namespace HofoStation.ViewModels
             if (string.IsNullOrWhiteSpace(opassword) || string.IsNullOrWhiteSpace(npassword) || 
                 string.IsNullOrWhiteSpace(rpassword) || string.IsNullOrWhiteSpace(phone))
                 return false;
-            else if (UserService.hashed(opassword) != _user.user_password)
+            else if (userService.hashed(opassword) != _user.user_password)
                 return false;
             else if (npassword != rpassword)
                 return false;

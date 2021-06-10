@@ -1,9 +1,6 @@
 ﻿using HofoStation.Models;
 using HofoStation.Services;
 using MvvmHelpers.Commands;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -13,6 +10,7 @@ namespace HofoStation.ViewModels
     public class CreateViewModel : ViewModelBase
     {
         public AsyncCommand OpenGalleryCommand { get; }
+        IPostService postService;
         User _user;
 
         public CreateViewModel()
@@ -20,6 +18,7 @@ namespace HofoStation.ViewModels
             Title = "Create Post";
             _user = (User)Application.Current.Properties["loggedUser"];
             OpenGalleryCommand = new AsyncCommand(OpenGallery);
+            postService = DependencyService.Get<IPostService>();
 
         }
 
@@ -40,7 +39,7 @@ namespace HofoStation.ViewModels
 
             var stream = await result.OpenReadAsync();
 
-            string url = await PostService.uploadToBlobAsync(stream);
+            string url = await postService.uploadToBlobAsync(stream);
 
             imgsrc = url;
 

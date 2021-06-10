@@ -1,10 +1,9 @@
 ﻿using HofoStation.Models;
 using HofoStation.Services;
+using HofoStation.Services.Interfaces;
 using MvvmHelpers;
 using MvvmHelpers.Commands;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
@@ -12,6 +11,7 @@ namespace HofoStation.ViewModels
 {
     public class DashboardNearbyViewModel : ViewModelBase
     {
+        IPostService postService;
         public ObservableRangeCollection<Post> Posts { get; set; }
         public AsyncCommand ExecuteLoadItemCommand { get; }
         public AsyncCommand<Post> SelectedCommand { get; }
@@ -21,12 +21,14 @@ namespace HofoStation.ViewModels
             Posts = new ObservableRangeCollection<Post>();
             ExecuteLoadItemCommand = new AsyncCommand(GetPostList);
             SelectedCommand = new AsyncCommand<Post>(Selected);
+            
+            postService = DependencyService.Get<IPostService>();
         }
 
         public void onAppearing()
         {
             IsBusy = true;
-            SelectedPost = null;
+            SelectedPost = null;           
         }
 
         async Task GetPostList()
@@ -39,7 +41,7 @@ namespace HofoStation.ViewModels
                 string lat = "";
                 string lng = "";
 
-                var list = await PostService.GetPost(lat, lng);
+                var list = await postService.GetPost(lat, lng);
                 Posts.AddRange(list);
             }
             catch (Exception)

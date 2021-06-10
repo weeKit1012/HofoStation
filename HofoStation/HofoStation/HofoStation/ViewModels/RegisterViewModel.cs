@@ -1,5 +1,6 @@
 ﻿using HofoStation.Models;
 using HofoStation.Services;
+using HofoStation.Services.Interfaces;
 using MvvmHelpers.Commands;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,8 @@ namespace HofoStation.ViewModels
 {
     public class RegisterViewModel : ViewModelBase
     {
+        IToast iToast;
+        IUserService userService;
         public AsyncCommand RegisterCommand { get; }
         public AsyncCommand BackCommand { get; }
 
@@ -19,6 +22,9 @@ namespace HofoStation.ViewModels
             BackCommand = new AsyncCommand(BackToLogin);
             RegisterCommand = new AsyncCommand(RegisterUser);
             IsNotBusy = true;
+
+            userService = DependencyService.Get<IUserService>();
+            iToast = DependencyService.Get<IToast>();
         }
 
         string fname, lname, email, password, rpassword, phone, gender;
@@ -95,14 +101,14 @@ namespace HofoStation.ViewModels
                 user_gender = gender
             };
 
-            bool result = await UserService.RegisterUser(_user);
+            bool result = await userService.RegisterUser(_user);
 
             if (result)
             {
                 IsBusy = false;
                 IsNotBusy = true;
-                await Shell.Current.DisplayAlert("Success", "Register successfully. Redirect to Login page in 3 seconds.", "OK");
-                await Task.Delay(2000);
+                iToast?.MakeToast("Register successfully");
+                await Task.Delay(1500);
                 await Shell.Current.GoToAsync("..");
             }
             else

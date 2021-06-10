@@ -5,6 +5,13 @@ using Android.Content.PM;
 using Android.Runtime;
 using Android.OS;
 using AndroidX.AppCompat.App;
+using HofoStation.Services.Interfaces;
+using Android.Widget;
+using Xamarin.Essentials;
+using HofoStation.Droid;
+using Xamarin.Forms;
+
+[assembly:Dependency(typeof(Toaster))]
 
 namespace HofoStation.Droid
 {
@@ -33,6 +40,14 @@ namespace HofoStation.Droid
         public override void OnBackPressed()
         {
             Rg.Plugins.Popup.Popup.SendBackPressed(base.OnBackPressed);
+        }
+    }
+
+    public class Toaster : IToast
+    {
+        public void MakeToast(string message)
+        {
+            Toast.MakeText(Platform.AppContext, message, ToastLength.Long).Show();
         }
     }
 }

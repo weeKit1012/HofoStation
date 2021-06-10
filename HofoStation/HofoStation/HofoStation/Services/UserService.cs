@@ -1,22 +1,23 @@
 ﻿using HofoStation.Models;
 using HofoStation.Responses;
-using Microsoft.AspNetCore.Cryptography.KeyDerivation;
+using HofoStation.Services;
 using Newtonsoft.Json;
 using System;
-using System.IO;
 using System.Net.Http;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
+[assembly: Dependency(typeof(UserService))]
 namespace HofoStation.Services
 {
-    public static class UserService
+    public class UserService : IUserService
     {
-        static string BaseUrl = "https://hofostation.azurewebsites.net";
-        static HttpClient client;
+        string BaseUrl = "https://hofostation.azurewebsites.net";
+        HttpClient client;
 
-        static UserService()
+        void Init()
         {
             client = new HttpClient
             {
@@ -24,8 +25,10 @@ namespace HofoStation.Services
             };
         }
 
-        public static async Task<User> LoginUser(string email, string password)
+        public async Task<User> LoginUser(string email, string password)
         {
+            Init();
+
             User _user = new User
             {
                 user_email = email,
@@ -50,11 +53,13 @@ namespace HofoStation.Services
                 }
             else
                 _user = null;
-                return _user;
+            return _user;
         }
 
-        public static async Task<bool> RegisterUser(User _user)
+        public async Task<bool> RegisterUser(User _user)
         {
+            Init();
+
             _user.user_password = hashed(_user.user_password);
 
             var temp = JsonConvert.SerializeObject(_user);
@@ -73,10 +78,12 @@ namespace HofoStation.Services
             }
         }
 
-        public static async Task<bool> UpdateUser(User _user)
+        public async Task<bool> UpdateUser(User _user)
         {
+            Init();
+
             _user.user_password = hashed(_user.user_password);
-            
+
             var temp = JsonConvert.SerializeObject(_user);
             var request = new StringContent(temp, Encoding.UTF8, "application/json");
             var response = await client.PostAsync("user/user_update", request);
@@ -93,8 +100,10 @@ namespace HofoStation.Services
             }
         }
 
-        public static string hashed(string raw)
+        public string hashed(string raw)
         {
+            Init();
+
             using (SHA256 sha256 = SHA256.Create())
             {
                 byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(raw));
