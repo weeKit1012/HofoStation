@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HofoStation.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,9 +13,18 @@ namespace HofoStation.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class UserProfilePage : ContentPage
     {
+        UserProfileViewModel vm;
+
         public UserProfilePage()
         {
             InitializeComponent();
+            BindingContext = vm = new UserProfileViewModel();
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            vm.OnAppearing();
         }
     }
 }

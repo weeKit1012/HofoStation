@@ -41,12 +41,8 @@
         <StackLayout Grid.Row="1">
             <Frame Margin="20,0,20,20"
                    HorizontalOptions="Center">
-                <Image Source="{Binding ImageSource}" 
+                <Image Source="{Binding ImageSource}"
                        HeightRequest="180">
-                    <Image.GestureRecognizers>
-                        <TapGestureRecognizer NumberOfTapsRequired="2" 
-                                              Command="{Binding SelectImageCommand}" />
-                    </Image.GestureRecognizers>
                 </Image>
             </Frame>
         </StackLayout>

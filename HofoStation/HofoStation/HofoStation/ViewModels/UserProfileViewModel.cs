@@ -15,45 +15,51 @@ namespace HofoStation.ViewModels
         User _user;
         ImageSource imageSource;
         public AsyncCommand GoToUpdateCommand { get; }
-        public AsyncCommand SelectImageCommand { get; }
         public AsyncCommand LogoutCommand { get; }
 
         public UserProfileViewModel()
+        {            
+            Title = "User";           
+            GoToUpdateCommand = new AsyncCommand(RedirectToUpdate);
+            LogoutCommand = new AsyncCommand(Logout);
+        }
+
+        public void OnAppearing()
         {
-            Title = "User";
             _user = (User)Application.Current.Properties["loggedUser"];
             Initialize();
-
-            GoToUpdateCommand = new AsyncCommand(RedirectToUpdate);
-            SelectImageCommand = new AsyncCommand(PopToSelect);
-            LogoutCommand = new AsyncCommand(Logout);
         }
 
         string name, email, phone, gender, password;
 
         public string Name
         {
-            get => name;           
+            get => name;
+            set => SetProperty(ref name, value);
         }
 
         public string Email
         {
             get => email;
+            set => SetProperty(ref email, value);
         }
 
         public string Phone
         {
             get => phone;
+            set => SetProperty(ref phone, value);
         }
 
         public string Gender
         {
             get => gender;
+            set => SetProperty(ref gender, value);
         }
 
         public string Password
         {
             get => password;
+            set => SetProperty(ref password, value);
         }
 
         public ImageSource ImageSource
@@ -64,40 +70,32 @@ namespace HofoStation.ViewModels
 
         void Initialize()
         {
-            name = _user.user_first_name + " " + _user.user_last_name;
-            email = _user.user_email;
-            phone = _user.user_phone;
-            password = new string('x',_user.user_password.Length);
+            Name = _user.user_first_name + " " + _user.user_last_name;
+            Email = _user.user_email;
+            Phone = _user.user_phone;
+            Password = new string('x',_user.user_password.Length);
             if (_user.user_gender == "1")
             {
-                gender = "Male";
+                Gender = "Male";
             }
             else
             {
-                gender = "Female";
+                Gender = "Female";
             }
 
             if (!string.IsNullOrEmpty(_user.user_image))
             {
                 ImageSource = _user.user_image;
             }
+            else
+            {
+                ImageSource = "https://hofostation.blob.core.windows.net/hofogallery/8044bbff-8039-452f-9db7-ecb608c5cfd6.png?sv=2020-04-08&se=2025-01-01T00%3A00%3A00Z&sr=b&sp=r&sig=Zc8ChFceAsSXC4zmA1Nvbpi6rGUtd6B070XEWxEBlQw%3D";
+            }
         }
 
         async Task RedirectToUpdate()
         {
             await Shell.Current.GoToAsync(nameof(UpdateProfilePage));
-        }
-
-        async Task PopToSelect()
-        {
-            var result = await MediaPicker.PickPhotoAsync(new MediaPickerOptions
-            {
-                Title = "Please pick an image"
-            });
-
-            var stream = await result.OpenReadAsync();
-
-            ImageSource = ImageSource.FromStream(() => stream);
         }
 
         async Task Logout()

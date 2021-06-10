@@ -73,11 +73,10 @@ namespace HofoStation.Services
             }
         }
 
-        public static async Task<bool> UpdateUser(User _user, Stream stream)
+        public static async Task<bool> UpdateUser(User _user)
         {
             _user.user_password = hashed(_user.user_password);
-            _user.user_image = await PostService.uploadToBlobAsync(stream);
-
+            
             var temp = JsonConvert.SerializeObject(_user);
             var request = new StringContent(temp, Encoding.UTF8, "application/json");
             var response = await client.PostAsync("user/user_update", request);
@@ -92,10 +91,9 @@ namespace HofoStation.Services
             {
                 return false;
             }
-
         }
 
-        private static string hashed(string raw)
+        public static string hashed(string raw)
         {
             using (SHA256 sha256 = SHA256.Create())
             {

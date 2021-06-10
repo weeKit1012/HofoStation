@@ -1,12 +1,71 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="HofoStation.Views.UpdateProfilePage">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Update Profile Page!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
+             xmlns:vm="clr-namespace:HofoStation.ViewModels"
+             x:Class="HofoStation.Views.UpdateProfilePage"
+             Title="{Binding Title}">
+
+    <ContentPage.BindingContext>
+        <vm:UpdateProfileViewModel />
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+
+            <StackLayout Grid.Row="0">
+                <Frame Padding="20"
+                       Margin="20">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding OpenGalleryCommand}"
+                                              NumberOfTapsRequired="2" />
+                    </Frame.GestureRecognizers>
+                    <Image Source="{Binding CurrentImageSource}"
+                           Aspect="AspectFill"
+                           Opacity="0.9">
+                    </Image>
+                </Frame>
+            </StackLayout>
+
+            <StackLayout Grid.Row="1">
+                <Label Text="Phone Number"
+                       HorizontalOptions="Start"
+                       Margin="20,0,20,0"
+                       FontFamily="MB" />
+                <Entry Margin="20,0,20,10"
+                       Text="{Binding Phone}" />
+                <Label Text="Old Password"
+                       HorizontalOptions="Start"
+                       Margin="20,0,20,0"
+                       FontFamily="MB" />
+                <Entry Margin="20,0,20,10"
+                       IsPassword="True"
+                       Text="{Binding Opassword}" />
+                <Label Text="New Password"
+                       HorizontalOptions="Start"
+                       Margin="20,0,20,0"
+                       FontFamily="MB" />
+                <Entry Margin="20,0,20,10"
+                       IsPassword="True"
+                       Text="{Binding NPassword}" />
+                <Label Text="Retype Password"
+                       HorizontalOptions="Start"
+                       Margin="20,0,20,0"
+                       FontFamily="MB" />
+                <Entry Margin="20,0,20,10"
+                       IsPassword="True"
+                       Text="{Binding Rpassword}" />
+            </StackLayout>
+
+            <StackLayout Grid.Row="2"
+                         Margin="20,10,20,20">
+                <Button Text="Update Profile"
+                        Command="{Binding UpdateCommand}"/>
+            </StackLayout>
+        </Grid>
+    </ScrollView>
 </ContentPage>

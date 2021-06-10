@@ -1,12 +1,6 @@
 ﻿using HofoStation.Services;
 using HofoStation.Views;
-using Microsoft.AspNetCore.Cryptography.KeyDerivation;
-using MvvmHelpers;
 using MvvmHelpers.Commands;
-using System;
-using System.Collections.Generic;
-using System.Security.Cryptography;
-using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 

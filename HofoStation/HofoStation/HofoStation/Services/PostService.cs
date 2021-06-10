@@ -64,6 +64,7 @@ namespace HofoStation.Services
             BlobClient blobClient = containerClient.GetBlobClient($"{blobName}.png");
 
             //Uploading
+
             await blobClient.UploadAsync(stream, true);
 
             //Get 
