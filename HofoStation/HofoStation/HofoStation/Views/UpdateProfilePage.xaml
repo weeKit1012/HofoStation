@@ -19,7 +19,8 @@
 
             <StackLayout Grid.Row="0">
                 <Frame Padding="20"
-                       Margin="20">
+                       Margin="20"
+                       HeightRequest="300">
                     <Frame.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding OpenGalleryCommand}"
                                               NumberOfTapsRequired="2" />
