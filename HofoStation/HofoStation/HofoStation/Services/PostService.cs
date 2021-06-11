@@ -37,11 +37,9 @@ namespace HofoStation.Services
             return results.posts;
         }
 
-        public async Task<bool> CreatePost(Post _post, Stream imageStream)
+        public async Task<bool> CreatePost(Post _post)
         {
             Init();
-            string imagePath = await uploadToBlobAsync(imageStream);
-            _post.post_image_url = imagePath;
 
             var temp = JsonConvert.SerializeObject(_post);
             var request = new StringContent(temp, Encoding.UTF8, "application/json");

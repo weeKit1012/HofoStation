@@ -41,3 +41,7 @@ C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation\
 C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation\obj\Debug\netstandard2.0\Views\UserProfilePage.xaml.g.cs
 C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation\obj\Debug\netstandard2.0\Views\UpdateProfilePage.xaml.g.cs
 C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation\obj\Debug\netstandard2.0\Views\PopupLogout.xaml.g.cs
+C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation\bin\Debug\netstandard2.0\Mono.Android.dll
+C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation\bin\Debug\netstandard2.0\Mono.Android.pdb
+C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation\bin\Debug\netstandard2.0\Mono.Android.xml
+C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation\obj\Debug\netstandard2.0\HofoStation.csproj.CopyComplete

@@ -77,6 +77,11 @@ namespace HofoStation.ViewModels
             }      
         }      
 
+        public void onAppearing()
+        {
+            Email = null;
+            Password = null;
+        }
         //SetProperty
         //AynscCommand
         //ObserverableRangeCollection & ObservarableCollection

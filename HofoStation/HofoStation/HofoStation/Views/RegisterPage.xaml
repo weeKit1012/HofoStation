@@ -34,6 +34,7 @@
                        Margin="40,0,40,0"
                        FontFamily="MB" />
                 <Entry Margin="40,0,40,10"
+                       ReturnType="Next"
                        Text="{Binding Fname}" />
                 
                 <Label Text="Last Name"
@@ -41,6 +42,7 @@
                        Margin="40,0,40,0"
                        FontFamily="MB" />
                 <Entry Margin="40,0,40,10"
+                       ReturnType="Next"
                        Text="{Binding Lname}" />
                 
                 <Label Text="Email Address"
@@ -49,6 +51,7 @@
                        FontFamily="MB" />
                 <Entry Margin="40,0,40,10"
                        Keyboard="Email"
+                       ReturnType="Next"
                        Text="{Binding Email}" />
                 
                 <Label Text="Phone Number"
@@ -57,6 +60,7 @@
                        FontFamily="MB" />
                 <Entry Margin="40,0,40,10"
                        Keyboard="Telephone"
+                       ReturnType="Next"
                        Text="{Binding Phone}" />
                 
                 <Label Text="Password"
@@ -65,6 +69,7 @@
                        FontFamily="MB" />
                 <Entry Margin="40,0,40,10"
                        IsPassword="True"
+                       ReturnType="Next"
                        Text="{Binding Password}" />
                 
                 <Label Text="Confirm Password"
@@ -73,6 +78,7 @@
                        FontFamily="MB" />
                 <Entry Margin="40,0,40,10"
                        IsPassword="True"
+                       ReturnType="Done"
                        Text="{Binding Rpassword}" />
                 
                 <Label Text="Gender"

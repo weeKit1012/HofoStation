@@ -2,6 +2,7 @@
 using HofoStation.Services;
 using HofoStation.Services.Interfaces;
 using MvvmHelpers.Commands;
+using System;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -32,16 +33,24 @@ namespace HofoStation.ViewModels
 
         async Task OpenGallery()
         {
-            var result = await MediaPicker.PickPhotoAsync(new MediaPickerOptions
+            try
             {
-                Title = "Please pick a photo"
-            });
+                var result = await MediaPicker.PickPhotoAsync(new MediaPickerOptions
+                {
+                    Title = "Please pick a photo"
+                });
 
-            var stream = await result.OpenReadAsync();
+                var stream = await result.OpenReadAsync();
 
-            newimagepath = await postService.uploadToBlobAsync(stream);
+                newimagepath = await postService.uploadToBlobAsync(stream);
 
-            CurrentImageSource = newimagepath;
+                CurrentImageSource = newimagepath;
+            }
+            catch (Exception)
+            {
+
+            }
+            
         }
 
         async Task UpdateProfile()

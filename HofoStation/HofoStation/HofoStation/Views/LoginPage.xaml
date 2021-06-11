@@ -45,10 +45,12 @@
             <StackLayout Margin="0,50,0,0">
             <Entry HorizontalTextAlignment="Center"
                    Placeholder="Email Address"
+                   ReturnType="Next"
                    Text="{Binding Email}"/>
             <Entry HorizontalTextAlignment="Center"
                    Placeholder="Password" 
                    IsPassword="True"
+                   ReturnType="Next"
                    Text="{Binding Password}"/>
             </StackLayout>
         </StackLayout>

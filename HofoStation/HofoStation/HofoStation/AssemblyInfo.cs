@@ -1,4 +1,5 @@
-using HofoStation.Services;
+using Android;
+using Android.App;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 

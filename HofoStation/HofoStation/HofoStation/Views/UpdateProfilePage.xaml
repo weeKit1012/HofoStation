@@ -38,6 +38,7 @@
                        FontFamily="MB" />
                 <Entry Margin="20,0,20,10"
                        Keyboard="Telephone"
+                       ReturnType="Next"
                        Text="{Binding Phone}" />
                 <Label Text="Old Password"
                        HorizontalOptions="Start"
@@ -45,6 +46,7 @@
                        FontFamily="MB" />
                 <Entry Margin="20,0,20,10"
                        IsPassword="True"
+                       ReturnType="Next"
                        Text="{Binding Opassword}" />
                 <Label Text="New Password"
                        HorizontalOptions="Start"
@@ -52,6 +54,7 @@
                        FontFamily="MB" />
                 <Entry Margin="20,0,20,10"
                        IsPassword="True"
+                       ReturnType="Next"
                        Text="{Binding NPassword}" />
                 <Label Text="Retype Password"
                        HorizontalOptions="Start"
@@ -59,6 +62,7 @@
                        FontFamily="MB" />
                 <Entry Margin="20,0,20,10"
                        IsPassword="True"
+                       ReturnType="Done"
                        Text="{Binding Rpassword}" />
             </StackLayout>
 

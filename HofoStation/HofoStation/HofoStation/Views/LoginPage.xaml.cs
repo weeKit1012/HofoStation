@@ -13,9 +13,17 @@ namespace HofoStation.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LoginPage : ContentPage
     {
+        LoginViewModel vm;
         public LoginPage()
         {
             InitializeComponent();
+            BindingContext = vm = new LoginViewModel();
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            vm.onAppearing();
         }
     }
 }
