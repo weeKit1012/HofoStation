@@ -17,8 +17,8 @@ namespace HofoApiCollector
         public string post_image_url { get; set; }
         public string post_title { get; set; }
         public string post_description { get; set; }
-        public string post_longitude { get; set; }
-        public string post_latitude { get; set; }
+        public decimal post_longitude { get; set; }
+        public decimal post_latitude { get; set; }
         public int user_id { get; set; }
         public System.DateTime post_timestamp { get; set; }
     }

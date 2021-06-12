@@ -2,8 +2,6 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:HofoStation.ViewModels"
-             xmlns:model="clr-namespace:HofoStation.Models"
-             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              x:Class="HofoStation.Views.DashboardNearbyPage"
              Shell.NavBarIsVisible="False">
 
@@ -11,11 +9,52 @@
         <vm:DashboardNearbyViewModel />
     </ContentPage.BindingContext>
 
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <xct:ItemSelectedEventArgsConverter x:Key="ItemSelectedEventArgsConverter" />
-        </ResourceDictionary>
-    </ContentPage.Resources>
+    <RefreshView Command="{Binding ExecuteLoadItemCommand}"
+                 IsRefreshing="{Binding IsBusy, Mode=OneWay}">
+
+        <CollectionView BackgroundColor="Transparent"
+                        ItemSizingStrategy="MeasureAllItems"
+                        ItemsLayout="VerticalList"
+                        ItemsSource="{Binding Posts}"
+                        SelectedItem="{Binding SelectedPost, Mode=TwoWay}"
+                        SelectionChangedCommand="{Binding SelectCommand}"                       
+                        SelectionMode="Single">
+
+            <CollectionView.EmptyView>
+                <StackLayout Padding="12">
+                    <Label HorizontalOptions="CenterAndExpand" 
+                           VerticalOptions="CenterAndExpand"
+                           Text="No post from users nearby"/>
+                </StackLayout>
+            </CollectionView.EmptyView>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="10">
+                        <Frame CornerRadius="10"
+                               HasShadow="True">
+                            <StackLayout Orientation="Horizontal">
+                                <Image Source="{Binding post_image_url}"
+                                       WidthRequest="66" />
+                                <StackLayout VerticalOptions="Center">
+                                    <Label FontSize="Body"
+                                           Text="{Binding post_title}"
+                                           FontAttributes="Bold"
+                                           LineBreakMode="TailTruncation"
+                                           VerticalOptions="Center" />
+                                    <Label FontSize="Body"
+                                           Text="{Binding post_timestamp}"
+                                           VerticalOptions="Center" />
+                                </StackLayout>
+                            </StackLayout>
+                        </Frame>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
+        
+    </RefreshView>
 
     <!--<RefreshView x:DataType="vm:DashboardNearbyViewModel"
                  Command="{Binding ExecuteLoadItemCommand}"

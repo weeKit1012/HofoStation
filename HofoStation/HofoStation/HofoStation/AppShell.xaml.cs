@@ -16,6 +16,8 @@ namespace HofoStation
                 typeof(UpdateProfilePage));
             Routing.RegisterRoute(nameof(PopupLogout),
                 typeof(PopupLogout));
+            Routing.RegisterRoute(nameof(PostDetailPage),
+                typeof(PostDetailPage));
         }
     }
 }

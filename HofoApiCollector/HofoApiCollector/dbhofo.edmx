@@ -164,16 +164,6 @@
           <Parameter Name="chat_id" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
-        <ComplexType Name="stpUserLogin_Result">
-          <Property Type="Int32" Name="id" Nullable="false" />
-          <Property Type="String" Name="user_first_name" Nullable="false" MaxLength="100" />
-          <Property Type="String" Name="user_last_name" Nullable="false" MaxLength="100" />
-          <Property Type="String" Name="user_email" Nullable="false" MaxLength="100" />
-          <Property Type="String" Name="user_password" Nullable="false" MaxLength="100" />
-          <Property Type="Int32" Name="user_phone" Nullable="false" />
-          <Property Type="Int32" Name="user_gender" Nullable="false" />
-          <Property Type="String" Name="user_image" Nullable="true" />
-        </ComplexType>
         <ComplexType Name="stpUserGet_Result">
           <Property Type="Int32" Name="id" Nullable="false" />
           <Property Type="String" Name="user_first_name" Nullable="false" MaxLength="100" />
@@ -189,8 +179,8 @@
           <Property Type="String" Name="post_image_url" Nullable="false" />
           <Property Type="String" Name="post_title" Nullable="false" MaxLength="255" />
           <Property Type="String" Name="post_description" Nullable="false" MaxLength="Max" />
-          <Property Type="String" Name="post_longitude" Nullable="false" />
-          <Property Type="String" Name="post_latitude" Nullable="false" />
+          <Property Type="Decimal" Name="post_longitude" Nullable="false" Precision="12" Scale="9" />
+          <Property Type="Decimal" Name="post_latitude" Nullable="false" Precision="12" Scale="9" />
           <Property Type="Int32" Name="user_id" Nullable="false" />
           <Property Type="DateTime" Name="post_timestamp" Nullable="false" Precision="23" />
         </ComplexType>
@@ -199,8 +189,8 @@
           <Property Type="String" Name="post_image_url" Nullable="false" />
           <Property Type="String" Name="post_title" Nullable="false" MaxLength="255" />
           <Property Type="String" Name="post_description" Nullable="false" MaxLength="Max" />
-          <Property Type="String" Name="post_longitude" Nullable="false" />
-          <Property Type="String" Name="post_latitude" Nullable="false" />
+          <Property Type="Decimal" Name="post_longitude" Nullable="false" Precision="12" Scale="9" />
+          <Property Type="Decimal" Name="post_latitude" Nullable="false" Precision="12" Scale="9" />
           <Property Type="Int32" Name="user_id" Nullable="false" />
           <Property Type="DateTime" Name="post_timestamp" Nullable="false" Precision="23" />
         </ComplexType>
@@ -209,8 +199,8 @@
           <Property Type="String" Name="post_image_url" Nullable="false" />
           <Property Type="String" Name="post_title" Nullable="false" MaxLength="255" />
           <Property Type="String" Name="post_description" Nullable="false" MaxLength="Max" />
-          <Property Type="String" Name="post_longitude" Nullable="false" />
-          <Property Type="String" Name="post_latitude" Nullable="false" />
+          <Property Type="Decimal" Name="post_longitude" Nullable="false" Precision="12" Scale="9" />
+          <Property Type="Decimal" Name="post_latitude" Nullable="false" Precision="12" Scale="9" />
           <Property Type="Int32" Name="user_id" Nullable="false" />
           <Property Type="DateTime" Name="post_timestamp" Nullable="false" Precision="23" />
         </ComplexType>
@@ -235,6 +225,16 @@
           <Property Type="DateTime" Name="chat_timestamp" Nullable="false" Precision="23" />
           <Property Type="Int32" Name="chat_id" Nullable="false" />
           <Property Type="Int32" Name="user_id" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="stpUserLogin_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="user_first_name" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="user_last_name" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="user_email" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="user_password" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="user_phone" Nullable="false" />
+          <Property Type="Int32" Name="user_gender" Nullable="false" />
+          <Property Type="String" Name="user_image" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>

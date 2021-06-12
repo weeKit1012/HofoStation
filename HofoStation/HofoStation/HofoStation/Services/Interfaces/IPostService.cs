@@ -9,6 +9,7 @@ namespace HofoStation.Services
     {
         Task<bool> CreatePost(Post _post);
         Task<IEnumerable<Post>> GetPost(string lat, string lng);
+        Task<IEnumerable<Post>> GetAllPost();
         Task<string> uploadToBlobAsync(Stream stream);
     }
 }

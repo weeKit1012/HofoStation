@@ -37,6 +37,14 @@ namespace HofoStation.Services
             return results.posts;
         }
 
+        public async Task<IEnumerable<Post>> GetAllPost()
+        {
+            Init();
+            var json = await client.GetStringAsync($"post/post_get_all");
+            var results = JsonConvert.DeserializeObject<PostResponse>(json);
+            return results.posts;
+        }
+
         public async Task<bool> CreatePost(Post _post)
         {
             Init();

@@ -115,7 +115,14 @@ namespace HofoApiCollector.Controllers
                         //response.user.user_password = item.user_password.ToString();
                         response.user.user_gender = item.user_gender.ToString();
                         response.user.user_phone = item.user_phone.ToString();
-                        response.user.user_image = item.user_image.ToString();
+                        if (item.user_image != null)
+                        {
+                            response.user.user_image = item.user_image.ToString();
+                        }
+                        else
+                        {
+                            response.user.user_image = null;
+                        }
                     }
 
                     return response;
