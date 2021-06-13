@@ -29,10 +29,7 @@ namespace HofoApiCollector.Controllers
             {
                 try
                 {
-                    DateTime cstTime = DateTime.Now.AddHours(8);
-                    //TimeZoneInfo cstZone = TimeZoneInfo.FindSystemTimeZoneById("Singapore Standard Time");
-                    //DateTime cstTime = TimeZoneInfo.ConvertTimeFromUtc(newTime, cstZone);
-                    //DateTime newTime = DateTime.Parse(request.post_timestamp);
+                    DateTime cstTime = DateTime.Parse(request.post_timestamp);
 
                     core.stpPostCreate(request.post_image_url, request.post_title, request.post_description, Convert.ToDecimal(request.post_logitude), Convert.ToDecimal(request.post_latitude), int.Parse(request.user_id), cstTime);
 

@@ -101,6 +101,7 @@ namespace HofoStation.ViewModels
                 post_image_url = imagePath,
                 post_logitude = longitude,
                 post_latitude = latitude,
+                post_timestamp = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt"),
                 user_id = _user.id
             };
 
