@@ -101,7 +101,6 @@ namespace HofoStation.ViewModels
                 post_image_url = imagePath,
                 post_logitude = longitude,
                 post_latitude = latitude,
-                post_timestamp = DateTime.Now.ToString(),
                 user_id = _user.id
             };
 
@@ -135,44 +134,6 @@ namespace HofoStation.ViewModels
             else
                 return true;
         }
-
-        //CancellationTokenSource cts;
-
-        //async Task GetLocation()
-        //{
-        //    try
-        //    {
-        //        var request = new GeolocationRequest(GeolocationAccuracy.Medium, TimeSpan.FromSeconds(10));
-        //        cts = new CancellationTokenSource();
-        //        var location = await Geolocation.GetLocationAsync(request, cts.Token);
-
-        //        if (location != null)
-        //        {
-        //            longitude = location.Longitude.ToString();
-        //            latitude = location.Latitude.ToString();
-        //        }
-        //    }
-        //    catch (FeatureNotSupportedException)
-        //    {
-        //        // Handle not supported on device exception
-        //        await Shell.Current.DisplayAlert("Warning", "Your device does not support GPS feature.", "OK");
-        //    }
-        //    catch (FeatureNotEnabledException)
-        //    {
-        //        // Handle not enabled on device exception
-        //        await Shell.Current.DisplayAlert("Warning", "Please enable the GPS feature on your device.", "OK");
-        //    }
-        //    catch (PermissionException)
-        //    {
-        //        // Handle permission exception
-        //        await Shell.Current.DisplayAlert("Warning", "Please allow the GPS feature on your device.", "OK");
-        //    }
-        //    catch (Exception)
-        //    {
-        //        // Unable to get location
-        //        await Shell.Current.DisplayAlert("Warning", "Cannot get your current location. Please try again later.", "OK");
-        //    }
-        //}
 
         public void OnDisappearing()
         {
