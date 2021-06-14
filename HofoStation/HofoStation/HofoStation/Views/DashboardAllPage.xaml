@@ -1,13 +1,62 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:HofoStation.ViewModels"
              x:Class="HofoStation.Views.DashboardAllPage"
              Shell.NavBarIsVisible="False">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Dashboard All!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
+
+    <ContentPage.BindingContext>
+        <vm:DashboardAllViewModel />
+    </ContentPage.BindingContext>
+
+    <RefreshView Command="{Binding ExecuteLoadItemCommand}"
+                 IsRefreshing="{Binding IsBusy, Mode=OneWay}">
+
+        <CollectionView BackgroundColor="Transparent"
+                        ItemSizingStrategy="MeasureAllItems"
+                        ItemsLayout="VerticalList"
+                        ItemsSource="{Binding Posts}"
+                        SelectedItem="{Binding SelectedPost, Mode=TwoWay}"
+                        SelectionChangedCommand="{Binding SelectCommand}"
+                        SelectionMode="Single">
+
+            <CollectionView.EmptyView>
+                <StackLayout Padding="12">
+                    <Label HorizontalOptions="CenterAndExpand"
+                           VerticalOptions="CenterAndExpand"
+                           Text="No post from users nearby" />
+                </StackLayout>
+            </CollectionView.EmptyView>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="10">
+                        <Frame Style="{StaticResource PostCard}">
+                            <StackLayout Orientation="Horizontal"
+                                         HorizontalOptions="FillAndExpand">
+                                <Image Source="{Binding post_image_url}"
+                                       WidthRequest="70" />
+                                <StackLayout VerticalOptions="Center"
+                                             HorizontalOptions="FillAndExpand"
+                                             Orientation="Vertical">
+                                    <Label FontSize="15"
+                                           Text="{Binding post_title}"
+                                           FontFamily="MB"
+                                           FontAttributes="Bold"
+                                           LineBreakMode="TailTruncation"
+                                           VerticalOptions="Center" />
+                                    <Label FontSize="10"
+                                           Padding="0,5,0,0"
+                                           Text="{Binding post_timestamp}"
+                                           VerticalOptions="Center" />
+                                </StackLayout>
+                            </StackLayout>
+                        </Frame>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
+
+    </RefreshView>
 </ContentPage>
