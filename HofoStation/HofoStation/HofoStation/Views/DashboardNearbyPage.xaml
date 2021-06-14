@@ -17,32 +17,36 @@
                         ItemsLayout="VerticalList"
                         ItemsSource="{Binding Posts}"
                         SelectedItem="{Binding SelectedPost, Mode=TwoWay}"
-                        SelectionChangedCommand="{Binding SelectCommand}"                       
+                        SelectionChangedCommand="{Binding SelectCommand}"
                         SelectionMode="Single">
 
             <CollectionView.EmptyView>
                 <StackLayout Padding="12">
-                    <Label HorizontalOptions="CenterAndExpand" 
+                    <Label HorizontalOptions="CenterAndExpand"
                            VerticalOptions="CenterAndExpand"
-                           Text="No post from users nearby"/>
+                           Text="No post from users nearby" />
                 </StackLayout>
             </CollectionView.EmptyView>
 
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Grid Padding="10">
-                        <Frame CornerRadius="10"
-                               HasShadow="True">
-                            <StackLayout Orientation="Horizontal">
+                        <Frame Style="{StaticResource PostCard}">
+                            <StackLayout Orientation="Horizontal"
+                                         HorizontalOptions="FillAndExpand">
                                 <Image Source="{Binding post_image_url}"
-                                       WidthRequest="66" />
-                                <StackLayout VerticalOptions="Center">
-                                    <Label FontSize="Body"
+                                       WidthRequest="70" />
+                                <StackLayout VerticalOptions="Center"
+                                             HorizontalOptions="FillAndExpand"
+                                             Orientation="Vertical">
+                                    <Label FontSize="15"
                                            Text="{Binding post_title}"
+                                           FontFamily="MB"
                                            FontAttributes="Bold"
                                            LineBreakMode="TailTruncation"
                                            VerticalOptions="Center" />
-                                    <Label FontSize="Body"
+                                    <Label FontSize="10"
+                                           Padding="0,5,0,0"
                                            Text="{Binding post_timestamp}"
                                            VerticalOptions="Center" />
                                 </StackLayout>
@@ -53,49 +57,7 @@
             </CollectionView.ItemTemplate>
 
         </CollectionView>
-        
+
     </RefreshView>
-
-    <!--<RefreshView x:DataType="vm:DashboardNearbyViewModel"
-                 Command="{Binding ExecuteLoadItemCommand}"
-                 IsRefreshing="{Binding IsBusy, Mode=OneWay}">
-
-        <CollectionView ItemsSource="{Binding Posts}"
-                        SelectedItem="{Binding SelectedPost ,Mode=TwoWay}">
-            <CollectionView.Behaviors>
-                <xct:EventToCommandBehavior Command="{Binding SelectedCommand}"
-                                            EventArgsConverter="{StaticResource ItemSelectedEventArgsConverter}"
-                                            EventName="ItemSelected" />
-            </CollectionView.Behaviors>
-
-            <CollectionView.ItemsLayout>
-                <GridItemsLayout Orientation="Vertical"
-                                 Span="2" />
-            </CollectionView.ItemsLayout>
-
-            <CollectionView.EmptyView>
-                <StackLayout Padding="12">
-                    <Label HorizontalOptions="Center"
-                           Text="No post from users nearby" />
-                </StackLayout>
-            </CollectionView.EmptyView>
-
-            <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="model:Post">
-                    <Grid Padding="5">
-                        <Frame CornerRadius="10"
-                               HasShadow="True">
-                            <StackLayout Orientation="Vertical">
-                                <Image Source="{Binding post_image_url}" WidthRequest="66"/>
-                                <Label Text="{Binding post_title}"
-                                       FontAttributes="Bold"
-                                       LineBreakMode="TailTruncation" />
-                            </StackLayout>
-                        </Frame>
-                    </Grid>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-    </RefreshView>-->
 
 </ContentPage>

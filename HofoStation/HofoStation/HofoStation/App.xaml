@@ -64,6 +64,16 @@
                 <Setter Property="FontFamily" 
                         Value="MR"/>
             </Style>
+
+            <Style x:Key="PostCard" TargetType="Frame">
+                <Setter Property="CornerRadius"
+                        Value="30" />
+                <Setter Property="BorderColor"
+                        Value="{StaticResource Primary}" />
+                <Setter Property="HasShadow"
+                        Value="True" />
+            </Style>
+            
         </ResourceDictionary>
     </Application.Resources>
 </Application>
