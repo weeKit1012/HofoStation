@@ -206,7 +206,7 @@ namespace HofoApiCollector.Controllers
                         _post.post_image_url = item.post_image_url;
                         _post.post_latitude = item.post_latitude.ToString();
                         _post.post_logitude = item.post_longitude.ToString();
-                        _post.post_timestamp = item.post_timestamp.ToString();
+                        _post.post_timestamp = item.post_timestamp.ToString("dd-MM-yyyy");
                         _post.user_id = item.user_id.ToString();
 
                         response.posts.Add(_post);
@@ -249,7 +249,7 @@ namespace HofoApiCollector.Controllers
                         _post.post_image_url = item.post_image_url;
                         _post.post_latitude = item.post_latitude.ToString();
                         _post.post_logitude = item.post_longitude.ToString();
-                        _post.post_timestamp = item.post_timestamp.ToString();
+                        _post.post_timestamp = item.post_timestamp.ToString("dd-MM-yyyy");
                         _post.user_id = item.user_id.ToString();
 
                         response.posts.Add(_post);

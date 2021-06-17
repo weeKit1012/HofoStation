@@ -1,5 +1,11 @@
 C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation.iOS\bin\iPhone\Debug\HofoStation.iOS.exe
 C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation.iOS\bin\iPhone\Debug\HofoStation.iOS.pdb
+C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation.iOS\bin\iPhone\Debug\Azure.Core.dll
+C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation.iOS\bin\iPhone\Debug\Azure.Storage.Blobs.dll
+C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation.iOS\bin\iPhone\Debug\Azure.Storage.Common.dll
+C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation.iOS\bin\iPhone\Debug\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation.iOS\bin\iPhone\Debug\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation.iOS\bin\iPhone\Debug\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation.iOS\bin\iPhone\Debug\MonkeyCache.dll
 C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation.iOS\bin\iPhone\Debug\MonkeyCache.pdb
 C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation.iOS\bin\iPhone\Debug\MonkeyCache.FileStore.dll
@@ -7,6 +13,16 @@ C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation.
 C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation.iOS\bin\iPhone\Debug\Newtonsoft.Json.dll
 C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation.iOS\bin\iPhone\Debug\MvvmHelpers.dll
 C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation.iOS\bin\iPhone\Debug\MvvmHelpers.pdb
+C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation.iOS\bin\iPhone\Debug\Rg.Plugins.Popup.dll
+C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation.iOS\bin\iPhone\Debug\Rg.Plugins.Popup.pdb
+C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation.iOS\bin\iPhone\Debug\System.Buffers.dll
+C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation.iOS\bin\iPhone\Debug\System.Diagnostics.DiagnosticSource.dll
+C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation.iOS\bin\iPhone\Debug\System.Memory.dll
+C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation.iOS\bin\iPhone\Debug\System.Memory.Data.dll
+C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation.iOS\bin\iPhone\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation.iOS\bin\iPhone\Debug\System.Text.Encodings.Web.dll
+C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation.iOS\bin\iPhone\Debug\System.Text.Json.dll
+C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation.iOS\bin\iPhone\Debug\Xamarin.CommunityToolkit.dll
 C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation.iOS\bin\iPhone\Debug\Xamarin.Essentials.dll
 C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation.iOS\bin\iPhone\Debug\Xamarin.Essentials.pdb
 C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation.iOS\bin\iPhone\Debug\Xamarin.Forms.Core.dll
@@ -58,7 +74,7 @@ C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation.
 C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation.iOS\obj\iPhone\Debug\coremlc\_PartialAppManifest.items
 C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation.iOS\obj\iPhone\Debug\coremlc\_BundleResourceWithLogicalName.items
 C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation.iOS\obj\iPhone\Debug\optimized\
-C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation.iOS\obj\iPhone\Debug\HofoStation.iOS.csprojAssemblyReference.cache
+C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation.iOS\obj\iPhone\Debug\HofoStation.iOS.csproj.AssemblyReference.cache
 C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation.iOS\obj\iPhone\Debug\HofoStation.iOS.csproj.CoreCompileInputs.cache
 C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation.iOS\obj\iPhone\Debug\HofoStation.iOS.csproj.CopyComplete
 C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation.iOS\obj\iPhone\Debug\HofoStation.iOS.exe

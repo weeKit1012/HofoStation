@@ -5,6 +5,7 @@ using MvvmHelpers;
 using MvvmHelpers.Commands;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -62,7 +63,7 @@ namespace HofoStation.ViewModels
             {
                 var post = postSelected;
                 postSelected = null;
-                await Shell.Current.GoToAsync($"{nameof(PostDetailPage)}?postID={post.id}");
+                await Shell.Current.GoToAsync($"{nameof(PostDetailPage)}?PostId={post.id}");
             }
             else
             {
@@ -82,6 +83,23 @@ namespace HofoStation.ViewModels
                 if (list == null)
                 {
                     list = new List<Post>();
+                }
+
+                foreach (var item in list)
+                {
+                    string format = "dd-MM-yyyy";
+                    DateTime _datetime = DateTime.ParseExact(item.post_timestamp, format, CultureInfo.InvariantCulture);
+                    DateTime current = DateTime.Now.Date;
+                    var diff = (current.Date - _datetime.Date).TotalDays;
+
+                    if (diff < 1)
+                    {
+                        item.post_timestamp = "Today";
+                    }
+                    else
+                    {
+                        item.post_timestamp = $"{Convert.ToInt32(diff)} day(s) ago";
+                    }
                 }
 
                 Posts.AddRange(list);

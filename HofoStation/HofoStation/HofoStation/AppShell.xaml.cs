@@ -18,6 +18,8 @@ namespace HofoStation
                 typeof(PopupLogout));
             Routing.RegisterRoute(nameof(PostDetailPage),
                 typeof(PostDetailPage));
+            Routing.RegisterRoute(nameof(OtherProfilePage),
+                typeof(OtherProfilePage));
         }
     }
 }

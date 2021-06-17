@@ -100,6 +100,23 @@ namespace HofoStation.Services
             }
         }
 
+        public async Task<User> GetUser(string id)
+        {
+            Init();
+            var json = await client.GetStringAsync($"user/user_get/?requestID={id}");
+            var results = JsonConvert.DeserializeObject<UserResponse>(json);
+
+            if (results.success)
+            {
+                return results.user;
+            }
+            else
+            {
+                User _user = null;
+                return _user;
+            }
+        }
+
         public string hashed(string raw)
         {
             Init();

@@ -608,7 +608,6 @@ C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation.
 C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation.Android\obj\Debug\110\MonoAndroid,Version=v11.0.AssemblyAttributes.cs
 C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation.Android\obj\Debug\110\build.props
 C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation.Android\obj\Debug\110\adb.props
-C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation.Android\obj\Debug\110\HofoStation.Android.csprojAssemblyReference.cache
 C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation.Android\obj\Debug\110\stamp\_BuildLibraryImportsCache.stamp
 C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation.Android\obj\Debug\110\res.flag
 C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation.Android\obj\Debug\110\lp\47\jl\files.cache
@@ -1251,3 +1250,4 @@ C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation.
 C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation.Android\obj\Debug\110\android\assets\Rg.Plugins.Popup.pdb
 C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation.Android\obj\Debug\110\android\src\crc643dd37f507f3d9710\PopupPageRenderer.java
 C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation.Android\obj\Debug\110\android\src\crc64fdbeeba101bd56dc\RgGestureDetectorListener.java
+C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation.Android\obj\Debug\110\HofoStation.Android.csproj.AssemblyReference.cache

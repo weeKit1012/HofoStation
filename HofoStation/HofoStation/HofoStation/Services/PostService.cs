@@ -29,7 +29,7 @@ namespace HofoStation.Services
             };
         }
 
-        public async Task<IEnumerable<Post>> GetPost(string lat, string lng)
+        public async Task<IEnumerable<Post>> GetAllPostGeo(string lat, string lng)
         {
             Init();
             var json = await client.GetStringAsync($"post/post_get_all_geo/?latitude={lat}&longitude={lng}");
@@ -90,5 +90,18 @@ namespace HofoStation.Services
             return url.AbsoluteUri;
         }
 
+        public async Task<Post> GetPostDetail(string id)
+        {
+            Init();
+            var json = await client.GetStringAsync($"post/post_get/?requestID={id}");
+            var results = JsonConvert.DeserializeObject<PostResponse>(json);
+            var temp = new Post();
+            foreach (var item in results.posts)
+            {
+                temp = item;
+            }
+
+            return temp;
+        }
     }
 }

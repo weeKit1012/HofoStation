@@ -45,9 +45,7 @@
                             <VisualState x:Name="Disabled">
                                 <VisualState.Setters>
                                     <Setter Property="BackgroundColor"
-                                            Value="ForestGreen" />
-                                    <Setter Property="TextColor"
-                                            Value="red" />
+                                            Value="Gray" />
                                 </VisualState.Setters>
                             </VisualState>
                         </VisualStateGroup>

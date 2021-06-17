@@ -9,11 +9,88 @@
         <vm:PostDetailViewModel />
     </ContentPage.BindingContext>
 
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="{Binding postID}"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
+    <ScrollView>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+
+            <StackLayout Grid.Row="0">
+                <Frame Padding="0"
+                       Margin="0"
+                       BackgroundColor="#B1D8B7"
+                       HeightRequest="330">
+                    <Image Source="{Binding ImageUrl}"
+                           Aspect="AspectFit"
+                           Opacity="0.9">
+                    </Image>
+                </Frame>
+            </StackLayout>
+
+            <StackLayout Grid.Row="1"
+                         Margin="0,0,0,30">
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Liked by"
+                           HorizontalOptions="Start"
+                           Margin="20,10,0,0"
+                           FontFamily="MR" />
+                    <Label Text="{Binding Count}"
+                           HorizontalOptions="Start"
+                           Margin="0,10,0,0"
+                           FontFamily="MB" />
+                    <Label Text="people"
+                           HorizontalOptions="Start"
+                           Margin="0,10,0,0"
+                           FontFamily="MR" />
+                </StackLayout>
+                <Label Text="{Binding PostTitle}"
+                       HorizontalOptions="Start"
+                       Margin="20,20,20,0"
+                       FontFamily="MB" />
+                <Label Text="{Binding Description}"
+                       HorizontalOptions="Start"
+                       Margin="20,10,20,0"
+                       FontFamily="MR" />
+                <StackLayout Orientation="Horizontal">
+                    <StackLayout Orientation="Vertical">
+                        <Label Text="Posted on"
+                               HorizontalOptions="Start"
+                               Margin="20,10,20,0"
+                               FontFamily="MB" />
+                        <Label Text="By"
+                               HorizontalOptions="Start"
+                               Margin="20,10,20,0"
+                               FontFamily="MB" />
+                    </StackLayout>
+                    <StackLayout Orientation="Vertical">
+                        <Label Text="{Binding Timestamp}"
+                               HorizontalOptions="Start"
+                               Margin="20,10,20,0"
+                               FontFamily="MR" />
+                        <Label Text="{Binding Owner}"
+                               HorizontalOptions="Start"
+                               Margin="20,10,20,0"
+                               FontFamily="MR" />
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+               
+            <StackLayout Grid.Row="2" 
+                         Orientation="Horizontal" 
+                         HorizontalOptions="CenterAndExpand">
+                <Button WidthRequest="150" 
+                        Margin="10,10,10,20" 
+                        Command="{Binding CreateVote}"
+                        IsVisible="{Binding IsNotVoted}"
+                        Text="Like" />
+                <Button WidthRequest="150"
+                        Margin="10,10,10,20"
+                        Command="{Binding GoOtherUserProfile}"
+                        IsVisible="{Binding IsNotCurrentUser}"
+                        Text="View Profile" />
+            </StackLayout>
+        </Grid>
+    </ScrollView>
 </ContentPage>

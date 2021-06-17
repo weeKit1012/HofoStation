@@ -5,5 +5,6 @@
     <ActiveDebugProfile>HUAWEI YAL-L21</ActiveDebugProfile>
     <AndroidDesignerPreferredTheme>MainTheme</AndroidDesignerPreferredTheme>
     <ProjectView>ProjectFiles</ProjectView>
+    <DefaultDevice>pixel_3a_q_10_0_-_api_29</DefaultDevice>
   </PropertyGroup>
 </Project>

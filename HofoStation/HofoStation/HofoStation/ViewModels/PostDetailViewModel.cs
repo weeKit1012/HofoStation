@@ -1,26 +1,184 @@
-﻿using System;
+﻿using HofoStation.Models;
+using HofoStation.Services;
+using HofoStation.Views;
+using MvvmHelpers.Commands;
+using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace HofoStation.ViewModels
 {
-    [QueryProperty(nameof(postID), nameof(postID))]
+    [QueryProperty(nameof(PostId), nameof(PostId))]
     public class PostDetailViewModel : ViewModelBase
     {
-        
+        IPostService postService;
+        IUserService userService;
+        IVoteService voteService;
+        public AsyncCommand CreateVote { get; }
+        public AsyncCommand GoOtherUserProfile { get; }
+        private User currentUser;
 
         public PostDetailViewModel()
         {
-
+            postService = DependencyService.Get<IPostService>();
+            userService = DependencyService.Get<IUserService>();
+            voteService = DependencyService.Get<IVoteService>();
+            CreateVote = new AsyncCommand(AddVote);
+            GoOtherUserProfile = new AsyncCommand(RedirectToNextPage);
+            currentUser = (User)Application.Current.Properties["loggedUser"];
+            IsNotVoted = true;
+            IsNotCurrentUser = true;
         }
 
-        string temp;
+        private string postId;
 
-        public string postID
+        public string PostId
         {
-            get => temp;
-            set => SetProperty(ref temp, value);
+            get => postId;
+            set
+            {
+                if (value != null)
+                {
+                    postId = value;
+                    LoadPost(value);
+                }
+
+                OnPropertyChanged();
+            }
+        }
+
+        private async void LoadPost(string id)
+        {
+            try
+            {
+                var item = await postService.GetPostDetail(id);
+                var _user = await userService.GetUser(item.user_id);
+                var voteCount = await voteService.GetVoteCount(id);
+
+                await checkVote(id, currentUser.id);
+                checkIsCurrentUser(item.user_id);
+
+                Id = item.id;
+                OwnerId = item.user_id;
+                PostTitle = item.post_title;
+                Description = item.post_description;
+                ImageUrl = item.post_image_url;
+                Timestamp = item.post_timestamp;
+                Owner = $"{_user.user_first_name} {_user.user_last_name}";
+                Count = voteCount.ToString();
+            }
+            catch (Exception)
+            {
+                await Shell.Current.DisplayAlert("Error", "Failed to load post. Please try again later.", "OK");
+            }
+        }
+
+        public string Id { get; set; }
+        public string OwnerId { get; set; }
+        private string postTitle, description, timestamp, owner, count;
+        private ImageSource imageUrl;
+
+        public string PostTitle
+        {
+            get => postTitle;
+            set => SetProperty(ref postTitle, value);
+        }
+
+        public string Description
+        {
+            get => description;
+            set => SetProperty(ref description, value);
+        }
+
+        public ImageSource ImageUrl
+        {
+            get => imageUrl;
+            set => SetProperty(ref imageUrl, value);
+        }
+
+        public string Timestamp
+        {
+            get => timestamp;
+            set => SetProperty(ref timestamp, value);
+        }
+
+        public string Owner
+        {
+            get => owner;
+            set => SetProperty(ref owner, value);
+        }
+
+        public string Count
+        {
+            get => count;
+            set => SetProperty(ref count, value);
+        }
+
+        private async Task AddVote()
+        {
+            Vote _vote = new Vote
+            {
+                post_id = Id,
+                user_id = currentUser.id
+            };
+
+            var result = await voteService.CreateVote(_vote);
+
+            if (result)
+            {
+                IsNotVoted = false;
+                var voteCount = await voteService.GetVoteCount(Id);
+                Count = voteCount.ToString();
+            }
+            else
+            {
+                await Shell.Current.DisplayAlert("Fail", "Failed to like the post", "OK");
+            }
+        }
+
+
+        bool isNotVoted;
+        public bool IsNotVoted {
+            get => isNotVoted;
+            set => SetProperty(ref isNotVoted, value);
+        }
+
+        private async Task checkVote(string postId, string userId)
+        {
+            Vote _vote = new Vote
+            {
+                post_id = postId,
+                user_id = userId
+            };
+
+            var result = await voteService.CheckVoteExist(_vote);
+
+            if (result > 0)
+                IsNotVoted = false;
+            else
+                IsNotVoted = true;
+        }
+
+        bool isNotCurrentUser;
+        public bool IsNotCurrentUser
+        {
+            get => isNotCurrentUser;
+            set => SetProperty(ref isNotCurrentUser, value);
+        }
+
+        private void checkIsCurrentUser(string ownerId)
+        {
+            if (currentUser.id == ownerId)
+                IsNotCurrentUser = false;
+            else
+                IsNotCurrentUser = true;
+        }
+
+        private async Task RedirectToNextPage()
+        {
+            await Shell.Current.GoToAsync($"{nameof(OtherProfilePage)}?UserId={OwnerId}");
         }
     }
 }

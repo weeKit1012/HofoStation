@@ -9,5 +9,6 @@ namespace HofoStation.Services
         Task<User> LoginUser(string email, string password);
         Task<bool> RegisterUser(User _user);
         Task<bool> UpdateUser(User _user);
+        Task<User> GetUser(string id);
     }
 }
