@@ -13,7 +13,7 @@
                  IsRefreshing="{Binding IsBusy, Mode=OneWay}">
 
         <CollectionView BackgroundColor="Transparent"
-                        ItemSizingStrategy="MeasureAllItems"
+                        ItemSizingStrategy="MeasureFirstItem"
                         ItemsLayout="VerticalList"
                         ItemsSource="{Binding Posts}"
                         SelectedItem="{Binding SelectedPost, Mode=TwoWay}"
@@ -35,7 +35,8 @@
                             <StackLayout Orientation="Horizontal"
                                          HorizontalOptions="FillAndExpand">
                                 <Image Source="{Binding post_image_url}"
-                                       WidthRequest="70" />
+                                       WidthRequest="70"
+                                       HeightRequest="90" />
                                 <StackLayout VerticalOptions="Center"
                                              HorizontalOptions="FillAndExpand"
                                              Orientation="Vertical">
@@ -55,8 +56,17 @@
                     </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
-
+            
+            <CollectionView.Footer>
+                <StackLayout Orientation="Horizontal"
+                             Padding="0,20,0,10"
+                             HorizontalOptions="Center">
+                    <Label Text="This is the end... Pull down to refresh latest posts"
+                           HorizontalOptions="CenterAndExpand"
+                           FontFamily="MR" />
+                </StackLayout>
+            </CollectionView.Footer>
         </CollectionView>
-
+        
     </RefreshView>
 </ContentPage>

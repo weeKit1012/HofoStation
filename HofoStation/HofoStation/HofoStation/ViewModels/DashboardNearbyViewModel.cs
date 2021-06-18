@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 
@@ -51,6 +52,7 @@ namespace HofoStation.ViewModels
 
                 if (currentLocation == null)
                 {
+                    SecureStorage.RemoveAll();
                     await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
                 }
                 else

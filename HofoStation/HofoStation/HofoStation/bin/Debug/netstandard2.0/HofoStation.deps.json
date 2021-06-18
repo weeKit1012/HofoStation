@@ -16,7 +16,6 @@
           "Newtonsoft.Json": "13.0.1",
           "Refractored.MvvmHelpers": "1.6.2",
           "Rg.Plugins.Popup": "2.0.0.11",
-          "Xamarin.Auth": "1.7.0",
           "Xamarin.CommunityToolkit": "1.1.0",
           "Xamarin.Essentials": "1.6.1",
           "Xamarin.Forms": "5.0.0.2012",
@@ -277,14 +276,6 @@
         }
       },
       "System.ValueTuple/4.5.0": {},
-      "Xamarin.Auth/1.7.0": {
-        "runtime": {
-          "lib/netstandard1.6/Xamarin.Auth.dll": {
-            "assemblyVersion": "1.6.0.1",
-            "fileVersion": "1.6.0.1"
-          }
-        }
-      },
       "Xamarin.CommunityToolkit/1.1.0": {
         "dependencies": {
           "System.Reflection.Emit.Lightweight": "4.7.0",
@@ -515,13 +506,6 @@
       "sha512": "sha512-okurQJO6NRE/apDIP23ajJ0hpiNmJ+f0BwOlB/cSqTLQlw5upkf+5+96+iG2Jw40G1fCVCyPz/FhIABUjMR+RQ==",
       "path": "system.valuetuple/4.5.0",
       "hashPath": "system.valuetuple.4.5.0.nupkg.sha512"
-    },
-    "Xamarin.Auth/1.7.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-F5yMDdHmcBRochGOeeyIRJ2fangsCEodSbOwg4TQT5kJnsT/CjP6ieXbFfFF9ccni66EgbQ7NTTjvajUlD3IGQ==",
-      "path": "xamarin.auth/1.7.0",
-      "hashPath": "xamarin.auth.1.7.0.nupkg.sha512"
     },
     "Xamarin.CommunityToolkit/1.1.0": {
       "type": "package",
