@@ -3,6 +3,7 @@ using HofoStation.Services.Interfaces;
 using HofoStation.Views;
 using MvvmHelpers.Commands;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace HofoStation.ViewModels
@@ -47,43 +48,70 @@ namespace HofoStation.ViewModels
 
         private async Task User_Login()
         {
-            IsBusy = true;
-            IsNotBusy = false;
-
-            if (string.IsNullOrWhiteSpace(email) || 
-                string.IsNullOrWhiteSpace(password))
+            try
             {
-                IsBusy = false;
-                IsNotBusy = true;
-                await Shell.Current.DisplayAlert("Input Error", "Please enter corrent credential", "OK");
-                return;
+                IsBusy = true;
+                IsNotBusy = false;
+
+                if (string.IsNullOrWhiteSpace(email) ||
+                    string.IsNullOrWhiteSpace(password))
+                {
+                    IsBusy = false;
+                    IsNotBusy = true;
+                    await Shell.Current.DisplayAlert("Input Error", "Please enter corrent credential", "OK");
+                    return;
+                }
+
+                var _user = await userService.LoginUser(email, password);
+
+                if (_user == null)
+                {
+                    IsBusy = false;
+                    IsNotBusy = true;
+                    await Shell.Current.DisplayAlert("Failed to login", "Please enter corrent credential", "OK");
+                }
+                else
+                {
+                    IsBusy = false;
+                    IsNotBusy = true;
+                    iToast?.MakeToast("Login successfully");
+
+                    await SecureStorage.SetAsync("email", email);
+                    await SecureStorage.SetAsync("token", password);
+
+                    Application.Current.Properties["loggedUser"] = _user;
+                    await Shell.Current.GoToAsync($"//{nameof(DashboardNearbyPage)}");
+                }
             }
-
-            var _user = await userService.LoginUser(email, password);
-
-            if (_user == null)
+            catch (System.Exception)
             {
-                IsBusy = false;
-                IsNotBusy = true;
-                await Shell.Current.DisplayAlert("Failed to login", "Please enter corrent credential", "OK");
+                throw;
             }
-            else
-            {
-                IsBusy = false;
-                IsNotBusy = true;
-                iToast?.MakeToast("Login successfully");
-                Application.Current.Properties["loggedUser"] = _user;
-                await Shell.Current.GoToAsync($"//{nameof(DashboardNearbyPage)}");
-            }      
-        }      
+        }
 
-        public void onAppearing()
+        public async void OnAppearing()
         {
             Email = null;
             Password = null;
+
+            try
+            {
+                var prevEmail = await SecureStorage.GetAsync("email");
+                var prevPassword = await SecureStorage.GetAsync("token");
+
+                if (!string.IsNullOrEmpty(prevEmail) && !string.IsNullOrEmpty(prevPassword))
+                {
+                    var _user = await userService.LoginUser(prevEmail, prevPassword);
+                    Application.Current.Properties["loggedUser"] = _user;
+                    iToast?.MakeToast("Welcome back");
+                    await Shell.Current.GoToAsync($"//{nameof(DashboardNearbyPage)}");
+                }
+            }
+            catch (System.Exception)
+            {
+
+                throw;
+            }
         }
-        //SetProperty
-        //AynscCommand
-        //ObserverableRangeCollection & ObservarableCollection
     }
 }

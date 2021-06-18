@@ -22,7 +22,7 @@ namespace HofoStation.ViewModels
         public AsyncCommand SelectCommand { get; }
 
         public DashboardNearbyViewModel()
-        {           
+        {
             Posts = new ObservableRangeCollection<Post>();
             ExecuteLoadItemCommand = new AsyncCommand(GetPostList);
             SelectCommand = new AsyncCommand(Selected);
@@ -37,7 +37,7 @@ namespace HofoStation.ViewModels
                 IsBusy = true;
                 SelectedPost = null;
             }
-            
+
         }
 
         async Task GetPostList()
@@ -49,33 +49,38 @@ namespace HofoStation.ViewModels
 
                 Geopoint currentLocation = await GetLocation();
 
-                var list = await postService.GetAllPostGeo(currentLocation.latitude, currentLocation.longitude);
-
-                if (list == null)
+                if (currentLocation == null)
                 {
-                    list = new List<Post>();                   
+                    await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
                 }
-
-                foreach (var item in list)
+                else
                 {
-                    string format = "dd-MM-yyyy";
-                    DateTime _datetime = DateTime.ParseExact(item.post_timestamp, format, CultureInfo.InvariantCulture);
-                    DateTime current = DateTime.Now.Date;
-                    var diff = (current.Date - _datetime.Date).TotalDays;
+                    var list = await postService.GetAllPostGeo(currentLocation.latitude, currentLocation.longitude);
 
-                    if (diff < 1)
+                    if (list == null)
                     {
-                        item.post_timestamp = "Today";
+                        list = new List<Post>();
                     }
-                    else
+
+                    foreach (var item in list)
                     {
-                        item.post_timestamp = $"{Convert.ToInt32(diff)} day(s) ago";
+                        string format = "dd-MM-yyyy";
+                        DateTime _datetime = DateTime.ParseExact(item.post_timestamp, format, CultureInfo.InvariantCulture);
+                        DateTime current = DateTime.Now.Date;
+                        var diff = (current.Date - _datetime.Date).TotalDays;
+
+                        if (diff < 1)
+                        {
+                            item.post_timestamp = "Today";
+                        }
+                        else
+                        {
+                            item.post_timestamp = $"{Convert.ToInt32(diff)} day(s) ago";
+                        }
                     }
+
+                    Posts.AddRange(list);
                 }
-
-                Posts.AddRange(list);
-
-
             }
             catch (Exception)
             {

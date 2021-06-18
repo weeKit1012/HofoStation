@@ -25,6 +25,11 @@
       </intent-filter>
     </activity>
     <service android:name="crc64396a3fe5f8138e3f.KeepAliveService" />
+    <activity android:name="crc64f98dd38067c0c88b.FormAuthenticatorActivity" android:label="Web Authenticator" />
+    <activity android:name="crc64f98dd38067c0c88b.WebAuthenticatorActivity" android:label="Web Authenticator" />
+    <activity android:name="crc64f98dd38067c0c88b.WebViewActivity" android:label="@string/title_activity_webview" android:theme="@android:style/Theme.DeviceDefault" />
+    <activity android:name="crc64f98dd38067c0c88b.WebAuthenticatorNativeBrowserActivity" android:label="Web Authenticator Native Browser" android:launchMode="singleTop" />
+    <receiver android:name="crc64f98dd38067c0c88b.CustomTabsActionsBroadcastReceiver" />
     <receiver android:name="crc64a0e0a82d0db9a07d.BatteryBroadcastReceiver" android:enabled="true" android:exported="false" android:label="Essentials Battery Broadcast Receiver" />
     <receiver android:name="crc64a0e0a82d0db9a07d.EnergySaverBroadcastReceiver" android:enabled="true" android:exported="false" android:label="Essentials Energy Saver Broadcast Receiver" />
     <receiver android:name="crc64a0e0a82d0db9a07d.ConnectivityBroadcastReceiver" android:enabled="true" android:exported="false" android:label="Essentials Connectivity Broadcast Receiver" />

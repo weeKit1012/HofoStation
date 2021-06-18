@@ -2,6 +2,7 @@
 using HofoStation.Views;
 using MvvmHelpers.Commands;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace HofoStation.ViewModels
@@ -102,6 +103,7 @@ namespace HofoStation.ViewModels
             if (result)
             {
                 Application.Current.Properties["loggedUser"] = null;
+                SecureStorage.RemoveAll();
 
                 await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
             }               

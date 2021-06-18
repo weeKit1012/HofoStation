@@ -40,24 +40,28 @@ namespace HofoStation.ViewModels
             {
                 // Handle not supported on device exception
                 await Shell.Current.DisplayAlert("Warning", "Your device does not support GPS feature.", "OK");
+                point = null;
                 return point;
             }
             catch (FeatureNotEnabledException)
             {
                 // Handle not enabled on device exception
                 await Shell.Current.DisplayAlert("Warning", "Please enable the GPS feature on your device.", "OK");
+                point = null;
                 return point;
             }
             catch (PermissionException)
             {
                 // Handle permission exception
                 await Shell.Current.DisplayAlert("Warning", "Please allow the GPS feature on your device.", "OK");
+                point = null;
                 return point;
             }
             catch (Exception)
             {
                 // Unable to get location
                 await Shell.Current.DisplayAlert("Warning", "Cannot get your current location. Please try again later.", "OK");
+                point = null;
                 return point;
             }
         }

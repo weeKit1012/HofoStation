@@ -147,6 +147,7 @@ namespace HofoStation.ViewModels
             PostDescription = null;
             PostTitle = null;           
             ImageSource = null;
+            imagePath = null;
         }
     }
 }
