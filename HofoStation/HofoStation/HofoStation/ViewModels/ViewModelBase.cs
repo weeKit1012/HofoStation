@@ -65,6 +65,18 @@ namespace HofoStation.ViewModels
                 return point;
             }
         }
+
+        public bool CheckBackButton()
+        {
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                var exit = await Shell.Current.DisplayAlert("Confirm Exit", "Do you really want to exit the application?", "Yes", "No").ConfigureAwait(false);
+
+                if (exit)
+                    System.Diagnostics.Process.GetCurrentProcess().CloseMainWindow();
+            });
+            return true;
+        }
     }
 
     public class Geopoint

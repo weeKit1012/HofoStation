@@ -59,7 +59,7 @@
             
             <CollectionView.Footer>
                 <StackLayout Orientation="Horizontal"
-                             Padding="0,20,0,10"
+                             Padding="0,130,0,10"
                              HorizontalOptions="Center">
                     <Label Text="This is the end... Pull down to refresh latest posts"
                            HorizontalOptions="CenterAndExpand"

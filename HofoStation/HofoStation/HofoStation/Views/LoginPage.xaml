@@ -72,6 +72,7 @@
         </StackLayout>
 
         <ActivityIndicator IsRunning="{Binding IsBusy ,Mode=OneWay}"
+                           IsVisible="{Binding IsBusy, Mode=OneWay}"
                            Grid.Row="1"
                            HorizontalOptions="Center"
                            VerticalOptions="Center"

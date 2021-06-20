@@ -103,5 +103,21 @@ namespace HofoStation.Services
 
             return temp;
         }
+
+        public async Task<IEnumerable<Post>> GetUserPost(string id)
+        {
+            Init();
+            var json = await client.GetStringAsync($"post/post_get_user/?requestID={id}");
+            var results = JsonConvert.DeserializeObject<PostResponse>(json);
+
+            if (results.success)
+            {
+                return results.posts;
+            }
+            else
+            {
+                return new List<Post>();
+            }
+        }
     }
 }

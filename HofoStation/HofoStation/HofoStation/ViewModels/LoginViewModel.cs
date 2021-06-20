@@ -89,27 +89,37 @@ namespace HofoStation.ViewModels
             }
         }
 
-        public async void OnAppearing()
+        public void OnAppearing()
         {
             Email = null;
             Password = null;
 
+            CheckIsLogged();
+        }
+
+        private async void CheckIsLogged()
+        {
             try
             {
+                IsBusy = true;
+              
                 var prevEmail = await SecureStorage.GetAsync("email");
                 var prevPassword = await SecureStorage.GetAsync("token");
 
                 if (!string.IsNullOrEmpty(prevEmail) && !string.IsNullOrEmpty(prevPassword))
                 {
+                    await Task.Delay(5000);
+                    IsBusy = false;
                     var _user = await userService.LoginUser(prevEmail, prevPassword);
                     Application.Current.Properties["loggedUser"] = _user;
                     iToast?.MakeToast("Welcome back");
                     await Shell.Current.GoToAsync($"//{nameof(DashboardNearbyPage)}");
                 }
+
+                IsBusy = false;
             }
             catch (System.Exception)
             {
-
                 throw;
             }
         }

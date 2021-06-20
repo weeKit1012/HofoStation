@@ -12,5 +12,6 @@ namespace HofoStation.Services
         Task<IEnumerable<Post>> GetAllPost();
         Task<string> uploadToBlobAsync(Stream stream);
         Task<Post> GetPostDetail(string id);
+        Task<IEnumerable<Post>> GetUserPost(string id);
     }
 }

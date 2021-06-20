@@ -27,5 +27,10 @@ namespace HofoStation.Views
 
             base.OnDisappearing();
         }
+
+        protected override bool OnBackButtonPressed()
+        {
+            return vm.CheckBackButton();
+        }
     }
 }

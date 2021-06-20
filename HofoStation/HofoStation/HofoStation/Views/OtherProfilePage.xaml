@@ -7,12 +7,25 @@
     <ContentPage.BindingContext>
         <vm:OtherProfileViewModel />
     </ContentPage.BindingContext>
-    
+
     <ContentPage.Content>
         <StackLayout>
             <Label Text="{Binding UserId}"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+                   VerticalOptions="CenterAndExpand"
+                   HorizontalOptions="CenterAndExpand" />
+            <Label Text="{Binding Name}"
+                   VerticalOptions="CenterAndExpand"
+                   HorizontalOptions="CenterAndExpand" />
+            <Label Text="{Binding Phone}"
+                   VerticalOptions="CenterAndExpand"
+                   HorizontalOptions="CenterAndExpand" />
+            <Label Text="{Binding Gender}"
+                   VerticalOptions="CenterAndExpand"
+                   HorizontalOptions="CenterAndExpand" />
+            <Button Text="Chat"
+                    Command="{Binding GoChatCommand}"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
