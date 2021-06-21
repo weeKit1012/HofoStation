@@ -11,10 +11,10 @@ namespace HofoStation.ViewModels
 {
     public class UpdateProfileViewModel : ViewModelBase
     {
-        User _user;
-        IUserService userService;
-        IPostService postService;
-        IToast iToast;
+        private readonly User _user;
+        private readonly IUserService userService;
+        private readonly IPostService postService;
+        private readonly IToast iToast;
         public AsyncCommand UpdateCommand { get; }
         public AsyncCommand OpenGalleryCommand { get; }
 
@@ -31,7 +31,7 @@ namespace HofoStation.ViewModels
             Initialize();
         }
 
-        async Task OpenGallery()
+        private async Task OpenGallery()
         {
             try
             {
@@ -53,7 +53,7 @@ namespace HofoStation.ViewModels
             
         }
 
-        async Task UpdateProfile()
+        private async Task UpdateProfile()
         {
             if (!ValidateField())
             {
@@ -72,7 +72,7 @@ namespace HofoStation.ViewModels
                     user_image = newimagepath
                 };
 
-                var result = await userService.UpdateUser(userObj);
+                bool result = await userService.UpdateUser(userObj);
 
                 if (result)
                 {
@@ -97,12 +97,12 @@ namespace HofoStation.ViewModels
                     user_image = _user.user_image
                 };
 
-                var result = await userService.UpdateUser(userObj);
+                bool result = await userService.UpdateUser(userObj);
 
                 if (result)
                 {
                     iToast?.MakeToast("Update successfully");
-                    var updatedUser = await userService.LoginUser(_user.user_email, npassword);
+                    User updatedUser = await userService.LoginUser(_user.user_email, npassword);
                     Application.Current.Properties["loggedUser"] = updatedUser;
                     await Task.Delay(1000);
                     await Shell.Current.GoToAsync("..");
@@ -114,9 +114,9 @@ namespace HofoStation.ViewModels
             }
         }
 
-        string opassword,npassword, rpassword, phone;
-        ImageSource currentimagesource;
-        string newimagepath = null;
+        private string opassword,npassword, rpassword, phone;
+        private ImageSource currentimagesource;
+        private string newimagepath = null;
 
         public string Opassword
         {
@@ -148,13 +148,13 @@ namespace HofoStation.ViewModels
             set => SetProperty(ref currentimagesource, value);
         }
 
-        void Initialize()
+        private void Initialize()
         {
             CurrentImageSource = _user.user_image;
             Phone = _user.user_phone;
         }
 
-        bool ValidateField()
+        private bool ValidateField()
         {
             if (string.IsNullOrWhiteSpace(opassword) || string.IsNullOrWhiteSpace(npassword) || 
                 string.IsNullOrWhiteSpace(rpassword) || string.IsNullOrWhiteSpace(phone))

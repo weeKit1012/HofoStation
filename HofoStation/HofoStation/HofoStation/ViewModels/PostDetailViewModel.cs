@@ -3,22 +3,21 @@ using HofoStation.Services;
 using HofoStation.Views;
 using MvvmHelpers.Commands;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace HofoStation.ViewModels
 {
     [QueryProperty(nameof(PostId), nameof(PostId))]
+    [QueryProperty(nameof(IsNotFromProfile), nameof(IsNotFromProfile))]
     public class PostDetailViewModel : ViewModelBase
     {
-        IPostService postService;
-        IUserService userService;
-        IVoteService voteService;
+        private readonly IPostService postService;
+        private readonly IUserService userService;
+        private readonly IVoteService voteService;
         public AsyncCommand CreateVote { get; }
         public AsyncCommand GoOtherUserProfile { get; }
-        private User currentUser;
+        private readonly User currentUser;
 
         public PostDetailViewModel()
         {
@@ -30,6 +29,7 @@ namespace HofoStation.ViewModels
             currentUser = (User)Application.Current.Properties["loggedUser"];
             IsNotVoted = true;
             IsNotCurrentUser = true;
+            IsNotFromProfile = true;
         }
 
         private string postId;
@@ -53,12 +53,12 @@ namespace HofoStation.ViewModels
         {
             try
             {
-                var item = await postService.GetPostDetail(id);
-                var _user = await userService.GetUser(item.user_id);
-                var voteCount = await voteService.GetVoteCount(id);
+                Post item = await postService.GetPostDetail(id);
+                User _user = await userService.GetUser(item.user_id);
+                int voteCount = await voteService.GetVoteCount(id);
 
-                await checkVote(id, currentUser.id);
-                checkIsCurrentUser(item.user_id);
+                await CheckVote(id, currentUser.id);
+                CheckIsCurrentUser(item.user_id);
 
                 Id = item.id;
                 OwnerId = item.user_id;
@@ -138,14 +138,13 @@ namespace HofoStation.ViewModels
             }
         }
 
-
-        bool isNotVoted;
+        private bool isNotVoted;
         public bool IsNotVoted {
             get => isNotVoted;
             set => SetProperty(ref isNotVoted, value);
         }
 
-        private async Task checkVote(string postId, string userId)
+        private async Task CheckVote(string postId, string userId)
         {
             Vote _vote = new Vote
             {
@@ -153,32 +152,33 @@ namespace HofoStation.ViewModels
                 user_id = userId
             };
 
-            var result = await voteService.CheckVoteExist(_vote);
+            int result = await voteService.CheckVoteExist(_vote);
 
-            if (result > 0)
-                IsNotVoted = false;
-            else
-                IsNotVoted = true;
+            IsNotVoted = result <= 0;
         }
 
-        bool isNotCurrentUser;
+        private bool isNotCurrentUser;
         public bool IsNotCurrentUser
         {
             get => isNotCurrentUser;
             set => SetProperty(ref isNotCurrentUser, value);
         }
 
-        private void checkIsCurrentUser(string ownerId)
+        private void CheckIsCurrentUser(string ownerId)
         {
-            if (currentUser.id == ownerId)
-                IsNotCurrentUser = false;
-            else
-                IsNotCurrentUser = true;
+            IsNotCurrentUser = currentUser.id != ownerId;
         }
 
         private async Task RedirectToNextPage()
         {
             await Shell.Current.GoToAsync($"{nameof(OtherProfilePage)}?UserId={OwnerId}");
+        }
+
+        private bool isNotFromProfile;
+        public bool IsNotFromProfile
+        {
+            get => isNotFromProfile;
+            set => SetProperty(ref isNotFromProfile, value);
         }
     }
 }

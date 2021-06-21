@@ -79,7 +79,8 @@
                
             <StackLayout Grid.Row="2" 
                          Orientation="Horizontal" 
-                         HorizontalOptions="CenterAndExpand">
+                         HorizontalOptions="CenterAndExpand"
+                         IsVisible="{Binding IsNotFromProfile}">
                 <Button WidthRequest="150" 
                         Margin="10,10,10,20" 
                         Command="{Binding CreateVote}"

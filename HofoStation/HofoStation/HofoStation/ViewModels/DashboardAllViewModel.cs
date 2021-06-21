@@ -14,7 +14,8 @@ namespace HofoStation.ViewModels
 {
     public class DashboardAllViewModel : ViewModelBase
     {
-        IPostService postService;
+        private User _user;
+        private readonly IPostService postService;
         public ObservableRangeCollection<Post> Posts { get; set; }
         public AsyncCommand ExecuteLoadItemCommand { get; }
         public AsyncCommand SelectCommand { get; }
@@ -29,6 +30,8 @@ namespace HofoStation.ViewModels
 
         public void OnAppearing()
         {
+            _user = (User)Application.Current.Properties["loggedUser"];
+
             //To prevent list being refreshed every time
             if (Posts.Count == 0)
             {
@@ -38,8 +41,8 @@ namespace HofoStation.ViewModels
 
         }
 
-        Post selectedPost;
-        Post postSelected;
+        private Post selectedPost;
+        private Post postSelected;
 
         public Post SelectedPost
         {
@@ -61,13 +64,9 @@ namespace HofoStation.ViewModels
             //Cuz SelectionChanged will auto be triggered twice
             if (postSelected != null)
             {
-                var post = postSelected;
+                Post post = postSelected;
                 postSelected = null;
                 await Shell.Current.GoToAsync($"{nameof(PostDetailPage)}?PostId={post.id}");
-            }
-            else
-            {
-
             }
         }
 
@@ -78,28 +77,23 @@ namespace HofoStation.ViewModels
                 IsBusy = true;
                 Posts.Clear();
 
-                var list = await postService.GetAllPost();
+                List<Post> list = (List<Post>)await postService.GetAllPost();
 
                 if (list == null)
                 {
                     list = new List<Post>();
                 }
 
+                list.RemoveAll(p => p.user_id == _user.id);
+
                 foreach (var item in list)
                 {
                     string format = "dd-MM-yyyy";
                     DateTime _datetime = DateTime.ParseExact(item.post_timestamp, format, CultureInfo.InvariantCulture);
                     DateTime current = DateTime.Now.Date;
-                    var diff = (current.Date - _datetime.Date).TotalDays;
+                    double diff = (current.Date - _datetime.Date).TotalDays;
 
-                    if (diff < 1)
-                    {
-                        item.post_timestamp = "Today";
-                    }
-                    else
-                    {
-                        item.post_timestamp = $"{Convert.ToInt32(diff)} day(s) ago";
-                    }
+                    item.post_timestamp = diff < 1 ? "Today" : $"{Convert.ToInt32(diff)} day(s) ago";
                 }
 
                 Posts.AddRange(list);

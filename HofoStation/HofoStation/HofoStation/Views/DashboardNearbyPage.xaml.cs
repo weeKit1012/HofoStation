@@ -19,7 +19,7 @@ namespace HofoStation.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            vm.onAppearing();
+            vm.OnAppearing();
         }
 
         protected override bool OnBackButtonPressed()

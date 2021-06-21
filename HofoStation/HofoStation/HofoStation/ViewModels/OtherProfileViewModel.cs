@@ -4,6 +4,7 @@ using HofoStation.Views;
 using MvvmHelpers;
 using MvvmHelpers.Commands;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
@@ -12,12 +13,13 @@ namespace HofoStation.ViewModels
     [QueryProperty(nameof(UserId), nameof(UserId))]
     public class OtherProfileViewModel : ViewModelBase
     {
-        IUserService userService;
-        IPostService postService;
-        User owner;
+        private readonly IUserService userService;
+        private readonly IPostService postService;
+        private User owner;
         public ObservableRangeCollection<Post> Posts { get; set; }
         public AsyncCommand LoadItemsCommand { get; }
         public AsyncCommand GoChatCommand { get; }
+        public AsyncCommand SelectCommand { get; }
 
         public OtherProfileViewModel()
         {
@@ -26,6 +28,7 @@ namespace HofoStation.ViewModels
             Posts = new ObservableRangeCollection<Post>();
             LoadItemsCommand = new AsyncCommand(GetPostList);
             GoChatCommand = new AsyncCommand(GoToChat);
+            SelectCommand = new AsyncCommand(Selected);
         }
 
         private async Task GetPostList()
@@ -35,7 +38,7 @@ namespace HofoStation.ViewModels
                 IsBusy = true;
                 Posts.Clear();
 
-                var list = await postService.GetUserPost(userId);
+                IEnumerable<Post> list = await postService.GetUserPost(userId);
 
                 Posts.AddRange(list);
             }
@@ -43,9 +46,13 @@ namespace HofoStation.ViewModels
             {
                 throw;
             }
+            finally
+            {
+                IsBusy = false;
+            }
         }
 
-        string userId;
+        private string userId;
         public string UserId
         {
             get => userId;
@@ -56,6 +63,12 @@ namespace HofoStation.ViewModels
         {
             try
             {
+                //Refresh the CV
+                if (Posts.Count == 0)
+                {
+                    IsBusy = true;
+                }
+
                 ClearField();
 
                 owner = await userService.GetUser(userId);
@@ -69,7 +82,7 @@ namespace HofoStation.ViewModels
                     await Shell.Current.DisplayAlert("Error", "There are some problem in loading the page. Please try again later.", "OK");
                     await Shell.Current.GoToAsync("..");
                 }
-                    
+
             }
             catch (Exception)
             {
@@ -98,8 +111,8 @@ namespace HofoStation.ViewModels
             ImageUrl = null;
         }
 
-        string name, gender, phone;
-        ImageSource imageUrl;
+        private string name, gender, phone;
+        private ImageSource imageUrl;
 
         public string Name
         {
@@ -123,6 +136,35 @@ namespace HofoStation.ViewModels
         {
             get => imageUrl;
             set => SetProperty(ref imageUrl, value);
+        }
+
+        private Post selectedPost;
+        private Post postSelected;
+
+        public Post SelectedPost
+        {
+            get => selectedPost;
+            set
+            {
+                if (value != null)
+                {
+                    postSelected = value;
+                    value = null;
+                }
+                selectedPost = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private async Task Selected()
+        {
+            //Cuz SelectionChanged will auto be triggered twice
+            if (postSelected != null)
+            {
+                Post post = postSelected;
+                postSelected = null;
+                await Shell.Current.GoToAsync($"{nameof(PostDetailPage)}?PostId={post.id}&IsNotFromProfile={false}");
+            }
         }
     }
 }

@@ -13,5 +13,7 @@ namespace HofoStation.Services
         Task<string> uploadToBlobAsync(Stream stream);
         Task<Post> GetPostDetail(string id);
         Task<IEnumerable<Post>> GetUserPost(string id);
+        Task<bool> UpdatePost(Post _post);
+        Task<bool> DeletePost(Post _post);
     }
 }

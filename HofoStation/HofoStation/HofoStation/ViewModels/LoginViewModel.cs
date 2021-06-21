@@ -1,4 +1,5 @@
-﻿using HofoStation.Services;
+﻿using HofoStation.Models;
+using HofoStation.Services;
 using HofoStation.Services.Interfaces;
 using HofoStation.Views;
 using MvvmHelpers.Commands;
@@ -10,8 +11,8 @@ namespace HofoStation.ViewModels
 {
     public class LoginViewModel : ViewModelBase
     {
-        IToast iToast;
-        IUserService userService;
+        private readonly IToast iToast;
+        private readonly IUserService userService;
         public AsyncCommand GoRegisterCommand { get; }
         public AsyncCommand LoginCommand { get; }
 
@@ -25,7 +26,7 @@ namespace HofoStation.ViewModels
             iToast = DependencyService.Get<IToast>();
         }
 
-        string email, password;
+        private string email, password;
 
         public string Email
         {
@@ -41,7 +42,7 @@ namespace HofoStation.ViewModels
 
         private async Task RedirectToRegister()
         {
-            var route = $"{nameof(RegisterPage)}";
+            string route = $"{nameof(RegisterPage)}";
 
             await Shell.Current.GoToAsync(route);
         }
@@ -62,7 +63,7 @@ namespace HofoStation.ViewModels
                     return;
                 }
 
-                var _user = await userService.LoginUser(email, password);
+                User _user = await userService.LoginUser(email, password);
 
                 if (_user == null)
                 {
@@ -102,15 +103,15 @@ namespace HofoStation.ViewModels
             try
             {
                 IsBusy = true;
-              
-                var prevEmail = await SecureStorage.GetAsync("email");
-                var prevPassword = await SecureStorage.GetAsync("token");
+
+                string prevEmail = await SecureStorage.GetAsync("email");
+                string prevPassword = await SecureStorage.GetAsync("token");
 
                 if (!string.IsNullOrEmpty(prevEmail) && !string.IsNullOrEmpty(prevPassword))
                 {
-                    await Task.Delay(5000);
+                    await Task.Delay(2000);
+                    User _user = await userService.LoginUser(prevEmail, prevPassword);
                     IsBusy = false;
-                    var _user = await userService.LoginUser(prevEmail, prevPassword);
                     Application.Current.Properties["loggedUser"] = _user;
                     iToast?.MakeToast("Welcome back");
                     await Shell.Current.GoToAsync($"//{nameof(DashboardNearbyPage)}");

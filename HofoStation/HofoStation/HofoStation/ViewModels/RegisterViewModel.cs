@@ -12,8 +12,8 @@ namespace HofoStation.ViewModels
 {
     public class RegisterViewModel : ViewModelBase
     {
-        IToast iToast;
-        IUserService userService;
+        private readonly IToast iToast;
+        private readonly IUserService userService;
         public AsyncCommand RegisterCommand { get; }
         public AsyncCommand BackCommand { get; }
 
@@ -27,7 +27,7 @@ namespace HofoStation.ViewModels
             iToast = DependencyService.Get<IToast>();
         }
 
-        string fname, lname, email, password, rpassword, phone, gender;
+        private string fname, lname, email, password, rpassword, phone, gender;
 
         public string Fname
         {
@@ -83,7 +83,7 @@ namespace HofoStation.ViewModels
             IsBusy = true;
             IsNotBusy = false;
 
-            if (!isValidate())
+            if (!IsValidate())
             {
                 IsBusy = false;
                 IsNotBusy = true;
@@ -116,7 +116,7 @@ namespace HofoStation.ViewModels
                 IsBusy = false;
                 IsNotBusy = true;
                 await Shell.Current.DisplayAlert("Register Fail", "Please try again later or try with another email address.", "OK");
-            }         
+            }
         }
 
         async Task BackToLogin()
@@ -124,21 +124,13 @@ namespace HofoStation.ViewModels
             await Shell.Current.GoToAsync("..");
         }
 
-        bool isValidate()
+        private bool IsValidate()
         {
-            if (string.IsNullOrWhiteSpace(fname) || string.IsNullOrWhiteSpace(lname) ||
-                string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password) ||
-                string.IsNullOrWhiteSpace(rpassword) || string.IsNullOrWhiteSpace(phone) ||
-                string.IsNullOrWhiteSpace(gender))
-            {
-                return false;
-            }
-            else if (password != rpassword)
-            {
-                return false;
-            }
-            else
-                return true;
+            return !string.IsNullOrWhiteSpace(fname) && !string.IsNullOrWhiteSpace(lname) &&
+                    !string.IsNullOrWhiteSpace(email) && !string.IsNullOrWhiteSpace(password) &&
+                    !string.IsNullOrWhiteSpace(rpassword) && !string.IsNullOrWhiteSpace(phone) &&
+                    !string.IsNullOrWhiteSpace(gender)
+                    && password == rpassword;
         }
     }
 }

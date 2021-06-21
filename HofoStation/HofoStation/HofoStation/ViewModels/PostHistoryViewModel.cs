@@ -6,42 +6,66 @@ using MvvmHelpers;
 using MvvmHelpers.Commands;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
 using System.Threading.Tasks;
-using Xamarin.Essentials;
 using Xamarin.Forms;
-
 
 namespace HofoStation.ViewModels
 {
-    public class DashboardNearbyViewModel : ViewModelBase
+    public class PostHistoryViewModel : ViewModelBase
     {
         private User _user;
         private readonly IPostService postService;
+        private readonly IToast iToast;
         public ObservableRangeCollection<Post> Posts { get; set; }
         public AsyncCommand ExecuteLoadItemCommand { get; }
-
         public AsyncCommand SelectCommand { get; }
+        public AsyncCommand<Post> UpdateCommand { get; }
+        public AsyncCommand<Post> DeleteCommand { get; }
 
-        public DashboardNearbyViewModel()
+        public PostHistoryViewModel()
         {
+            postService = DependencyService.Get<IPostService>();
+            iToast = DependencyService.Get<IToast>();
             Posts = new ObservableRangeCollection<Post>();
             ExecuteLoadItemCommand = new AsyncCommand(GetPostList);
             SelectCommand = new AsyncCommand(Selected);
-            postService = DependencyService.Get<IPostService>();
+            UpdateCommand = new AsyncCommand<Post>(RedirectToUpdate);
+            DeleteCommand = new AsyncCommand<Post>(DeleteConfirm);
+        }
+
+        private async Task DeleteConfirm(Post _post)
+        {
+            bool confirmed = await Shell.Current.DisplayAlert("Confirm", "Are you going to delete the post? (Unable to recover once deleted)", "Yes", "No");
+
+            if (confirmed)
+            {
+                bool result = await postService.DeletePost(new Post { id = _post.id });
+
+                if (result)
+                {
+                    iToast?.MakeToast("Post Deleted");
+                    IsBusy = true;
+                }
+                else
+                {
+                    await Shell.Current.DisplayAlert("Error", "There are some problem. Please try again later", "OK");
+                }
+            }
+        }
+
+        private async Task RedirectToUpdate(Post _post)
+        {
+            await Shell.Current.GoToAsync($"{nameof(UpdatePostPage)}?PostId={_post.id}");
         }
 
         public void OnAppearing()
         {
             _user = (User)Application.Current.Properties["loggedUser"];
-            //To prevent list being refreshed every time
+
             if (Posts.Count == 0)
             {
                 IsBusy = true;
-                SelectedPost = null;
             }
-
         }
 
         private async Task GetPostList()
@@ -51,36 +75,9 @@ namespace HofoStation.ViewModels
                 IsBusy = true;
                 Posts.Clear();
 
-                Geopoint currentLocation = await GetLocation();
+                IEnumerable<Post> list = await postService.GetUserPost(_user.id);
 
-                if (currentLocation == null)
-                {
-                    SecureStorage.RemoveAll();
-                    await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
-                }
-                else
-                {
-                    List<Post> list = (List<Post>)await postService.GetAllPostGeo(currentLocation.latitude, currentLocation.longitude);
-
-                    if (list == null)
-                    {
-                        list = new List<Post>();
-                    }
-
-                    list.RemoveAll(p => p.user_id == _user.id);
-
-                    foreach (Post item in list)
-                    {
-                        string format = "dd-MM-yyyy";
-                        DateTime _datetime = DateTime.ParseExact(item.post_timestamp, format, CultureInfo.InvariantCulture);
-                        DateTime current = DateTime.Now.Date;
-                        double diff = (current.Date - _datetime.Date).TotalDays;
-
-                        item.post_timestamp = diff < 1 ? "Today" : $"{Convert.ToInt32(diff)} day(s) ago";
-                    }
-
-                    Posts.AddRange(list);
-                }
+                Posts.AddRange(list);
             }
             catch (Exception)
             {
@@ -117,7 +114,7 @@ namespace HofoStation.ViewModels
             {
                 Post post = postSelected;
                 postSelected = null;
-                await Shell.Current.GoToAsync($"{nameof(PostDetailPage)}?PostId={post.id}");
+                await Shell.Current.GoToAsync($"{nameof(PostDetailPage)}?PostId={post.id}&IsNotFromProfile={false}");
             }
         }
     }

@@ -20,10 +20,10 @@ namespace HofoStation.ViewModels
         {
             try
             {
-                var request = new GeolocationRequest(GeolocationAccuracy.Medium, TimeSpan.FromSeconds(10));
+                GeolocationRequest request = new GeolocationRequest(GeolocationAccuracy.Medium, TimeSpan.FromSeconds(10));
                 cts = new CancellationTokenSource();
-                var location = await Geolocation.GetLocationAsync(request, cts.Token);
-                var point = new Geopoint();
+                Location location = await Geolocation.GetLocationAsync(request, cts.Token);
+                Geopoint point = new Geopoint();
 
                 if (location != null)
                 {
@@ -70,10 +70,12 @@ namespace HofoStation.ViewModels
         {
             Device.BeginInvokeOnMainThread(async () =>
             {
-                var exit = await Shell.Current.DisplayAlert("Confirm Exit", "Do you really want to exit the application?", "Yes", "No").ConfigureAwait(false);
+                bool exit = await Shell.Current.DisplayAlert("Confirm Exit", "Do you really want to exit the application?", "Yes", "No").ConfigureAwait(false);
 
                 if (exit)
-                    System.Diagnostics.Process.GetCurrentProcess().CloseMainWindow();
+                {
+                    _ = System.Diagnostics.Process.GetCurrentProcess().CloseMainWindow();
+                }
             });
             return true;
         }

@@ -119,5 +119,31 @@ namespace HofoStation.Services
                 return new List<Post>();
             }
         }
+
+        public async Task<bool> UpdatePost(Post _post)
+        {
+            Init();
+
+            var temp = JsonConvert.SerializeObject(_post);
+            var request = new StringContent(temp, Encoding.UTF8, "application/json");
+            var response = await client.PostAsync("post/post_update", request);
+            var json = await response.Content.ReadAsStringAsync();
+            var result = JsonConvert.DeserializeObject<OperationResponse>(json);
+
+            return result.success;
+        }
+
+        public async Task<bool> DeletePost(Post _post)
+        {
+            Init();
+
+            var temp = JsonConvert.SerializeObject(_post);
+            var request = new StringContent(temp, Encoding.UTF8, "application/json");
+            var response = await client.PostAsync("post/post_delete", request);
+            var json = await response.Content.ReadAsStringAsync();
+            var result = JsonConvert.DeserializeObject<OperationResponse>(json);
+
+            return result.success;
+        }
     }
 }

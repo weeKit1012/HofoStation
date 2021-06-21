@@ -51,3 +51,4 @@ C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation\
 C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation\bin\Debug\netstandard2.0\FormsViewGroup.dll
 C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation\bin\Debug\netstandard2.0\Xamarin.Forms.Platform.Android.pdb
 C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation\bin\Debug\netstandard2.0\FormsViewGroup.pdb
+C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation\obj\Debug\netstandard2.0\Views\UpdatePostPage.xaml.g.cs

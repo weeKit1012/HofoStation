@@ -4,7 +4,6 @@ using HofoStation.Services.Interfaces;
 using HofoStation.Views;
 using MvvmHelpers.Commands;
 using System;
-using System.Threading;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -13,9 +12,9 @@ namespace HofoStation.ViewModels
 {
     public class CreateViewModel : ViewModelBase
     {
-        User _user;
-        IToast iToast;
-        IPostService postService;
+        private readonly User _user;
+        private readonly IToast iToast;
+        private readonly IPostService postService;
         public AsyncCommand OpenGalleryCommand { get; }
         public AsyncCommand CreateCommand { get; }
 
@@ -29,8 +28,8 @@ namespace HofoStation.ViewModels
             iToast = DependencyService.Get<IToast>();
         }
 
-        ImageSource imageSource;
-        string postTitle, postDescription, imagePath, longitude, latitude;
+        private ImageSource imageSource;
+        private string postTitle, postDescription, imagePath, longitude, latitude;
 
         public ImageSource ImageSource
         {
@@ -50,16 +49,16 @@ namespace HofoStation.ViewModels
             set => SetProperty(ref postDescription, value);
         }
 
-        async Task OpenGallery()
+        private async Task OpenGallery()
         {
             try
             {
-                var result = await MediaPicker.PickPhotoAsync(new MediaPickerOptions
+                FileResult result = await MediaPicker.PickPhotoAsync(new MediaPickerOptions
                 {
                     Title = "Please pick a photo"
                 });
 
-                var stream = await result.OpenReadAsync();
+                System.IO.Stream stream = await result.OpenReadAsync();
 
                 imagePath = await postService.uploadToBlobAsync(stream);
 
@@ -67,12 +66,12 @@ namespace HofoStation.ViewModels
             }
             catch (Exception)
             {
-               
+
             }
-            
+
         }
 
-        async Task CreatePost()
+        private async Task CreatePost()
         {
             IsNotBusy = false;
 
@@ -80,8 +79,8 @@ namespace HofoStation.ViewModels
             {
                 IsNotBusy = true;
                 return;
-            }        
-                
+            }
+
 
             if (!Validate())
             {
@@ -90,7 +89,7 @@ namespace HofoStation.ViewModels
                 return;
             }
 
-            var point = await GetLocation();
+            Geopoint point = await GetLocation();
             longitude = point.longitude;
             latitude = point.latitude;
 
@@ -120,32 +119,30 @@ namespace HofoStation.ViewModels
             }
         }
 
-        async Task<bool> Confirm()
+        private async Task<bool> Confirm()
         {
-            var response = await Shell.Current.DisplayAlert("Confirm", "Are you sure you want to proceed?", "Yes", "No");
+            bool response = await Shell.Current.DisplayAlert("Confirm", "Are you sure you want to proceed?", "Yes", "No");
 
             return response;
         }
 
-        bool Validate()
+        private bool Validate()
         {
-            if (string.IsNullOrWhiteSpace(postTitle) || string.IsNullOrWhiteSpace(postDescription) ||
-                string.IsNullOrEmpty(imagePath))
-                return false;
-            else
-                return true;
+            return !string.IsNullOrWhiteSpace(postTitle) && !string.IsNullOrWhiteSpace(postDescription) && !string.IsNullOrEmpty(imagePath);
         }
 
         public void OnDisappearing()
         {
             if (cts != null && !cts.IsCancellationRequested)
+            {
                 cts.Cancel();
+            }
         }
 
         public void OnAppearing()
         {
             PostDescription = null;
-            PostTitle = null;           
+            PostTitle = null;
             ImageSource = null;
             imagePath = null;
         }

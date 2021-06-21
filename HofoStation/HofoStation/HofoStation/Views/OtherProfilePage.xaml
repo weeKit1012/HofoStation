@@ -2,30 +2,129 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:HofoStation.ViewModels"
+             xmlns:fa="clr-namespace:FontAwesome"
              x:Class="HofoStation.Views.OtherProfilePage">
 
     <ContentPage.BindingContext>
         <vm:OtherProfileViewModel />
     </ContentPage.BindingContext>
 
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="{Binding UserId}"
-                   VerticalOptions="CenterAndExpand"
-                   HorizontalOptions="CenterAndExpand" />
-            <Label Text="{Binding Name}"
-                   VerticalOptions="CenterAndExpand"
-                   HorizontalOptions="CenterAndExpand" />
-            <Label Text="{Binding Phone}"
-                   VerticalOptions="CenterAndExpand"
-                   HorizontalOptions="CenterAndExpand" />
-            <Label Text="{Binding Gender}"
-                   VerticalOptions="CenterAndExpand"
-                   HorizontalOptions="CenterAndExpand" />
-            <Button Text="Chat"
-                    Command="{Binding GoChatCommand}"
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center" />
-        </StackLayout>
-    </ContentPage.Content>
+    <ScrollView>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <StackLayout Grid.Row="0"
+                         Orientation="Horizontal"
+                         VerticalOptions="Center"
+                         Margin="20,10,20,0">
+                <Label Text="{x:Static fa:FontAwesomeIcons.AddressCard}"
+                       FontFamily="FAR"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       FontAttributes="Bold"
+                       TextColor="{StaticResource Primary}"
+                       FontSize="30" />
+                <Label Text="{Binding Name}"
+                       Margin="10,0,0,0"
+                       FontFamily="MB"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       FontAttributes="Bold"
+                       TextColor="{StaticResource Primary}"
+                       FontSize="Small" />
+            </StackLayout>
+
+            <StackLayout Grid.Row="1">
+                <Frame Padding="0"
+                       HeightRequest="150"
+                       WidthRequest="150"
+                       CornerRadius="100"
+                       HorizontalOptions="Center"
+                       IsClippedToBounds="True">
+                    <Image Source="{Binding ImageUrl}"
+                           Aspect="AspectFill" />
+                </Frame>
+            </StackLayout>
+
+            <StackLayout Grid.Row="2"
+                         HorizontalOptions="FillAndExpand"
+                         Orientation="Horizontal"
+                         Margin="0,10,0,20">
+                <StackLayout Margin="20,0,0,0"
+                             Orientation="Vertical">
+                    <Label Text="Title :"
+                           FontFamily="MB" />
+                    <Label Text="Contact Number :"
+                           FontFamily="MB" />
+                </StackLayout>
+                <StackLayout Margin="20,0,0,0"
+                             Orientation="Vertical">
+                    <Label Text="{Binding Gender}"
+                           FontFamily="MR" />
+                    <Label Text="{Binding Phone}"
+                           FontFamily="MR" />
+                </StackLayout>
+            </StackLayout>
+
+            <RefreshView Grid.Row="3"
+                         Command="{Binding LoadItemsCommand}"
+                         IsRefreshing="{Binding IsBusy, Mode=OneWay}">
+                <CollectionView BackgroundColor="Transparent"
+                                ItemSizingStrategy="MeasureFirstItem"
+                                ItemsLayout="VerticalList"
+                                ItemsSource="{Binding Posts}"
+                                SelectedItem="{Binding SelectedPost, Mode=TwoWay}"
+                                SelectionChangedCommand="{Binding SelectCommand}"
+                                SelectionMode="Single">
+
+                    <CollectionView.EmptyView>
+                        <StackLayout Padding="12">
+                            <Label HorizontalOptions="CenterAndExpand"
+                                   VerticalOptions="CenterAndExpand"
+                                   FontFamily="MB"
+                                   Text="This user has no post yet" />
+                        </StackLayout>
+                    </CollectionView.EmptyView>
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Padding="10">
+                                <Frame Style="{StaticResource PostCard}">
+                                    <StackLayout Orientation="Horizontal"
+                                                 HorizontalOptions="FillAndExpand">
+                                        <Frame Style="{StaticResource RoundedImg}">
+                                            <Image Source="{Binding post_image_url}"
+                                                   Aspect="AspectFill" />
+                                        </Frame>
+                                        <StackLayout VerticalOptions="Center"
+                                                     HorizontalOptions="FillAndExpand"
+                                                     Orientation="Vertical"
+                                                     Padding="30,0,0,0">
+                                            <Label FontSize="15"
+                                                   Text="{Binding post_title}"
+                                                   FontFamily="MB"
+                                                   FontAttributes="Bold"
+                                                   LineBreakMode="TailTruncation"
+                                                   VerticalOptions="Center" />
+                                            <Label FontSize="10"
+                                                   Padding="0,5,0,0"
+                                                   FontFamily="MR"
+                                                   Text="{Binding post_timestamp}"
+                                                   VerticalOptions="Center" />
+                                        </StackLayout>
+                                    </StackLayout>
+                                </Frame>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+
+                </CollectionView>
+            </RefreshView>
+        </Grid>
+    </ScrollView>
 </ContentPage>

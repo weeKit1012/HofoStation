@@ -1,13 +1,82 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:HofoStation.ViewModels"
+             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:fa="clr-namespace:FontAwesome"
              x:Class="HofoStation.Views.PostHistoryPage"
              Shell.NavBarIsVisible="False">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to PostHistoryPage!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
+
+    <ContentPage.BindingContext>
+        <vm:PostHistoryViewModel />
+    </ContentPage.BindingContext>
+
+    <RefreshView Command="{Binding ExecuteLoadItemCommand}"
+                 IsRefreshing="{Binding IsBusy, Mode=OneWay}">
+
+        <CollectionView BackgroundColor="Transparent"
+                        ItemSizingStrategy="MeasureFirstItem"
+                        ItemsLayout="VerticalList"
+                        ItemsSource="{Binding Posts}"
+                        SelectedItem="{Binding SelectedPost, Mode=TwoWay}"
+                        SelectionChangedCommand="{Binding SelectCommand}"
+                        SelectionMode="Single">
+
+            <CollectionView.EmptyView>
+                <StackLayout Padding="12">
+                    <Label HorizontalOptions="CenterAndExpand"
+                           VerticalOptions="CenterAndExpand"
+                           Text="No post from history" />
+                </StackLayout>
+            </CollectionView.EmptyView>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <SwipeView android:SwipeView.SwipeTransitionMode="Drag">
+                        <SwipeView.RightItems>
+                            <SwipeItems>
+                                <SwipeItem Text="Delete"
+                                           BackgroundColor="Crimson"
+                                           Command="{Binding Source={RelativeSource AncestorType={x:Type vm:PostHistoryViewModel}}, Path=DeleteCommand}"
+                                           CommandParameter="{Binding .}" />
+                                <SwipeItem Text="Update"
+                                           BackgroundColor="Orange"
+                                           Command="{Binding Source={RelativeSource AncestorType={x:Type vm:PostHistoryViewModel}}, Path=UpdateCommand}"
+                                           CommandParameter="{Binding .}"/>
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+
+                        <Grid Padding="10">
+                            <Frame Style="{StaticResource PostCard}">
+                                <StackLayout Orientation="Horizontal"
+                                             HorizontalOptions="FillAndExpand">
+                                    <Frame Style="{StaticResource RoundedImg}">
+                                        <Image Source="{Binding post_image_url}"
+                                               Aspect="AspectFill" />
+                                    </Frame>
+                                    <StackLayout VerticalOptions="Center"
+                                                 HorizontalOptions="FillAndExpand"
+                                                 Orientation="Vertical"
+                                                 Padding="30,0,0,0">
+                                        <Label FontSize="15"
+                                               Text="{Binding post_title}"
+                                               FontFamily="MB"
+                                               FontAttributes="Bold"
+                                               LineBreakMode="TailTruncation"
+                                               VerticalOptions="Center" />
+                                        <Label FontSize="10"
+                                               Padding="0,5,0,0"
+                                               FontFamily="MR"
+                                               Text="{Binding post_timestamp}"
+                                               VerticalOptions="Center" />
+                                    </StackLayout>
+                                </StackLayout>
+                            </Frame>
+                        </Grid>
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </RefreshView>
 </ContentPage>

@@ -20,6 +20,8 @@ namespace HofoStation
                 typeof(PostDetailPage));
             Routing.RegisterRoute(nameof(OtherProfilePage),
                 typeof(OtherProfilePage));
+            Routing.RegisterRoute(nameof(UpdatePostPage),
+                typeof(UpdatePostPage));
         }
     }
 }

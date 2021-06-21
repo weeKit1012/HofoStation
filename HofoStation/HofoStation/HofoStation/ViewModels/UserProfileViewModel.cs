@@ -9,14 +9,14 @@ namespace HofoStation.ViewModels
 {
     public class UserProfileViewModel : ViewModelBase
     {
-        User _user;
-        ImageSource imageSource;
+        private User _user;
+        private ImageSource imageSource;
         public AsyncCommand GoToUpdateCommand { get; }
         public AsyncCommand LogoutCommand { get; }
 
         public UserProfileViewModel()
-        {            
-            Title = "User";           
+        {
+            Title = "User";
             GoToUpdateCommand = new AsyncCommand(RedirectToUpdate);
             LogoutCommand = new AsyncCommand(Logout);
 
@@ -28,7 +28,7 @@ namespace HofoStation.ViewModels
             Initialize();
         }
 
-        string name, email, phone, gender, password;
+        private string name, email, phone, gender, password;
 
         public string Name
         {
@@ -66,37 +66,25 @@ namespace HofoStation.ViewModels
             set => SetProperty(ref imageSource, value);
         }
 
-        void Initialize()
+        private void Initialize()
         {
             Name = _user.user_first_name + " " + _user.user_last_name;
             Email = _user.user_email;
             Phone = _user.user_phone;
             Password = new string('x',_user.user_password.Length);
-            if (_user.user_gender == "1")
-            {
-                Gender = "Male";
-            }
-            else
-            {
-                Gender = "Female";
-            }
+            Gender = _user.user_gender == "1" ? "Male" : "Female";
 
-            if (!string.IsNullOrEmpty(_user.user_image))
-            {
-                ImageSource = _user.user_image;
-            }
-            else
-            {
-                ImageSource = "https://hofostation.blob.core.windows.net/hofogallery/8044bbff-8039-452f-9db7-ecb608c5cfd6.png?sv=2020-04-08&se=2025-01-01T00%3A00%3A00Z&sr=b&sp=r&sig=Zc8ChFceAsSXC4zmA1Nvbpi6rGUtd6B070XEWxEBlQw%3D";
-            }
+            ImageSource = !string.IsNullOrEmpty(_user.user_image)
+                ? _user.user_image
+                : (ImageSource)"https://hofostation.blob.core.windows.net/hofogallery/8044bbff-8039-452f-9db7-ecb608c5cfd6.png?sv=2020-04-08&se=2025-01-01T00%3A00%3A00Z&sr=b&sp=r&sig=Zc8ChFceAsSXC4zmA1Nvbpi6rGUtd6B070XEWxEBlQw%3D";
         }
 
-        async Task RedirectToUpdate()
+        private async Task RedirectToUpdate()
         {
             await Shell.Current.GoToAsync(nameof(UpdateProfilePage));
         }
 
-        async Task Logout()
+        private async Task Logout()
         {
             bool result = await Shell.Current.DisplayAlert("Confirm", "Are you sure you want to logout?", "Yes", "No");
 
@@ -106,7 +94,7 @@ namespace HofoStation.ViewModels
                 SecureStorage.RemoveAll();
 
                 await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
-            }               
+            }
         }
     }
 }
