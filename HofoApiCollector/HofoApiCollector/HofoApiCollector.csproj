@@ -232,6 +232,9 @@
     <Compile Include="stpPostGet_Result.cs">
       <DependentUpon>dbhofo.tt</DependentUpon>
     </Compile>
+    <Compile Include="stpUserGetAll_Result.cs">
+      <DependentUpon>dbhofo.tt</DependentUpon>
+    </Compile>
     <Compile Include="stpUserGet_Result.cs">
       <DependentUpon>dbhofo.tt</DependentUpon>
     </Compile>

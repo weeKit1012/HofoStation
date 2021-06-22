@@ -3,6 +3,7 @@ using HofoStation.Responses;
 using HofoStation.Services;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Security.Cryptography;
 using System.Text;
@@ -115,6 +116,14 @@ namespace HofoStation.Services
                 User _user = null;
                 return _user;
             }
+        }
+
+        public async Task<IEnumerable<User>> GetAllUser()
+        {
+            Init();
+            var json = await client.GetStringAsync($"user/user_get_all");
+            var results = JsonConvert.DeserializeObject<IEnumerable<User>>(json);
+            return results;
         }
 
         public string hashed(string raw)

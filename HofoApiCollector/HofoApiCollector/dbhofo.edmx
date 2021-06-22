@@ -52,6 +52,7 @@
         <Function Name="stpUserGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="user_id" Type="int" Mode="In" />
         </Function>
+        <Function Name="stpUserGetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="stpUserLogin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="user_email" Type="varchar" Mode="In" />
           <Parameter Name="user_password" Type="varchar" Mode="In" />
@@ -163,6 +164,7 @@
           <FunctionImport Name="stpChatMessageGet" ReturnType="Collection(dbhofoModel.stpChatMessageGet_Result)">
           <Parameter Name="chat_id" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="stpUserGetAll" ReturnType="Collection(dbhofoModel.stpUserGetAll_Result)" />
         </EntityContainer>
         <ComplexType Name="stpUserGet_Result">
           <Property Type="Int32" Name="id" Nullable="false" />
@@ -234,6 +236,12 @@
           <Property Type="String" Name="user_password" Nullable="false" MaxLength="100" />
           <Property Type="Int32" Name="user_phone" Nullable="false" />
           <Property Type="Int32" Name="user_gender" Nullable="false" />
+          <Property Type="String" Name="user_image" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="stpUserGetAll_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="user_first_name" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="user_last_name" Nullable="false" MaxLength="100" />
           <Property Type="String" Name="user_image" Nullable="true" />
         </ComplexType>
       </Schema>
@@ -353,6 +361,16 @@
                 <ScalarProperty Name="chat_timestamp" ColumnName="chat_timestamp" />
                 <ScalarProperty Name="chat_id" ColumnName="chat_id" />
                 <ScalarProperty Name="user_id" ColumnName="user_id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="stpUserGetAll" FunctionName="dbhofoModel.Store.stpUserGetAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbhofoModel.stpUserGetAll_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="user_first_name" ColumnName="user_first_name" />
+                <ScalarProperty Name="user_last_name" ColumnName="user_last_name" />
+                <ScalarProperty Name="user_image" ColumnName="user_image" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

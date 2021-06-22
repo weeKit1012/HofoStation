@@ -82,8 +82,8 @@ C:\Users\wjz10\Documents\GitHub\HofoStation\HofoApiCollector\HofoApiCollector\bi
 C:\Users\wjz10\Documents\GitHub\HofoStation\HofoApiCollector\HofoApiCollector\bin\System.Web.WebPages.Razor.xml
 C:\Users\wjz10\Documents\GitHub\HofoStation\HofoApiCollector\HofoApiCollector\bin\Antlr3.Runtime.pdb
 C:\Users\wjz10\Documents\GitHub\HofoStation\HofoApiCollector\HofoApiCollector\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\wjz10\Documents\GitHub\HofoStation\HofoApiCollector\HofoApiCollector\obj\Debug\HofoApiCollector.csprojAssemblyReference.cache
 C:\Users\wjz10\Documents\GitHub\HofoStation\HofoApiCollector\HofoApiCollector\obj\Debug\HofoApiCollector.csproj.CoreCompileInputs.cache
 C:\Users\wjz10\Documents\GitHub\HofoStation\HofoApiCollector\HofoApiCollector\obj\Debug\HofoApiCollector.csproj.CopyComplete
 C:\Users\wjz10\Documents\GitHub\HofoStation\HofoApiCollector\HofoApiCollector\obj\Debug\HofoApiCollector.dll
 C:\Users\wjz10\Documents\GitHub\HofoStation\HofoApiCollector\HofoApiCollector\obj\Debug\HofoApiCollector.pdb
+C:\Users\wjz10\Documents\GitHub\HofoStation\HofoApiCollector\HofoApiCollector\obj\Debug\HofoApiCollector.csproj.AssemblyReference.cache

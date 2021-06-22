@@ -77,6 +77,7 @@
     <FunctionImport Name="stpChatMessageGet" ReturnType="Collection(dbhofoModel.stpChatMessageGet_Result)">
       <Parameter Name="chat_id" Mode="In" Type="Int32" />
     </FunctionImport>
+    <FunctionImport Name="stpUserGetAll" ReturnType="Collection(dbhofoModel.stpUserGetAll_Result)" />
   </EntityContainer>
   <ComplexType Name="stpUserGet_Result">
     <Property Type="Int32" Name="id" Nullable="false" />
@@ -148,6 +149,12 @@
     <Property Type="String" Name="user_password" Nullable="false" MaxLength="100" />
     <Property Type="Int32" Name="user_phone" Nullable="false" />
     <Property Type="Int32" Name="user_gender" Nullable="false" />
+    <Property Type="String" Name="user_image" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="stpUserGetAll_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="user_first_name" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="user_last_name" Nullable="false" MaxLength="100" />
     <Property Type="String" Name="user_image" Nullable="true" />
   </ComplexType>
 </Schema>

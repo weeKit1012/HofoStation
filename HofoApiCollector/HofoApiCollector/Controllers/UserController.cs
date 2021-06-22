@@ -2,6 +2,8 @@
 using HofoApiCollector.Response;
 using Newtonsoft.Json;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 
@@ -157,6 +159,37 @@ namespace HofoApiCollector.Controllers
                 {
                     return new OperationResponse(ex.ToString());
                 }
+            }
+        }
+
+        //Get user list
+        [Route("user_get_all")]
+        [HttpGet]
+        public IEnumerable<User> user_get_all()
+        {
+            return user_get_all_process();
+        }
+
+        public IEnumerable<User> user_get_all_process()
+        {
+            using (core)
+            {
+                var results = (from n in core.stpUserGetAll() select n).ToList();
+
+                List<User> list = new List<User>();
+
+                foreach (var item in results)
+                {
+                    User _user = new User();
+                    _user.id = item.id.ToString();
+                    _user.user_first_name = item.user_first_name;
+                    _user.user_last_name = item.user_last_name;
+                    _user.user_image = item.user_image;
+
+                    list.Add(_user);
+                }
+
+                return list;
             }
         }
     }

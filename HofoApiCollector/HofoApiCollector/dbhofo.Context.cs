@@ -281,5 +281,10 @@ namespace HofoApiCollector
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<stpChatMessageGet_Result>("stpChatMessageGet", chat_idParameter);
         }
+    
+        public virtual ObjectResult<stpUserGetAll_Result> stpUserGetAll()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<stpUserGetAll_Result>("stpUserGetAll");
+        }
     }
 }

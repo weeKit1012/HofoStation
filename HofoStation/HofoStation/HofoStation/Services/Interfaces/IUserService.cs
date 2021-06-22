@@ -1,4 +1,5 @@
 ﻿using HofoStation.Models;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace HofoStation.Services
@@ -10,5 +11,6 @@ namespace HofoStation.Services
         Task<bool> RegisterUser(User _user);
         Task<bool> UpdateUser(User _user);
         Task<User> GetUser(string id);
+        Task<IEnumerable<User>> GetAllUser();
     }
 }

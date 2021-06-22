@@ -3,12 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:HofoStation.ViewModels"
              xmlns:fa="clr-namespace:FontAwesome"
-             x:Class="HofoStation.Views.OtherProfilePage">
+             x:Class="HofoStation.Views.OtherProfilePage"
+             Shell.PresentationMode="Modal">
 
     <ContentPage.BindingContext>
         <vm:OtherProfileViewModel />
     </ContentPage.BindingContext>
-
+    
     <ScrollView>
         <Grid>
             <Grid.RowDefinitions>
