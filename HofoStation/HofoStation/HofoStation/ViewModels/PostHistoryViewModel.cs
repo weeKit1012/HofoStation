@@ -62,10 +62,7 @@ namespace HofoStation.ViewModels
         {
             _user = (User)Application.Current.Properties["loggedUser"];
 
-            if (Posts.Count == 0)
-            {
-                IsBusy = true;
-            }
+            IsBusy = true;
         }
 
         private async Task GetPostList()

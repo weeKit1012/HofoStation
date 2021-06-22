@@ -2,19 +2,53 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:HofoStation.ViewModels"
-             x:Class="HofoStation.Views.UpdatePostPage">
+             x:Class="HofoStation.Views.UpdatePostPage"
+             Title="{Binding Title}">
     <ContentPage.BindingContext>
         <vm:UpdatePostViewModel />
     </ContentPage.BindingContext>
-    
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="This is update post page"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-            <Label Text="{Binding PostId}"
-                   VerticalOptions="CenterAndExpand"
-                   HorizontalOptions="CenterAndExpand" />
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+
+        <StackLayout Grid.Row="0">
+            <Frame Padding="0"
+                   Margin="0"
+                   HeightRequest="280">
+                <Image Source="{Binding ImageUrl}"
+                       Aspect="AspectFill"
+                       Opacity="0.9">
+                </Image>
+            </Frame>
         </StackLayout>
-    </ContentPage.Content>
+
+        <StackLayout Grid.Row="1">
+            <Label Text="Title"
+                   HorizontalOptions="Start"
+                   Margin="20,10,20,0"
+                   FontFamily="MB" />
+            <Entry Margin="20,0,20,10"
+                   ReturnType="Next"
+                   Text="{Binding PostTitle}" />
+            <Label Text="Description"
+                   HorizontalOptions="Start"
+                   Margin="20,20,20,0"
+                   FontFamily="MB" />
+            <Entry Margin="20,0,20,10"
+                   Keyboard="Chat"
+                   ReturnType="Done"
+                   Text="{Binding PostDescription}" />
+        </StackLayout>
+
+        <StackLayout Grid.Row="2"
+                     Margin="20,10,20,20">
+            <Button Text="Update"
+                    IsEnabled="{Binding IsNotBusy}"
+                    Command="{Binding UpdateCommand}" />
+        </StackLayout>
+    </Grid>
 </ContentPage>
