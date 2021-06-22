@@ -41,11 +41,11 @@
 
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Grid Padding="10">
+                    <Grid Padding="10,10,10,10" HeightRequest="70">
                         <Frame Style="{StaticResource PostCard}">
                             <StackLayout Orientation="Horizontal"
                                          HorizontalOptions="FillAndExpand">
-                                <Frame Style="{StaticResource RoundedImg}">
+                                <Frame Style="{StaticResource RoundedImg}" HeightRequest="50" MinimumHeightRequest="50" WidthRequest="30" MinimumWidthRequest="50">
                                     <Image Source="{Binding user_image}"
                                            Aspect="AspectFill" />
                                 </Frame>

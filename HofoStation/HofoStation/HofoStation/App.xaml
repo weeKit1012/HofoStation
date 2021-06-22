@@ -89,6 +89,8 @@
                         Value="True" />
                 <Setter Property="HorizontalOptions"
                         Value="Center" />
+                <Setter Property="BorderColor"
+                        Value="{StaticResource Primary}" />
             </Style>
             
         </ResourceDictionary>
