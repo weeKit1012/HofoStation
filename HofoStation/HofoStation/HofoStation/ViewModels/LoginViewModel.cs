@@ -3,6 +3,7 @@ using HofoStation.Services;
 using HofoStation.Services.Interfaces;
 using HofoStation.Views;
 using MvvmHelpers.Commands;
+using System;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -11,6 +12,7 @@ namespace HofoStation.ViewModels
 {
     public class LoginViewModel : ViewModelBase
     {
+        
         private readonly IToast iToast;
         private readonly IUserService userService;
         public AsyncCommand GoRegisterCommand { get; }
@@ -51,6 +53,14 @@ namespace HofoStation.ViewModels
         {
             try
             {
+                connectivity = Connectivity.NetworkAccess;
+
+                if (!IsConnected(connectivity))
+                {
+                    await Shell.Current.DisplayAlert("Error", "Please enable network service to proceed the application.", "OK");
+                    return;
+                }
+
                 IsBusy = true;
                 IsNotBusy = false;
 
@@ -84,14 +94,14 @@ namespace HofoStation.ViewModels
                     await Shell.Current.GoToAsync($"//{nameof(DashboardNearbyPage)}");
                 }
             }
-            catch (System.Exception)
+            catch (Exception)
             {
-                throw;
+
             }
         }
 
         public void OnAppearing()
-        {
+        {          
             Email = null;
             Password = null;
 
@@ -102,6 +112,14 @@ namespace HofoStation.ViewModels
         {
             try
             {
+                connectivity = Connectivity.NetworkAccess;
+
+                if (!IsConnected(connectivity))
+                {
+                    await Shell.Current.DisplayAlert("Error", "Please enable network service to proceed the application.", "OK");
+                    return;
+                }
+
                 IsBusy = true;
 
                 string prevEmail = await SecureStorage.GetAsync("email");
@@ -119,8 +137,9 @@ namespace HofoStation.ViewModels
 
                 IsBusy = false;
             }
-            catch (System.Exception)
+            catch (Exception)
             {
+
                 throw;
             }
         }

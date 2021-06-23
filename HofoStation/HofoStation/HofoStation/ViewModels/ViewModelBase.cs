@@ -13,6 +13,7 @@ namespace HofoStation.ViewModels
     {
         //Refer to BaseViewModel to get more info
 
+        public NetworkAccess connectivity;
         public CancellationTokenSource cts;
         public Geopoint point;
 
@@ -78,6 +79,18 @@ namespace HofoStation.ViewModels
                 }
             });
             return true;
+        }
+
+        public bool IsConnected(NetworkAccess conn)
+        {
+            if (conn == NetworkAccess.None)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
     }
 

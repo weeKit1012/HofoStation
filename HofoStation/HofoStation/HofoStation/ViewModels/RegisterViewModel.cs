@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace HofoStation.ViewModels
@@ -71,12 +72,20 @@ namespace HofoStation.ViewModels
             set => SetProperty(ref gender, value);
         }
 
-        async Task RegisterUser()
+        private async Task RegisterUser()
         {
-            bool temp = await Shell.Current.DisplayAlert("Confirm", "Ready to register?", "Yes", "No");
+            bool isConfirmed = await Shell.Current.DisplayAlert("Confirm", "Ready to register?", "Yes", "No");
 
-            if (!temp)
+            if (!isConfirmed)
             {
+                return;
+            }
+
+            connectivity = Connectivity.NetworkAccess;
+
+            if (!IsConnected(connectivity))
+            {
+                await Shell.Current.DisplayAlert("Error", "Please enable network service to proceed the application.", "OK");
                 return;
             }
 
@@ -119,7 +128,7 @@ namespace HofoStation.ViewModels
             }
         }
 
-        async Task BackToLogin()
+        private async Task BackToLogin()
         {
             await Shell.Current.GoToAsync("..");
         }
