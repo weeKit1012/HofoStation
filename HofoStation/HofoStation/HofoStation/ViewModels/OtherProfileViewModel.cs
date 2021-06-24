@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Xamarin.Forms.OpenWhatsApp;
 
 namespace HofoStation.ViewModels
 {
@@ -92,7 +93,15 @@ namespace HofoStation.ViewModels
 
         public async Task GoToChat()
         {
-            await Shell.Current.GoToAsync($"//{nameof(ChatListPage)}?UserId={userId}");
+            try
+            {
+                string phoneNumber = $"+60{owner.user_phone}";
+                Chat.Open(phoneNumber);
+            }
+            catch (Exception)
+            {
+                await Shell.Current.DisplayAlert("Alert", "Please download Whatsapp app to enable the chat feature", "OK");
+            }
         }
 
         private void BindToView()

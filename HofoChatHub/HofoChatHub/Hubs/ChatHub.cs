@@ -8,9 +8,14 @@ namespace HofoChatHub.Hubs
 {
     public class ChatHub : Hub
     {
-        public async Task SendMessage(string chatID, string userID, string message)
+        public Task JoinGroup(string chatId)
         {
-            await Clients.Group(chatID).SendAsync("ReceiveMessage", userID, message);
+            return Groups.AddToGroupAsync(Context.ConnectionId, chatId);
         }
+
+        public async Task SendMessage(string chatId, string senderId, string message)
+        {
+            await Clients.Group(chatId).SendAsync("ReceiveMessage", senderId, message);
+        }  
     }
 }

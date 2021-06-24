@@ -9,7 +9,7 @@
     <ContentPage.BindingContext>
         <vm:OtherProfileViewModel />
     </ContentPage.BindingContext>
-    
+
     <ScrollView>
         <Grid>
             <Grid.RowDefinitions>
@@ -54,22 +54,27 @@
 
             <StackLayout Grid.Row="2"
                          HorizontalOptions="FillAndExpand"
-                         Orientation="Horizontal"
-                         Margin="0,10,0,20">
-                <StackLayout Margin="20,0,0,0"
-                             Orientation="Vertical">
-                    <Label Text="Title :"
-                           FontFamily="MB" />
-                    <Label Text="Contact Number :"
-                           FontFamily="MB" />
+                         Orientation="Vertical"
+                         Margin="10,10,10,20">
+                <StackLayout Orientation="Horizontal">
+                    <StackLayout Margin="20,0,0,0"
+                                 Orientation="Vertical">
+                        <Label Text="Title :"
+                               FontFamily="MB" />
+                        <Label Text="Contact Number :"
+                               FontFamily="MB" />
+                    </StackLayout>
+                    <StackLayout Margin="20,0,0,0"
+                                 Orientation="Vertical">
+                        <Label Text="{Binding Gender}"
+                               FontFamily="MR" />
+                        <Label Text="{Binding Phone}"
+                               FontFamily="MR" />
+                    </StackLayout>
                 </StackLayout>
-                <StackLayout Margin="20,0,0,0"
-                             Orientation="Vertical">
-                    <Label Text="{Binding Gender}"
-                           FontFamily="MR" />
-                    <Label Text="{Binding Phone}"
-                           FontFamily="MR" />
-                </StackLayout>
+                <Button Text="Chat"
+                        Command="{Binding GoChatCommand}"
+                        HorizontalOptions="Fill"/>
             </StackLayout>
 
             <RefreshView Grid.Row="3"

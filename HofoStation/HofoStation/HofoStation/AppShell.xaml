@@ -169,14 +169,14 @@
             <ShellContent Route="CreatePage"
                           ContentTemplate="{DataTemplate local:CreatePage}" />
         </Tab>
-        <Tab Title="Chat">
+        <!--<Tab Title="Chat">
             <Tab.Icon>
                 <FontImageSource FontFamily="FAR"
                                  Glyph="{x:Static fa:FontAwesomeIcons.CommentDots}" />
             </Tab.Icon>
             <ShellContent Route="ChatListPage"
                           ContentTemplate="{DataTemplate local:ChatListPage}" />
-        </Tab>
+        </Tab>-->
         <Tab Title="Profile">
             <Tab.Icon>
                 <FontImageSource FontFamily="FAS"

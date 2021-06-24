@@ -57,6 +57,9 @@
     <PackageReference Include="Azure.Storage.Blobs">
       <Version>12.8.4</Version>
     </PackageReference>
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Client">
+      <Version>5.0.7</Version>
+    </PackageReference>
     <PackageReference Include="MonkeyCache.FileStore">
       <Version>1.5.2</Version>
     </PackageReference>
@@ -74,6 +77,9 @@
     </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
+    <PackageReference Include="Xamarin.Forms.OpenWhatsApp">
+      <Version>1.0.1</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />

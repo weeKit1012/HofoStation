@@ -1,5 +1,4 @@
 ﻿using HofoStation.Views;
-using System;
 using Xamarin.Forms;
 
 namespace HofoStation
@@ -14,8 +13,6 @@ namespace HofoStation
                 typeof(RegisterPage));
             Routing.RegisterRoute(nameof(UpdateProfilePage),
                 typeof(UpdateProfilePage));
-            Routing.RegisterRoute(nameof(PopupLogout),
-                typeof(PopupLogout));
             Routing.RegisterRoute(nameof(PostDetailPage),
                 typeof(PostDetailPage));
             Routing.RegisterRoute(nameof(OtherProfilePage),
