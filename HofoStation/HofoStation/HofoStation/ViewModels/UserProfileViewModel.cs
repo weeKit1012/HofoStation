@@ -81,6 +81,14 @@ namespace HofoStation.ViewModels
 
         private async Task RedirectToUpdate()
         {
+            connectivity = Connectivity.NetworkAccess;
+
+            if (!IsConnected(connectivity))
+            {
+                await Shell.Current.DisplayAlert("Error", "Please enable network service to proceed the application.", "OK");
+                return;
+            }
+
             await Shell.Current.GoToAsync(nameof(UpdateProfilePage));
         }
 

@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace HofoStation.ViewModels
@@ -102,7 +103,7 @@ namespace HofoStation.ViewModels
             }
             catch (Exception)
             {
-                throw;
+                await Shell.Current.DisplayAlert("Error", "Failed to load. Please try again", "OK");
             }
             finally
             {

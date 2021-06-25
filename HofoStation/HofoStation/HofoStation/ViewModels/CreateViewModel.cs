@@ -66,7 +66,7 @@ namespace HofoStation.ViewModels
             }
             catch (Exception)
             {
-
+                await Shell.Current.DisplayAlert("Error", "Failed to load. Please select a pic and ensure you have enabled the network service.", "OK");
             }
 
         }
@@ -81,6 +81,13 @@ namespace HofoStation.ViewModels
                 return;
             }
 
+            connectivity = Connectivity.NetworkAccess;
+
+            if (!IsConnected(connectivity))
+            {
+                await Shell.Current.DisplayAlert("Error", "Please enable network service to proceed the application.", "OK");
+                return;
+            }
 
             if (!Validate())
             {

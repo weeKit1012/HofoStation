@@ -7,6 +7,7 @@ using MvvmHelpers.Commands;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace HofoStation.ViewModels
@@ -35,26 +36,41 @@ namespace HofoStation.ViewModels
 
         private async Task DeleteConfirm(Post _post)
         {
-            bool confirmed = await Shell.Current.DisplayAlert("Confirm", "Are you going to delete the post? (Unable to recover once deleted)", "Yes", "No");
-
-            if (confirmed)
+            try
             {
-                bool result = await postService.DeletePost(new Post { id = _post.id });
+                bool confirmed = await Shell.Current.DisplayAlert("Confirm", "Are you going to delete the post? (Unable to recover once deleted)", "Yes", "No");
 
-                if (result)
+                if (confirmed)
                 {
-                    iToast?.MakeToast("Post Deleted");
-                    IsBusy = true;
-                }
-                else
-                {
-                    await Shell.Current.DisplayAlert("Error", "There are some problem. Please try again later", "OK");
+                    bool result = await postService.DeletePost(new Post { id = _post.id });
+
+                    if (result)
+                    {
+                        iToast?.MakeToast("Post Deleted");
+                        IsBusy = true;
+                    }
+                    else
+                    {
+                        await Shell.Current.DisplayAlert("Error", "There are some problem. Please try again later", "OK");
+                    }
                 }
             }
+            catch (Exception)
+            {
+                await Shell.Current.DisplayAlert("Error", "Please ensure you have enabled the network service.", "OK");
+            }  
         }
 
         private async Task RedirectToUpdate(Post _post)
         {
+            connectivity = Connectivity.NetworkAccess;
+
+            if (!IsConnected(connectivity))
+            {
+                await Shell.Current.DisplayAlert("Error", "Please enable network service to proceed the application.", "OK");
+                return;
+            }
+
             await Shell.Current.GoToAsync($"{nameof(UpdatePostPage)}?PostId={_post.id}");
         }
 
@@ -78,7 +94,7 @@ namespace HofoStation.ViewModels
             }
             catch (Exception)
             {
-                throw;
+                await Shell.Current.DisplayAlert("Error", "Failed to load. Please try again", "OK");
             }
             finally
             {

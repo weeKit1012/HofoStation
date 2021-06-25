@@ -30,8 +30,6 @@ C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation\
 C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation\obj\Debug\netstandard2.0\HofoStation.csproj.AssemblyReference.cache
 C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation\obj\Debug\netstandard2.0\App.xaml.g.cs
 C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation\obj\Debug\netstandard2.0\AppShell.xaml.g.cs
-C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation\obj\Debug\netstandard2.0\Views\ChatListPage.xaml.g.cs
-C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation\obj\Debug\netstandard2.0\Views\ChatRoomPage.xaml.g.cs
 C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation\obj\Debug\netstandard2.0\Views\CreatePage.xaml.g.cs
 C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation\obj\Debug\netstandard2.0\Views\DashboardAllPage.xaml.g.cs
 C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation\obj\Debug\netstandard2.0\Views\DashboardNearbyPage.xaml.g.cs

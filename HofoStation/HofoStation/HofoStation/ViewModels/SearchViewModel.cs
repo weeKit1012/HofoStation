@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace HofoStation.ViewModels
@@ -49,7 +50,7 @@ namespace HofoStation.ViewModels
             }
             catch (Exception)
             {
-                throw;
+                await Shell.Current.DisplayAlert("Error", "Failed to load. Please try again later.", "OK");
             }
             finally
             {
@@ -117,6 +118,14 @@ namespace HofoStation.ViewModels
 
         private async Task Selected()
         {
+            connectivity = Connectivity.NetworkAccess;
+
+            if (!IsConnected(connectivity))
+            {
+                await Shell.Current.DisplayAlert("Error", "Please enable network service to proceed the application.", "OK");
+                return;
+            }
+
             //Cuz SelectionChanged will auto be triggered twice
             if (userSelected != null)
             {

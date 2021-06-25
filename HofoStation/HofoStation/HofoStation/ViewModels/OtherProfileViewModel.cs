@@ -45,7 +45,7 @@ namespace HofoStation.ViewModels
             }
             catch (Exception)
             {
-                throw;
+                await Shell.Current.DisplayAlert("Error", "Failed to load. Please ensure you have enable the network service.", "OK");
             }
             finally
             {
@@ -87,7 +87,8 @@ namespace HofoStation.ViewModels
             }
             catch (Exception)
             {
-                throw;
+                await Shell.Current.DisplayAlert("Error", "Failed to load. Please ensure you have enable the network service.", "OK");
+                await Shell.Current.GoToAsync($"//{nameof(DashboardNearbyPage)}");
             }
         }
 

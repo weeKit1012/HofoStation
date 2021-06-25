@@ -4,6 +4,7 @@ using HofoStation.Views;
 using MvvmHelpers.Commands;
 using System;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace HofoStation.ViewModels
@@ -134,7 +135,7 @@ namespace HofoStation.ViewModels
             }
             else
             {
-                await Shell.Current.DisplayAlert("Fail", "Failed to like the post", "OK");
+                await Shell.Current.DisplayAlert("Error", "Failed to like the post", "OK");
             }
         }
 
@@ -171,7 +172,22 @@ namespace HofoStation.ViewModels
 
         private async Task RedirectToNextPage()
         {
-            await Shell.Current.GoToAsync($"{nameof(OtherProfilePage)}?UserId={OwnerId}");
+            try
+            {
+                connectivity = Connectivity.NetworkAccess;
+
+                if (!IsConnected(connectivity))
+                {
+                    await Shell.Current.DisplayAlert("Error", "Please enable network service to proceed the application.", "OK");
+                    return;
+                }
+
+                await Shell.Current.GoToAsync($"{nameof(OtherProfilePage)}?UserId={OwnerId}");
+            }
+            catch (Exception)
+            {
+                await Shell.Current.DisplayAlert("Error", "Failed to load. Please ensure you have enable the network service.", "OK");
+            }    
         }
 
         private bool isNotFromProfile;

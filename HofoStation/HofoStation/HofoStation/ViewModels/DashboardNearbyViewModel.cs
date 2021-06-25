@@ -1,13 +1,11 @@
 ﻿using HofoStation.Models;
 using HofoStation.Services;
-using HofoStation.Services.Interfaces;
 using HofoStation.Views;
 using MvvmHelpers;
 using MvvmHelpers.Commands;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -84,7 +82,7 @@ namespace HofoStation.ViewModels
             }
             catch (Exception)
             {
-                throw;
+                await Shell.Current.DisplayAlert("Error", "Failed to load. Please try again", "OK");
             }
             finally
             {

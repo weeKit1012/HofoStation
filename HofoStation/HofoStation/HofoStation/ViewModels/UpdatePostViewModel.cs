@@ -4,6 +4,7 @@ using HofoStation.Services.Interfaces;
 using MvvmHelpers.Commands;
 using System;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace HofoStation.ViewModels
@@ -79,6 +80,14 @@ namespace HofoStation.ViewModels
         {
             try
             {
+                connectivity = Connectivity.NetworkAccess;
+
+                if (!IsConnected(connectivity))
+                {
+                    await Shell.Current.DisplayAlert("Error", "Please enable network service to proceed the application.", "OK");
+                    return;
+                }
+
                 IsNotBusy = false;
 
                 bool isConfirm = await Shell.Current.DisplayAlert("Confirm", "Are you sure you want to proceed?", "Yes", "No");

@@ -48,13 +48,21 @@ namespace HofoStation.ViewModels
             }
             catch (Exception)
             {
-
+                await Shell.Current.DisplayAlert("Error", "Failed to load. Please ensure you have enable the network service.", "OK");
             }
             
         }
 
         private async Task UpdateProfile()
         {
+            connectivity = Connectivity.NetworkAccess;
+
+            if (!IsConnected(connectivity))
+            {
+                await Shell.Current.DisplayAlert("Error", "Please enable network service to proceed the application.", "OK");
+                return;
+            }
+
             if (!ValidateField())
             {
                 await Shell.Current.DisplayAlert("Error", "Please ensure all fields are filled with correct info.", "OK");
