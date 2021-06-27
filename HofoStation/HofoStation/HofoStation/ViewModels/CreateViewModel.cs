@@ -102,8 +102,8 @@ namespace HofoStation.ViewModels
 
             Post _post = new Post
             {
-                post_title = postTitle,
-                post_description = postDescription,
+                post_title = postTitle.Trim(),
+                post_description = postDescription.Trim(),
                 post_image_url = imagePath,
                 post_logitude = longitude,
                 post_latitude = latitude,

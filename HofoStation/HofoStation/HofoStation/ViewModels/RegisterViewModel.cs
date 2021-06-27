@@ -3,8 +3,6 @@ using HofoStation.Services;
 using HofoStation.Services.Interfaces;
 using MvvmHelpers.Commands;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -74,57 +72,75 @@ namespace HofoStation.ViewModels
 
         private async Task RegisterUser()
         {
-            bool isConfirmed = await Shell.Current.DisplayAlert("Confirm", "Ready to register?", "Yes", "No");
-
-            if (!isConfirmed)
+            try
             {
-                return;
+                bool isConfirmed = await Shell.Current.DisplayAlert("Confirm", "Ready to register?", "Yes", "No");
+
+                if (!isConfirmed)
+                {
+                    return;
+                }
+
+                connectivity = Connectivity.NetworkAccess;
+
+                if (!IsConnected(connectivity))
+                {
+                    await Shell.Current.DisplayAlert("Connectivity Error", "Please enable network service to proceed the application.", "OK");
+                    return;
+                }
+
+                if (!IsAllFilled())
+                {
+                    await Shell.Current.DisplayAlert("Input error", "Please ensure you fill all fields with correct data.", "OK");
+                    return;
+                }
+
+                if (!IsNotContainNumber(fname) || !IsNotContainNumber(lname))
+                {
+                    await Shell.Current.DisplayAlert("Format Error", "Invalid name given.", "OK");
+                    return;
+                }
+
+                if (!IsValidEmail(email))
+                {
+                    await Shell.Current.DisplayAlert("Format Error", "Please ensure the email format is correct.", "OK");
+                    return;
+                }
+
+                IsBusy = true;
+                IsNotBusy = false;
+
+                User _user = new User
+                {
+                    user_first_name = fname.Trim(),
+                    user_last_name = lname.Trim(),
+                    user_email = email.Trim(),
+                    user_password = password,
+                    user_phone = phone.Trim(),
+                    user_gender = gender
+                };
+
+                bool result = await userService.RegisterUser(_user);
+
+                if (result)
+                {
+                    iToast?.MakeToast("Register successfully");
+                    await Task.Delay(1200);
+                    await Shell.Current.GoToAsync("..");
+                }
+                else
+                {
+                    await Shell.Current.DisplayAlert("Register Fail", "Please try again later or try with another email address.", "OK");
+                }
             }
-
-            connectivity = Connectivity.NetworkAccess;
-
-            if (!IsConnected(connectivity))
+            catch (Exception)
             {
-                await Shell.Current.DisplayAlert("Error", "Please enable network service to proceed the application.", "OK");
-                return;
+                await Shell.Current.DisplayAlert("Error", "Please try again later.", "OK");
             }
-
-            IsBusy = true;
-            IsNotBusy = false;
-
-            if (!IsValidate())
+            finally
             {
                 IsBusy = false;
                 IsNotBusy = true;
-                await Shell.Current.DisplayAlert("Input error", "Please ensure you fill all fields with correct data.", "OK");
-                return;
-            }
-
-            User _user = new User
-            {
-                user_first_name = fname,
-                user_last_name = lname,
-                user_email = email,
-                user_password = password,
-                user_phone = phone,
-                user_gender = gender
-            };
-
-            bool result = await userService.RegisterUser(_user);
-
-            if (result)
-            {
-                IsBusy = false;
-                IsNotBusy = true;
-                iToast?.MakeToast("Register successfully");
-                await Task.Delay(1500);
-                await Shell.Current.GoToAsync("..");
-            }
-            else
-            {
-                IsBusy = false;
-                IsNotBusy = true;
-                await Shell.Current.DisplayAlert("Register Fail", "Please try again later or try with another email address.", "OK");
             }
         }
 
@@ -133,7 +149,7 @@ namespace HofoStation.ViewModels
             await Shell.Current.GoToAsync("..");
         }
 
-        private bool IsValidate()
+        private bool IsAllFilled()
         {
             return !string.IsNullOrWhiteSpace(fname) && !string.IsNullOrWhiteSpace(lname) &&
                     !string.IsNullOrWhiteSpace(email) && !string.IsNullOrWhiteSpace(password) &&

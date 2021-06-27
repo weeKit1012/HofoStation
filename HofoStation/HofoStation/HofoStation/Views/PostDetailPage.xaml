@@ -76,21 +76,22 @@
                     </StackLayout>
                 </StackLayout>
             </StackLayout>
-               
-            <StackLayout Grid.Row="2" 
-                         Orientation="Horizontal" 
-                         HorizontalOptions="CenterAndExpand"
-                         IsVisible="{Binding IsNotFromProfile}">
-                <Button WidthRequest="150" 
-                        Margin="10,10,10,20" 
+
+            <StackLayout Grid.Row="2"
+                         Orientation="Horizontal"
+                         HorizontalOptions="CenterAndExpand">
+                <Button WidthRequest="150"
+                        Margin="10,10,10,20"
                         Command="{Binding CreateVote}"
                         IsVisible="{Binding IsNotVoted}"
                         Text="Like" />
-                <Button WidthRequest="150"
-                        Margin="10,10,10,20"
-                        Command="{Binding GoOtherUserProfile}"
-                        IsVisible="{Binding IsNotCurrentUser}"
-                        Text="View Profile" />
+                <StackLayout IsVisible="{Binding IsNotFromProfile}">
+                    <Button WidthRequest="150"
+                            Margin="10,10,10,20"
+                            Command="{Binding GoOtherUserProfile}"
+                            IsVisible="{Binding IsNotCurrentUser}"
+                            Text="View Profile" />
+                </StackLayout>
             </StackLayout>
         </Grid>
     </ScrollView>

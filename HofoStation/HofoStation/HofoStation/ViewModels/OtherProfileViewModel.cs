@@ -17,6 +17,7 @@ namespace HofoStation.ViewModels
         private readonly IUserService userService;
         private readonly IPostService postService;
         private User owner;
+        private User _user;
         public ObservableRangeCollection<Post> Posts { get; set; }
         public AsyncCommand LoadItemsCommand { get; }
         public AsyncCommand GoChatCommand { get; }
@@ -24,12 +25,14 @@ namespace HofoStation.ViewModels
 
         public OtherProfileViewModel()
         {
+            _user = (User)Application.Current.Properties["loggedUser"];
             userService = DependencyService.Get<IUserService>();
             postService = DependencyService.Get<IPostService>();
             Posts = new ObservableRangeCollection<Post>();
             LoadItemsCommand = new AsyncCommand(GetPostList);
             GoChatCommand = new AsyncCommand(GoToChat);
             SelectCommand = new AsyncCommand(Selected);
+            IsNotCurrentUser = true;
         }
 
         private async Task GetPostList()
@@ -73,6 +76,12 @@ namespace HofoStation.ViewModels
                 ClearField();
 
                 owner = await userService.GetUser(userId);
+
+                //Visibility of Chat button
+                if (_user.id == owner.id)
+                {
+                    IsNotCurrentUser = false;
+                }
 
                 if (owner != null)
                 {
@@ -175,6 +184,13 @@ namespace HofoStation.ViewModels
                 postSelected = null;
                 await Shell.Current.GoToAsync($"{nameof(PostDetailPage)}?PostId={post.id}&IsNotFromProfile={false}");
             }
+        }
+
+        private bool isNotCurrentUser;
+        public bool IsNotCurrentUser
+        {
+            get => isNotCurrentUser;
+            set => SetProperty(ref isNotCurrentUser, value);
         }
     }
 }

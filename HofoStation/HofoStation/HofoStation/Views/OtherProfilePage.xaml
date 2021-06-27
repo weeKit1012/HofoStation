@@ -74,7 +74,8 @@
                 </StackLayout>
                 <Button Text="Chat"
                         Command="{Binding GoChatCommand}"
-                        HorizontalOptions="Fill"/>
+                        HorizontalOptions="Fill"
+                        IsVisible="{Binding IsNotCurrentUser}"/>
             </StackLayout>
 
             <RefreshView Grid.Row="3"

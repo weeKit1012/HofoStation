@@ -76,7 +76,7 @@ namespace HofoStation.ViewModels
                 {
                     id = _user.id,
                     user_password = npassword,
-                    user_phone = phone,
+                    user_phone = phone.Trim(),
                     user_image = newimagepath
                 };
 
@@ -101,7 +101,7 @@ namespace HofoStation.ViewModels
                 {
                     id = _user.id,
                     user_password = npassword,
-                    user_phone = phone,
+                    user_phone = phone.Trim(),
                     user_image = _user.user_image
                 };
 
@@ -166,13 +166,21 @@ namespace HofoStation.ViewModels
         {
             if (string.IsNullOrWhiteSpace(opassword) || string.IsNullOrWhiteSpace(npassword) || 
                 string.IsNullOrWhiteSpace(rpassword) || string.IsNullOrWhiteSpace(phone))
+            {
                 return false;
+            }
             else if (userService.hashed(opassword) != _user.user_password)
+            {
                 return false;
+            }
             else if (npassword != rpassword)
+            {
                 return false;
+            }
             else
+            {
                 return true;
+            }
         }
 
     }
