@@ -1,4 +1,9 @@
-﻿using HofoStation.Models;
+﻿/*
+ Programmer Name    :   TEY WEE KIT
+ Program Name       :   HofoStation (Front End, User Interface)
+ */
+
+using HofoStation.Models;
 using HofoStation.Responses;
 using HofoStation.Services;
 using Newtonsoft.Json;

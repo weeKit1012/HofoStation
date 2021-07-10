@@ -1,4 +1,9 @@
-﻿using System;
+﻿/*
+ Programmer Name    :   TEY WEE KIT
+ Program Name       :   HofoStation (Front End, User Interface)
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Text;
 

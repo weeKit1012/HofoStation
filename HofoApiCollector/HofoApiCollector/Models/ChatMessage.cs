@@ -1,4 +1,9 @@
-﻿using System.Runtime.Serialization;
+﻿/*
+ Programmer Name    :   TEY WEE KIT
+ Program Name       :   HofoStation (Back End, Web Api)
+ */
+
+using System.Runtime.Serialization;
 
 namespace HofoApiCollector.Models
 {

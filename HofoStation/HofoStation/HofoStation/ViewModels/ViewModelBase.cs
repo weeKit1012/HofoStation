@@ -1,4 +1,9 @@
-﻿using MvvmHelpers;
+﻿/*
+ Programmer Name    :   TEY WEE KIT
+ Program Name       :   HofoStation (Front End, User Interface)
+ */
+
+using MvvmHelpers;
 using System;
 using System.Globalization;
 using System.Linq;

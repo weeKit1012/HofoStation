@@ -1,4 +1,9 @@
-﻿using HofoApiCollector.Models;
+﻿/*
+ Programmer Name    :   TEY WEE KIT
+ Program Name       :   HofoStation (Back End, Web Api)
+ */
+
+using HofoApiCollector.Models;
 using HofoApiCollector.Response;
 using Newtonsoft.Json;
 using System;

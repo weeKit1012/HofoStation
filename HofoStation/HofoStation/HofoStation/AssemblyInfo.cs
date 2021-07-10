@@ -1,3 +1,8 @@
+/*
+ Programmer Name    :   TEY WEE KIT
+ Program Name       :   HofoStation (Front End, User Interface)
+ */
+
 using Android;
 using Android.App;
 using Xamarin.Forms;

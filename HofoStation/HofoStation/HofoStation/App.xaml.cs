@@ -1,4 +1,9 @@
-﻿using HofoStation.Services;
+﻿/*
+ Programmer Name    :   TEY WEE KIT
+ Program Name       :   HofoStation (Front End, User Interface)
+ */
+
+using HofoStation.Services;
 using HofoStation.Views;
 using Xamarin.Forms;
 

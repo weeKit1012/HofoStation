@@ -1,4 +1,9 @@
-﻿using HofoStation.Models;
+﻿/*
+ Programmer Name    :   TEY WEE KIT
+ Program Name       :   HofoStation (Front End, User Interface)
+ */
+
+using HofoStation.Models;
 using HofoStation.Services;
 using HofoStation.Services.Interfaces;
 using MvvmHelpers.Commands;
