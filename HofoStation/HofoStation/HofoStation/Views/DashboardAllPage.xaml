@@ -24,7 +24,7 @@
                 <StackLayout Padding="12">
                     <Label HorizontalOptions="CenterAndExpand"
                            VerticalOptions="CenterAndExpand"
-                           Text="No post from users nearby" />
+                           Text="No post from users" />
                 </StackLayout>
             </CollectionView.EmptyView>
 

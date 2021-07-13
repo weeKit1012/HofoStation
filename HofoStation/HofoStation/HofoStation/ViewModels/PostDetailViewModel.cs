@@ -23,7 +23,7 @@ namespace HofoStation.ViewModels
         private readonly IVoteService voteService;
         public AsyncCommand CreateVote { get; }
         public AsyncCommand GoOtherUserProfile { get; }
-        private readonly User currentUser;
+        private User currentUser;
 
         public PostDetailViewModel()
         {
@@ -32,7 +32,6 @@ namespace HofoStation.ViewModels
             voteService = DependencyService.Get<IVoteService>();
             CreateVote = new AsyncCommand(AddVote);
             GoOtherUserProfile = new AsyncCommand(RedirectToNextPage);
-            currentUser = (User)Application.Current.Properties["loggedUser"];
             IsNotVoted = true;
             IsNotCurrentUser = true;
             IsNotFromProfile = true;
@@ -48,6 +47,7 @@ namespace HofoStation.ViewModels
                 if (value != null)
                 {
                     postId = value;
+                    currentUser = (User)Application.Current.Properties["loggedUser"];
                     LoadPost(value);
                 }
 

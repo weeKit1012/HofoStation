@@ -17,7 +17,7 @@ namespace HofoStation.ViewModels
 {
     public class CreateViewModel : ViewModelBase
     {
-        private readonly User _user;
+        private User _user;
         private readonly IToast iToast;
         private readonly IPostService postService;
         public AsyncCommand OpenGalleryCommand { get; }
@@ -26,7 +26,7 @@ namespace HofoStation.ViewModels
         public CreateViewModel()
         {
             Title = "Create Post";
-            _user = (User)Application.Current.Properties["loggedUser"];
+            //_user = (User)Application.Current.Properties["loggedUser"];
             OpenGalleryCommand = new AsyncCommand(OpenGallery);
             CreateCommand = new AsyncCommand(CreatePost);
             postService = DependencyService.Get<IPostService>();
@@ -153,6 +153,7 @@ namespace HofoStation.ViewModels
 
         public void OnAppearing()
         {
+            _user = (User)Application.Current.Properties["loggedUser"];
             PostDescription = null;
             PostTitle = null;
             ImageSource = null;

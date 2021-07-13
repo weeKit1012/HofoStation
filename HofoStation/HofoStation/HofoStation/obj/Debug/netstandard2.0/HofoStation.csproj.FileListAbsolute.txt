@@ -27,7 +27,6 @@ C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation\
 C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation\bin\Debug\netstandard2.0\Mono.Android.xml
 C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation\bin\Debug\netstandard2.0\Xamarin.Forms.Platform.Android.pdb
 C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation\bin\Debug\netstandard2.0\FormsViewGroup.pdb
-C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation\obj\Debug\netstandard2.0\HofoStation.csproj.AssemblyReference.cache
 C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation\obj\Debug\netstandard2.0\App.xaml.g.cs
 C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation\obj\Debug\netstandard2.0\AppShell.xaml.g.cs
 C:\Users\wjz10\Documents\GitHub\HofoStation\HofoStation\HofoStation\HofoStation\obj\Debug\netstandard2.0\Views\CreatePage.xaml.g.cs

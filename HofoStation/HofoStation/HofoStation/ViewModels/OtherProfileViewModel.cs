@@ -30,7 +30,7 @@ namespace HofoStation.ViewModels
 
         public OtherProfileViewModel()
         {
-            _user = (User)Application.Current.Properties["loggedUser"];
+            
             userService = DependencyService.Get<IUserService>();
             postService = DependencyService.Get<IPostService>();
             Posts = new ObservableRangeCollection<Post>();
@@ -72,6 +72,8 @@ namespace HofoStation.ViewModels
         {
             try
             {
+                _user = (User)Application.Current.Properties["loggedUser"];
+
                 //Refresh the CV
                 if (Posts.Count == 0)
                 {
