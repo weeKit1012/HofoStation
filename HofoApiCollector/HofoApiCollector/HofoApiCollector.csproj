@@ -187,21 +187,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="localdbhofo.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>localdbhofo.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="localdbhofo.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>localdbhofo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="localdbhofo.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>localdbhofo.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Models\Chat.cs" />
     <Compile Include="Models\ChatMessage.cs" />
     <Compile Include="Models\Post.cs" />
@@ -239,7 +224,7 @@
       <DependentUpon>dbhofo.tt</DependentUpon>
     </Compile>
     <Compile Include="stpUserLogin_Result.cs">
-      <DependentUpon>localdbhofo.tt</DependentUpon>
+      <DependentUpon>dbhofo.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -261,16 +246,6 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="localdbhofo.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>localdbhofo.edmx</DependentUpon>
-      <LastGenOutput>localdbhofo.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="localdbhofo.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>localdbhofo.edmx</DependentUpon>
-      <LastGenOutput>localdbhofo.cs</LastGenOutput>
-    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
@@ -298,13 +273,6 @@
     </EntityDeploy>
     <Content Include="dbhofo.edmx.diagram">
       <DependentUpon>dbhofo.edmx</DependentUpon>
-    </Content>
-    <EntityDeploy Include="localdbhofo.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>localdbhofo.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="localdbhofo.edmx.diagram">
-      <DependentUpon>localdbhofo.edmx</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\hofostation - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />

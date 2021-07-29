@@ -86,4 +86,3 @@ C:\Users\wjz10\Documents\GitHub\HofoStation\HofoApiCollector\HofoApiCollector\ob
 C:\Users\wjz10\Documents\GitHub\HofoStation\HofoApiCollector\HofoApiCollector\obj\Debug\HofoApiCollector.csproj.CopyComplete
 C:\Users\wjz10\Documents\GitHub\HofoStation\HofoApiCollector\HofoApiCollector\obj\Debug\HofoApiCollector.dll
 C:\Users\wjz10\Documents\GitHub\HofoStation\HofoApiCollector\HofoApiCollector\obj\Debug\HofoApiCollector.pdb
-C:\Users\wjz10\Documents\GitHub\HofoStation\HofoApiCollector\HofoApiCollector\obj\Debug\HofoApiCollector.csproj.AssemblyReference.cache
